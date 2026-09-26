@@ -1,0 +1,184 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+    "width": 380,
+    "height": 280,
+    "background": "#FAF7F1",
+
+    "data": {
+    "url": "data/clean/theme_period_counts.csv"
+    },
+
+    "transform": [
+    {
+        "filter": "datum.historical_period != 'Unknown'"
+    },
+    {
+        "impute": "record_count",
+        "key": "historical_period",
+        "groupby": ["theme"],
+        "keyvals": [
+        "Before 1900",
+        "1900-1909",
+        "1910-1919",
+        "1920-1929",
+        "1930-1939",
+        "1940-1959"
+        ],
+        "value": 0
+    }
+    ],
+
+    "encoding": {
+    "x": {
+        "field": "historical_period",
+        "type": "ordinal",
+
+        "sort": [
+        "Before 1900",
+        "1900-1909",
+        "1910-1919",
+        "1920-1929",
+        "1930-1939",
+        "1940-1959"
+        ],
+
+        "title": "Historical period",
+
+        "axis": {
+        "labelFont": "Arial",
+        "labelFontSize": 10,
+        "labelColor": "#6F7180",
+        "labelAngle": -35,
+        "labelPadding": 8,
+
+        "titleFont": "Arial",
+        "titleFontSize": 11,
+        "titleColor": "#6F7180",
+        "titlePadding": 15,
+
+        "ticks": false,
+        "domain": false
+        }
+    },
+
+    "y": {
+        "field": "theme",
+        "type": "nominal",
+
+        "title": null,
+
+        "sort": [
+        "Piano / dance",
+        "Songs",
+        "Patriotic / national",
+        "War",
+        "Queensland / place",
+        "Other"
+        ],
+
+        "axis": {
+        "labelFont": "Arial",
+        "labelFontSize": 11,
+        "labelColor": "#20243A",
+        "labelPadding": 10,
+
+        "ticks": false,
+        "domain": false
+        }
+    }
+    },
+
+    "layer": [
+    {
+        "mark": {
+        "type": "rect",
+        "cornerRadius": 3,
+        "stroke": "#FAF7F1",
+        "strokeWidth": 2
+        },
+
+        "encoding": {
+        "color": {
+            "field": "record_count",
+            "type": "quantitative",
+
+            "title": "Records",
+
+            "scale": {
+            "scheme": "oranges",
+            "domain": [0, 5]
+            },
+
+            "legend": {
+            "orient": "top",
+            "direction": "horizontal",
+
+            "titleFont": "Arial",
+            "titleFontSize": 10,
+            "titleColor": "#6F7180",
+
+            "labelFont": "Arial",
+            "labelFontSize": 10,
+            "labelColor": "#6F7180",
+
+            "gradientLength": 150,
+            "gradientThickness": 8
+            }
+        },
+
+        "tooltip": [
+            {
+            "field": "historical_period",
+            "type": "nominal",
+            "title": "Historical period"
+            },
+            {
+            "field": "theme",
+            "type": "nominal",
+            "title": "Theme"
+            },
+            {
+            "field": "record_count",
+            "type": "quantitative",
+            "title": "Records"
+            }
+        ]
+        }
+    },
+
+    {
+        "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 11,
+        "fontWeight": "bold"
+        },
+
+        "encoding": {
+        "text": {
+        "condition": {
+            "test": "datum.record_count > 0",
+            "field": "record_count",
+            "type": "quantitative"
+        },
+        "value": ""
+        },
+
+        "color": {
+            "condition": {
+            "test": "datum.record_count >= 3",
+            "value": "#FAF7F1"
+            },
+            "value": "#20243A"
+        }
+        }
+    }
+    ],
+
+    "config": {
+    "view": {
+        "stroke": null
+    }
+    }
+}

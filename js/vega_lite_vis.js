@@ -17,3 +17,10 @@ var creatorThemeSankey =
 vegaEmbed("#creator-theme", creatorThemeSankey, {
     actions: false
 }).catch(console.error);
+
+var themeHeatmap =
+    "visualisations/04_theme_heatmap.vg.json";
+
+vegaEmbed("#theme-heatmap", themeHeatmap, {
+    actions: false
+}).catch(console.error);
