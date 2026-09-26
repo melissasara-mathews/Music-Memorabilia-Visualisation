@@ -8,7 +8,7 @@
     "data": [
     {
         "name": "links",
-        "url": "data/clean/creator_theme_links.csv",
+        "url": "./data/clean/creator_theme_links.csv",
         "format": {
         "type": "csv",
         "parse": {
@@ -109,10 +109,10 @@
         "type": "ordinal",
         "domain": [
         "Songs",
-        "Patriotic/national",
+        "Patriotic / national",
         "War",
-        "Piano/dance",
-        "Queensland/place",
+        "Piano / dance",
+        "Queensland / place",
         "Other"
         ],
         "range": [
