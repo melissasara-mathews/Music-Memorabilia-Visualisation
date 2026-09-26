@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Echoes of Australian Music</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+
+<body>
+
+    <nav class="top-nav">
+
+        <div class="logo">
+            ECHOES / AU
+        </div>
+
+        <div class="nav-links">
+            <a href="#section-1">01 The Music We Kept</a>
+            <a href="#section-2">02 What Did Australia Preserve?</a>
+            <a href="#section-3">03 Where Music Lives Today</a>
+            <a href="#section-4">04 Who Is Listening?</a>
+            <a href="#section-5">05 Is Live Music a Habit?</a>
+        </div>
+
+    </nav>
+
+    <header class="hero">
+
+        <p class="eyebrow">
+            A DATA STORY ABOUT MUSIC, MEMORY & PLACE
+        </p>
+
+        <h1>
+            Echoes of
+            <span>Australian Music</span>
+        </h1>
+
+        <p class="subtitle">
+            From preserved artefacts to the places and people keeping
+            Australian music alive.
+        </p>
+
+        <div class="story-path">
+            <span>PAST</span>
+            <span>PLACES</span>
+            <span>PEOPLE</span>
+        </div>
+
+        <p class="research-question">
+            How does Australia’s musical past survive, and how does that
+            culture continue today?
+        </p>
+
+    </header>
+
+    <main>
+
+        <section id="section-1" class="story-section">
+
+            <div class="section-intro">
+
+                <div class="section-number">
+                    01
+                </div>
+
+                <div class="section-text">
+
+                    <p class="section-label">
+                        THE MUSIC WE KEPT
+                    </p>
+
+                    <h2>
+                        What survives from Australia’s musical past?
+                    </h2>
+
+                    <p class="section-description">
+                        Archives reveal what was collected, catalogued and
+                        carried forward through Australia’s musical history.
+                    </p>
+
+                    <p class="section-source">
+                        STATE LIBRARY OF QUEENSLAND · MUSIC QUEENSLAND
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="chart-card full-width">
+
+                <div class="chart-heading">
+
+                    <span class="chart-number">
+                        01
+                    </span>
+
+                    <h3>
+                        When were the preserved music items created?
+                    </h3>
+
+                </div>
+
+                <div id="timeline"></div>
+
+                <p class="chart-note">
+                    Exact dates are only available for part of the collection.
+                </p>
+
+            </div>
+
+            <div class="two-column-layout">
+
+                <div class="chart-card">
+
+                    <div class="chart-heading">
+
+                        <span class="chart-number">
+                            02
+                        </span>
+
+                        <h3>
+                            Which creators appear most often in the collection?
+                        </h3>
+
+                    </div>
+
+                    <div id="creator-lollipop"></div>
+
+                    <p class="chart-note">
+                        Representation in the collection does not necessarily
+                        indicate artist popularity.
+                    </p>
+
+                </div>
+
+                <div class="chart-card">
+
+                    <div class="chart-heading">
+
+                        <span class="chart-number">
+                            03
+                        </span>
+
+                        <h3>
+                            What themes are associated with frequently
+                            represented creators?
+                        </h3>
+
+                    </div>
+
+                    <div id="creator-theme"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="section-2" class="story-section">
+
+            <div class="section-intro">
+
+                <div class="section-number">
+                    02
+                </div>
+
+                <div class="section-text">
+
+                    <p class="section-label">
+                        WHAT DID AUSTRALIA PRESERVE?
+                    </p>
+
+                    <h2>
+                        The subjects inside the archive
+                    </h2>
+
+                    <p class="section-description">
+                        The collection’s themes reveal what kinds of music,
+                        places and cultural ideas were preserved.
+                    </p>
+
+                    <p class="section-source">
+                        STATE LIBRARY OF QUEENSLAND · MUSIC QUEENSLAND
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="two-column-layout">
+
+                <div class="chart-card">
+
+                    <div class="chart-heading">
+                        <span class="chart-number">04</span>
+
+                        <h3>
+                            Which themes appear across historical periods?
+                        </h3>
+                    </div>
+
+                    <div id="theme-heatmap"></div>
+
+                </div>
+
+
+                <div class="chart-card">
+
+                    <div class="chart-heading">
+                        <span class="chart-number">05</span>
+
+                        <h3>
+                            What kinds of subjects dominate the preserved
+                            collection?
+                        </h3>
+                    </div>
+
+                    <div id="subject-composition"></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-card full-width">
+
+                <div class="chart-heading">
+                    <span class="chart-number">06</span>
+
+                    <h3>
+                        How do themes shift across historical periods?
+                    </h3>
+                </div>
+
+                <div id="period-theme"></div>
+
+            </div>
+
+        </section>
+
+        <section class="transition-section">
+
+            <h2>
+                Music survives in collections.
+                <span>But it also survives on stage.</span>
+            </h2>
+
+        </section>
+
+        <section id="section-3" class="story-section">
+
+            <div class="section-intro">
+
+                <div class="section-number">
+                    03
+                </div>
+
+                <div class="section-text">
+
+                    <p class="section-label">
+                        WHERE MUSIC LIVES TODAY
+                    </p>
+
+                    <h2>
+                        A city mapped by its stages
+                    </h2>
+
+                    <p class="section-description">
+                        From bars and theatres to community spaces, live music
+                        forms part of Melbourne’s urban landscape.
+                    </p>
+
+                    <p class="section-source">
+                        CITY OF MELBOURNE · LIVE MUSIC VENUES
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-card full-width">
+
+                <div class="chart-heading">
+                    <span class="chart-number">07</span>
+
+                    <h3>
+                        Where are Melbourne’s live-music venues located?
+                    </h3>
+                </div>
+
+                <div id="venue-dot-map"></div>
+
+            </div>
+
+
+            <div class="two-column-layout">
+
+                <div class="chart-card">
+
+                    <div class="chart-heading">
+                        <span class="chart-number">08</span>
+
+                        <h3>
+                            What types of places host live music?
+                        </h3>
+                    </div>
+
+                    <div id="venue-bar"></div>
+
+                </div>
+
+
+                <div class="chart-card">
+
+                    <div class="chart-heading">
+                        <span class="chart-number">09</span>
+
+                        <h3>
+                            Where are live-music venues most concentrated?
+                        </h3>
+                    </div>
+
+                    <div id="venue-symbol-map"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="transition-section">
+
+            <h2>
+                Venues show where music happens.
+                <span>Audiences show who participates.</span>
+            </h2>
+
+        </section>
+
+        <section id="section-4" class="story-section">
+
+            <div class="section-intro">
+
+                <div class="section-number">
+                    04
+                </div>
+
+                <div class="section-text">
+
+                    <p class="section-label">
+                        WHO IS LISTENING?
+                    </p>
+
+                    <h2>
+                        The geography of an audience
+                    </h2>
+
+                    <p class="section-description">
+                        Participation changes across place, age and sex.
+                    </p>
+
+                    <p class="section-source">
+                        ABS · CULTURAL AND CREATIVE ACTIVITIES 2021–22
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-card full-width">
+
+                <div class="chart-heading">
+                    <span class="chart-number">10</span>
+
+                    <h3>
+                        How does live-music attendance vary across Australia?
+                    </h3>
+                </div>
+
+                <div id="attendance-map"></div>
+
+            </div>
+
+
+            <div class="two-column-layout">
+
+                <div class="chart-card">
+
+                    <div class="chart-heading">
+                        <span class="chart-number">11</span>
+
+                        <h3>
+                            How does live-music attendance differ by age and sex?
+                        </h3>
+                    </div>
+
+                    <div id="age-gender"></div>
+
+                </div>
+
+
+                <div class="chart-card">
+
+                    <div class="chart-heading">
+                        <span class="chart-number">12</span>
+
+                        <h3>
+                            When is live-music participation highest?
+                        </h3>
+                    </div>
+
+                    <div id="age-attendance"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="section-5" class="story-section">
+
+            <div class="section-intro">
+
+                <div class="section-number">
+                    05
+                </div>
+
+                <div class="section-text">
+
+                    <p class="section-label">
+                        IS LIVE MUSIC A HABIT?
+                    </p>
+
+                    <h2>
+                        How often do audiences return?
+                    </h2>
+
+                    <p class="section-description">
+                        Attendance frequency reveals how often people return
+                        to live music.
+                    </p>
+
+                    <p class="section-source">
+                        ABS · TABLE 21
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-card full-width">
+
+                <div class="chart-heading">
+                    <span class="chart-number">13</span>
+
+                    <h3>
+                        How often do live-music attendees go?
+                    </h3>
+                </div>
+
+                <div id="frequency-waffle"></div>
+
+            </div>
+
+        </section>
+
+        <section class="conclusion">
+
+            <p class="section-label">
+                THE STORY IN THREE MOVEMENTS
+            </p>
+
+            <h2>
+                Australian music lives on through what we preserve,
+                where we gather and who keeps returning.
+            </h2>
+
+            <div class="conclusion-path">
+
+                <div>
+                    <span>PAST</span>
+                    <strong>Historical artefacts</strong>
+                </div>
+
+                <div>
+                    <span>PLACES</span>
+                    <strong>Live-music venues</strong>
+                </div>
+
+                <div>
+                    <span>PEOPLE</span>
+                    <strong>Live audiences</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+    <footer>
+
+        <div>
+
+            <h4>Sources</h4>
+
+            <p>
+                State Library of Queensland — Music Queensland
+            </p>
+
+            <p>
+                City of Melbourne — Live Music Venues
+            </p>
+
+            <p>
+                Australian Bureau of Statistics —
+                Cultural and Creative Activities 2021–22
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h4>About</h4>
+
+            <p>
+                Data story by Melissa Sara Mathews
+            </p>
+
+            <p>
+                2026
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="js/vega_lite_vis.js"></script>
+
+</body>
+
+</html>
