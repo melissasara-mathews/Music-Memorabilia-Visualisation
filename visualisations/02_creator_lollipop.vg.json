@@ -1,0 +1,155 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+    "width": 430,
+    "height": 300,
+    "background": "#FAF7F1",
+
+    "data": {
+    "url": "../data/clean/music_qld_clean.csv"
+    },
+
+    "transform": [
+    {
+        "filter": "datum.creator_clean != null && datum.creator_clean != 'Unknown'"
+    },
+    {
+        "calculate": "split(datum.creator_clean, ',')[0]",
+        "as": "creator_short"
+    },
+    {
+        "aggregate": [
+        {
+            "op": "count",
+            "as": "record_count"
+        }
+        ],
+        "groupby": [
+        "creator_clean",
+        "creator_short"
+        ]
+    },
+    {
+        "window": [
+        {
+            "op": "row_number",
+            "as": "rank"
+        }
+        ],
+        "sort": [
+        {
+            "field": "record_count",
+            "order": "descending"
+        }
+        ]
+    },
+    {
+        "filter": "datum.rank <= 8"
+    }
+    ],
+
+    "encoding": {
+    "y": {
+        "field": "creator_short",
+        "type": "nominal",
+        "sort": {
+        "field": "record_count",
+        "order": "descending"
+        },
+        "axis": {
+        "title": null,
+        "labelFont": "Arial",
+        "labelFontSize": 11,
+        "labelColor": "#20243A",
+        "labelPadding": 10,
+        "ticks": false,
+        "domain": false
+        }
+    },
+
+    "x": {
+        "field": "record_count",
+        "type": "quantitative",
+        "title": "Number of preserved records",
+        "scale": {
+        "domain": [0, 5]
+        },
+        "axis": {
+        "values": [0, 1, 2, 3, 4],
+        "format": "d",
+        "labelFont": "Arial",
+        "labelFontSize": 11,
+        "labelColor": "#6F7180",
+        "titleFont": "Arial",
+        "titleFontSize": 11,
+        "titleColor": "#6F7180",
+        "titlePadding": 15,
+        "grid": false,
+        "domainColor": "#C8C3B6",
+        "domainWidth": 1.2,
+        "tickColor": "#C8C3B6",
+        "tickSize": 6
+        }
+    }
+    },
+
+    "layer": [
+    {
+        "mark": {
+        "type": "bar",
+        "size": 2.5,
+        "color": "#E85D43"
+        }
+    },
+
+    {
+    "mark": {
+        "type": "circle",
+        "filled": true,
+        "size": 220,
+        "color": "#E85D43",
+        "opacity": 1
+    },
+
+    "encoding": {
+        "tooltip": [
+        {
+            "field": "creator_clean",
+            "type": "nominal",
+            "title": "Creator"
+        },
+        {
+            "field": "record_count",
+            "type": "quantitative",
+            "title": "Preserved records"
+        }
+        ]
+    }
+    },
+
+    {
+        "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 12,
+        "font": "Arial",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#20243A"
+        },
+        "encoding": {
+        "text": {
+            "field": "record_count",
+            "type": "quantitative"
+        }
+        }
+    }
+    ],
+
+    "config": {
+    "view": {
+        "stroke": null
+    }
+    }
+}

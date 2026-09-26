@@ -426,11 +426,20 @@ a {
     overflow: hidden;
 }
 
-
 #timeline .vega-embed {
     width: 100%;
 }
 
+/* Creator Lollipop */
+#creator-lollipop {
+    width: 100%;
+    overflow: hidden;
+}
+
+#creator-lollipop .vega-embed {
+    width: 100%;
+    max-width: 100%;
+}
 
 /* Transition Panel */
 
