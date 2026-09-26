@@ -1,0 +1,159 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 1050,
+  "height": 260,
+  "background": "#fbf8f2",
+
+  "data": {
+    "url": "../data/clean/music_qld_clean.csv"
+  },
+
+  "transform": [
+    {
+      "filter": "isValid(datum.year)"
+    },
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "stack_position"
+        }
+      ],
+      "groupby": ["year"],
+      "sort": [
+        {
+          "field": "theme",
+          "order": "ascending"
+        }
+      ]
+    }
+  ],
+
+  "mark": {
+    "type": "circle",
+    "filled": true,
+    "size": 230,
+    "opacity": 1
+  },
+
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "title": null,
+      "scale": {
+        "domain": [1880, 1960],
+        "nice": false
+      },
+      "axis": {
+        "values": [1880, 1900, 1920, 1940, 1960],
+        "labelFont": "Arial",
+        "labelFontSize": 15,
+        "labelColor": "#6f7180",
+        "labelPadding": 14,
+
+        "domain": true,
+        "domainColor": "#c8c3b6",
+        "domainWidth": 1.5,
+
+        "tickColor": "#c8c3b6",
+        "tickSize": 10,
+
+        "grid": false
+      }
+    },
+
+    "y": {
+      "field": "stack_position",
+      "type": "ordinal",
+      "axis": null,
+      "scale": {
+        "padding": 0.25
+      }
+    },
+
+    "color": {
+      "field": "theme",
+      "type": "nominal",
+      "title": null,
+
+      "scale": {
+        "domain": [
+          "Songs",
+          "Patriotic / national",
+          "War",
+          "Piano / dance",
+          "Queensland / place",
+          "Other"
+        ],
+
+        "range": [
+          "#e85d43",
+          "#eba938",
+          "#b94f59",
+          "#6754ad",
+          "#4f80aa",
+          "#9a9a92"
+        ]
+      },
+
+      "legend": {
+        "orient": "top-right",
+        "direction": "horizontal",
+        "columns": 3,
+
+        "symbolType": "circle",
+        "symbolSize": 90,
+
+        "labelFont": "Arial",
+        "labelFontSize": 12,
+        "labelColor": "#6f7180",
+
+        "columnPadding": 18,
+        "rowPadding": 8,
+        "offset": 15
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "Title",
+        "type": "nominal",
+        "title": "Title"
+      },
+      {
+        "field": "creator_clean",
+        "type": "nominal",
+        "title": "Creator"
+      },
+      {
+        "field": "Date",
+        "type": "nominal",
+        "title": "Original date"
+      },
+      {
+        "field": "year",
+        "type": "quantitative",
+        "title": "Year",
+        "format": "d"
+      },
+      {
+        "field": "theme",
+        "type": "nominal",
+        "title": "Theme"
+      },
+      {
+        "field": "Publisher",
+        "type": "nominal",
+        "title": "Publisher"
+      }
+    ]
+  },
+
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}
