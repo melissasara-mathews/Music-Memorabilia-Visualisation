@@ -6,7 +6,7 @@
   "background": "#F7F3EB",
 
   "data": {
-    "url": "../data/clean/music_qld_clean.csv",
+    "url": "data/clean/music_qld_clean.csv",
     "format": {
       "type": "csv",
       "parse": {
