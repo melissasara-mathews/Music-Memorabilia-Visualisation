@@ -1,0 +1,366 @@
+{
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
+    "width": 430,
+    "height": 300,
+    "padding": 10,
+    "background": "#FAF7F1",
+
+    "data": [
+    {
+        "name": "links",
+        "url": "data/clean/creator_theme_links.csv",
+        "format": {
+        "type": "csv",
+        "parse": {
+            "record_count": "number"
+        }
+        }
+    },
+
+    {
+        "name": "creators",
+        "source": "links",
+        "transform": [
+        {
+            "type": "aggregate",
+            "groupby": ["creator_short"],
+            "fields": ["record_count"],
+            "ops": ["sum"],
+            "as": ["total"]
+        },
+        {
+            "type": "collect",
+            "sort": {
+            "field": "total",
+            "order": "descending"
+            }
+        },
+        {
+            "type": "window",
+            "ops": ["row_number"],
+            "as": ["rank"]
+        },
+        {
+            "type": "formula",
+            "as": "y",
+            "expr": "30 + (datum.rank - 1) * 55"
+        }
+        ]
+    },
+
+    {
+        "name": "themes",
+        "source": "links",
+        "transform": [
+        {
+            "type": "aggregate",
+            "groupby": ["theme"],
+            "fields": ["record_count"],
+            "ops": ["sum"],
+            "as": ["total"]
+        },
+        {
+            "type": "collect",
+            "sort": {
+            "field": "total",
+            "order": "descending"
+            }
+        },
+        {
+            "type": "window",
+            "ops": ["row_number"],
+            "as": ["rank"]
+        },
+        {
+            "type": "formula",
+            "as": "y",
+            "expr": "30 + (datum.rank - 1) * 48"
+        }
+        ]
+    },
+
+    {
+        "name": "sankey_links",
+        "source": "links",
+        "transform": [
+        {
+            "type": "lookup",
+            "from": "creators",
+            "key": "creator_short",
+            "fields": ["creator_short"],
+            "values": ["y"],
+            "as": ["source_y"]
+        },
+        {
+            "type": "lookup",
+            "from": "themes",
+            "key": "theme",
+            "fields": ["theme"],
+            "values": ["y"],
+            "as": ["target_y"]
+        }
+        ]
+    }
+    ],
+
+    "scales": [
+    {
+        "name": "themeColor",
+        "type": "ordinal",
+        "domain": [
+        "Songs",
+        "Patriotic/national",
+        "War",
+        "Piano/dance",
+        "Queensland/place",
+        "Other"
+        ],
+        "range": [
+        "#E85D43",
+        "#E8AA3B",
+        "#B64E59",
+        "#6A56AF",
+        "#4E7FA9",
+        "#96968E"
+        ]
+    },
+
+    {
+        "name": "linkWidth",
+        "type": "linear",
+        "domain": {
+        "data": "links",
+        "field": "record_count"
+        },
+        "range": [2, 12]
+    }
+    ],
+
+    "marks": [
+    {
+        "type": "path",
+        "from": {
+        "data": "sankey_links"
+        },
+        "encode": {
+        "enter": {
+            "stroke": {
+            "scale": "themeColor",
+            "field": "theme"
+            },
+            "strokeOpacity": {
+            "value": 0.45
+            },
+            "strokeWidth": {
+            "scale": "linkWidth",
+            "field": "record_count"
+            },
+            "fill": {
+            "value": null
+            }
+        },
+        "update": {
+            "path": {
+            "signal": "'M 95,' + datum.source_y + ' C 190,' + datum.source_y + ' 240,' + datum.target_y + ' 335,' + datum.target_y"
+            },
+            "tooltip": {
+            "signal": "{'Creator': datum.creator_clean, 'Theme': datum.theme, 'Records': datum.record_count}"
+            }
+        }
+        }
+    },
+
+    {
+        "type": "rect",
+        "from": {
+        "data": "creators"
+        },
+        "encode": {
+        "enter": {
+            "x": {
+            "value": 85
+            },
+            "x2": {
+            "value": 95
+            },
+            "y": {
+            "signal": "datum.y - 10"
+            },
+            "y2": {
+            "signal": "datum.y + 10"
+            },
+            "fill": {
+            "value": "#20243A"
+            },
+            "cornerRadius": {
+            "value": 2
+            }
+        }
+        }
+    },
+
+    {
+        "type": "text",
+        "from": {
+        "data": "creators"
+        },
+        "encode": {
+        "enter": {
+            "x": {
+            "value": 75
+            },
+            "y": {
+            "field": "y"
+            },
+            "align": {
+            "value": "right"
+            },
+            "baseline": {
+            "value": "middle"
+            },
+            "font": {
+            "value": "Arial"
+            },
+            "fontSize": {
+            "value": 11
+            },
+            "fill": {
+            "value": "#20243A"
+            },
+            "text": {
+            "field": "creator_short"
+            }
+        }
+        }
+    },
+
+    {
+        "type": "rect",
+        "from": {
+        "data": "themes"
+        },
+        "encode": {
+        "enter": {
+            "x": {
+            "value": 335
+            },
+            "x2": {
+            "value": 345
+            },
+            "y": {
+            "signal": "datum.y - 10"
+            },
+            "y2": {
+            "signal": "datum.y + 10"
+            },
+            "fill": {
+            "scale": "themeColor",
+            "field": "theme"
+            },
+            "cornerRadius": {
+            "value": 2
+            }
+        }
+        }
+    },
+
+    {
+        "type": "text",
+        "from": {
+        "data": "themes"
+        },
+        "encode": {
+        "enter": {
+            "x": {
+            "value": 355
+            },
+            "y": {
+            "field": "y"
+            },
+            "align": {
+            "value": "left"
+            },
+            "baseline": {
+            "value": "middle"
+            },
+            "font": {
+            "value": "Arial"
+            },
+            "fontSize": {
+            "value": 11
+            },
+            "fill": {
+            "value": "#20243A"
+            },
+            "text": {
+            "field": "theme"
+            }
+        }
+        }
+    },
+
+    {
+        "type": "text",
+        "encode": {
+        "enter": {
+            "x": {
+            "value": 85
+            },
+            "y": {
+            "value": 8
+            },
+            "text": {
+            "value": "Creators"
+            },
+            "font": {
+            "value": "Arial"
+            },
+            "fontSize": {
+            "value": 10
+            },
+            "fontWeight": {
+            "value": "bold"
+            },
+            "fill": {
+            "value": "#6F7180"
+            },
+            "align": {
+            "value": "right"
+            }
+        }
+        }
+    },
+
+    {
+        "type": "text",
+        "encode": {
+        "enter": {
+            "x": {
+            "value": 345
+            },
+            "y": {
+            "value": 8
+            },
+            "text": {
+            "value": "Themes"
+            },
+            "font": {
+            "value": "Arial"
+            },
+            "fontSize": {
+            "value": 10
+            },
+            "fontWeight": {
+            "value": "bold"
+            },
+            "fill": {
+            "value": "#6F7180"
+            },
+            "align": {
+            "value": "left"
+            }
+        }
+        }
+    }
+    ]
+}
