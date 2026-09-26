@@ -1,17 +1,23 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-  "width": 1050,
-  "height": 260,
-  "background": "#fbf8f2",
+  "width": 1000,
+  "height": 220,
+  "background": "#F7F3EB",
 
   "data": {
-    "url": "../data/clean/music_qld_clean.csv"
+    "url": "../data/clean/music_qld_clean.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number"
+      }
+    }
   },
 
   "transform": [
     {
-      "filter": "isValid(datum.year)"
+      "filter": "datum.year != null && datum.year >= 1880 && datum.year <= 1960"
     },
     {
       "window": [
@@ -33,32 +39,39 @@
   "mark": {
     "type": "circle",
     "filled": true,
-    "size": 230,
-    "opacity": 1
+    "size": 170,
+    "opacity": 1,
+    "stroke": "#F7F3EB",
+    "strokeWidth": 1.5
   },
 
   "encoding": {
+
     "x": {
       "field": "year",
       "type": "quantitative",
       "title": null,
+
       "scale": {
         "domain": [1880, 1960],
         "nice": false
       },
+
       "axis": {
         "values": [1880, 1900, 1920, 1940, 1960],
+        "format": "d",
+
         "labelFont": "Arial",
-        "labelFontSize": 15,
-        "labelColor": "#6f7180",
-        "labelPadding": 14,
+        "labelFontSize": 13,
+        "labelColor": "#6F7180",
+        "labelPadding": 12,
 
         "domain": true,
-        "domainColor": "#c8c3b6",
-        "domainWidth": 1.5,
+        "domainColor": "#C8C3B6",
+        "domainWidth": 1.2,
 
-        "tickColor": "#c8c3b6",
-        "tickSize": 10,
+        "tickColor": "#C8C3B6",
+        "tickSize": 8,
 
         "grid": false
       }
@@ -68,8 +81,9 @@
       "field": "stack_position",
       "type": "ordinal",
       "axis": null,
+
       "scale": {
-        "padding": 0.25
+        "padding": 0.65
       }
     },
 
@@ -89,30 +103,31 @@
         ],
 
         "range": [
-          "#e85d43",
-          "#eba938",
-          "#b94f59",
-          "#6754ad",
-          "#4f80aa",
-          "#9a9a92"
+          "#E85D43",
+          "#E8AA3B",
+          "#B64E59",
+          "#6A56AF",
+          "#4E7FA9",
+          "#96968E"
         ]
       },
 
       "legend": {
-        "orient": "top-right",
+        "orient": "top",
         "direction": "horizontal",
         "columns": 3,
 
         "symbolType": "circle",
-        "symbolSize": 90,
+        "symbolSize": 70,
 
         "labelFont": "Arial",
-        "labelFontSize": 12,
-        "labelColor": "#6f7180",
+        "labelFontSize": 11,
+        "labelColor": "#6F7180",
 
-        "columnPadding": 18,
+        "columnPadding": 20,
         "rowPadding": 8,
-        "offset": 15
+
+        "offset": 18
       }
     },
 
@@ -154,6 +169,16 @@
   "config": {
     "view": {
       "stroke": null
+    },
+
+    "axis": {
+      "titleFont": "Arial",
+      "labelFont": "Arial"
+    },
+
+    "legend": {
+      "titleFont": "Arial",
+      "labelFont": "Arial"
     }
   }
 }
