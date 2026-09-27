@@ -1,0 +1,197 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+
+  "width": 430,
+  "height": 300,
+  "padding": 5,
+  "background": "#FAF7F1",
+
+  "data": [
+    {
+      "name": "tree",
+      "url": "data/clean/subject_treemap.csv",
+
+      "format": {
+        "type": "csv",
+        "parse": {
+          "record_count": "number"
+        }
+      },
+
+      "transform": [
+        {
+          "type": "formula",
+          "as": "parent_clean",
+          "expr": "datum.parent == '' ? null : datum.parent"
+        },
+
+        {
+          "type": "stratify",
+          "key": "node_id",
+          "parentKey": "parent_clean"
+        },
+
+        {
+          "type": "treemap",
+          "field": "record_count",
+          "sort": {
+            "field": "value",
+            "order": "descending"
+          },
+
+          "round": true,
+          "method": "squarify",
+
+          "ratio": 1.4,
+
+          "size": [
+            {
+              "signal": "width"
+            },
+            {
+              "signal": "height"
+            }
+          ],
+
+          "paddingInner": 2,
+          "paddingOuter": 1
+        }
+      ]
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "subjectColour",
+
+      "type": "ordinal",
+
+      "domain": {
+        "data": "tree",
+        "field": "subject_group"
+      },
+
+      "range": [
+        "#E85D43",
+        "#E8AA3B",
+        "#6A56AF",
+        "#4E7FA9",
+        "#B64E59",
+        "#6F8C75",
+        "#A06B52",
+        "#96968E"
+      ]
+    }
+  ],
+
+  "marks": [
+    {
+      "type": "rect",
+
+      "from": {
+        "data": "tree"
+      },
+
+      "encode": {
+        "enter": {
+          "x": {
+            "field": "x0"
+          },
+
+          "x2": {
+            "field": "x1"
+          },
+
+          "y": {
+            "field": "y0"
+          },
+
+          "y2": {
+            "field": "y1"
+          },
+
+          "stroke": {
+            "value": "#FAF7F1"
+          },
+
+          "strokeWidth": {
+            "value": 2
+          },
+
+          "cornerRadius": {
+            "value": 3
+          },
+
+          "tooltip": {
+            "signal": "datum.data.node_type == 'leaf' ? {'Subject': datum.data.subject_group, 'Subdivision': datum.data.label, 'Records': datum.data.record_count} : {'Subject': datum.data.label, 'Records': datum.value}"
+          }
+        },
+
+        "update": {
+          "fill": {
+            "scale": "subjectColour",
+            "field": "data.subject_group"
+          },
+
+          "fillOpacity": {
+            "signal": "datum.depth == 1 ? 0.88 : 0.68"
+          }
+        },
+
+        "hover": {
+          "fillOpacity": {
+            "value": 1
+          }
+        }
+      }
+    },
+
+    {
+      "type": "text",
+
+      "from": {
+        "data": "tree"
+      },
+
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "(datum.x0 + datum.x1) / 2"
+          },
+
+          "y": {
+            "signal": "(datum.y0 + datum.y1) / 2"
+          },
+
+          "align": {
+            "value": "center"
+          },
+
+          "baseline": {
+            "value": "middle"
+          },
+
+          "font": {
+            "value": "Arial"
+          },
+
+          "fontSize": {
+            "signal": "datum.depth == 1 ? 11 : 9"
+          },
+
+          "fontWeight": {
+            "signal": "datum.depth == 1 ? 'bold' : 'normal'"
+          },
+
+          "fill": {
+            "value": "#20243A"
+          },
+
+          "text": {
+            "signal": "datum.depth == 1 && (datum.x1-datum.x0) > 55 && (datum.y1-datum.y0) > 25 ? datum.data.label : ''"
+          }
+        }
+      }
+    }
+  ]
+}

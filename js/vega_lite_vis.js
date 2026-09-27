@@ -24,3 +24,10 @@ var themeHeatmap =
 vegaEmbed("#theme-heatmap", themeHeatmap, {
     actions: false
 }).catch(console.error);
+
+var subjectTreemap =
+    "visualisations/05_subject_treemap.vg.json";
+
+vegaEmbed("#subject-composition", subjectTreemap, {
+    actions: false
+}).catch(console.error);
