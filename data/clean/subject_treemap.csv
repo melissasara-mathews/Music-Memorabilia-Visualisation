@@ -1,0 +1,24 @@
+node_id,parent,label,subject_group,record_count,node_type
+root,,Subjects,Subjects,0,root
+group::Songs with piano,root,Songs with piano,Songs with piano,0,group
+group::Piano music,root,Piano music,Piano music,0,group
+group::Patriotic music,root,Patriotic music,Patriotic music,0,group
+group::Songs (Medium voice) with piano,root,Songs (Medium voice) with piano,Songs (Medium voice) with piano,0,group
+group::Waltzes,root,Waltzes,Waltzes,0,group
+"group::World War, 1914-1918",root,"World War, 1914-1918","World War, 1914-1918",0,group
+group::National songs,root,National songs,National songs,0,group
+"group::Songs, English",root,"Songs, English","Songs, English",0,group
+leaf::0,group::National songs,Australia,National songs,5,leaf
+leaf::1,group::Patriotic music,Australia,Patriotic music,15,leaf
+leaf::2,group::Piano music,Australia,Piano music,2,leaf
+leaf::3,group::Piano music,General,Piano music,15,leaf
+leaf::4,group::Piano music,Queensland,Piano music,2,leaf
+leaf::5,group::Piano music,Scores,Piano music,1,leaf
+leaf::6,group::Songs (Medium voice) with piano,General,Songs (Medium voice) with piano,13,leaf
+leaf::7,group::Songs with piano,General,Songs with piano,28,leaf
+leaf::8,"group::Songs, English",Australia,"Songs, English",3,leaf
+leaf::9,"group::Songs, English",Queensland,"Songs, English",1,leaf
+leaf::10,group::Waltzes,General,Waltzes,11,leaf
+leaf::11,group::Waltzes,Scores,Waltzes,1,leaf
+leaf::12,"group::World War, 1914-1918",Australia › Songs and music,"World War, 1914-1918",9,leaf
+leaf::13,"group::World War, 1914-1918",Songs and music,"World War, 1914-1918",1,leaf
