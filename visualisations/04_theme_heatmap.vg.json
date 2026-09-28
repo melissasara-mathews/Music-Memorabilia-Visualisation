@@ -1,8 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-    "width": 380,
-    "height": 280,
+    "width": 390,
+    "height": 225,
     "background": "#FAF7F1",
 
     "data": {
@@ -29,6 +29,12 @@
     }
     ],
 
+    "mark": {
+    "type": "rect",
+    "stroke": "#FAF7F1",
+    "strokeWidth": 2
+    },
+
     "encoding": {
     "x": {
         "field": "historical_period",
@@ -43,20 +49,15 @@
         "1940-1959"
         ],
 
-        "title": "Historical period",
+        "title": null,
 
         "axis": {
+        "orient": "top",
         "labelFont": "Arial",
-        "labelFontSize": 10,
-        "labelColor": "#6F7180",
-        "labelAngle": -35,
-        "labelPadding": 8,
-
-        "titleFont": "Arial",
-        "titleFontSize": 11,
-        "titleColor": "#6F7180",
-        "titlePadding": 15,
-
+        "labelFontSize": 9,
+        "labelColor": "#20243A",
+        "labelAngle": 0,
+        "labelPadding": 10,
         "ticks": false,
         "domain": false
         }
@@ -73,108 +74,74 @@
         "Songs",
         "Patriotic / national",
         "War",
-        "Queensland / place",
         "Other"
         ],
 
         "axis": {
         "labelFont": "Arial",
-        "labelFontSize": 11,
+        "labelFontSize": 10,
         "labelColor": "#20243A",
-        "labelPadding": 10,
+
+        "labelPadding": 12,
 
         "ticks": false,
         "domain": false
         }
-    }
     },
 
-    "layer": [
-    {
-        "mark": {
-        "type": "rect",
-        "cornerRadius": 3,
-        "stroke": "#FAF7F1",
-        "strokeWidth": 2
-        },
+    "color": {
+        "field": "record_count",
+        "type": "quantitative",
 
-        "encoding": {
-        "color": {
-            "field": "record_count",
-            "type": "quantitative",
+        "title": "Records",
 
-            "title": "Records",
-
-            "scale": {
-            "scheme": "oranges",
-            "domain": [0, 5]
-            },
-
-            "legend": {
-            "orient": "top",
-            "direction": "horizontal",
-
-            "titleFont": "Arial",
-            "titleFontSize": 10,
-            "titleColor": "#6F7180",
-
-            "labelFont": "Arial",
-            "labelFontSize": 10,
-            "labelColor": "#6F7180",
-
-            "gradientLength": 150,
-            "gradientThickness": 8
-            }
-        },
-
-        "tooltip": [
-            {
-            "field": "historical_period",
-            "type": "nominal",
-            "title": "Historical period"
-            },
-            {
-            "field": "theme",
-            "type": "nominal",
-            "title": "Theme"
-            },
-            {
-            "field": "record_count",
-            "type": "quantitative",
-            "title": "Records"
-            }
+        "scale": {
+        "domain": [0, 4],
+        "range": [
+            "#EEEAF3",
+            "#D5CDE4",
+            "#B5A7D2",
+            "#8F7ABC",
+            "#6A56AF"
         ]
+        },
+
+        "legend": {
+        "orient": "top",
+        "direction": "horizontal",
+
+        "titleFont": "Arial",
+        "titleFontSize": 9,
+        "titleFontWeight": "bold",
+        "titleColor": "#6F7180",
+
+        "labelFont": "Arial",
+        "labelFontSize": 9,
+        "labelColor": "#6F7180",
+
+        "gradientLength": 140,
+        "gradientThickness": 7
         }
     },
 
-    {
-        "mark": {
-        "type": "text",
-        "font": "Arial",
-        "fontSize": 11,
-        "fontWeight": "bold"
+    "tooltip": [
+        {
+        "field": "historical_period",
+        "type": "nominal",
+        "title": "Historical period"
         },
-
-        "encoding": {
-        "text": {
-        "condition": {
-            "test": "datum.record_count > 0",
-            "field": "record_count",
-            "type": "quantitative"
+        {
+        "field": "theme",
+        "type": "nominal",
+        "title": "Theme"
         },
-        "value": ""
-        },
-
-        "color": {
-            "condition": {
-            "test": "datum.record_count >= 3",
-            "value": "#FAF7F1"
-            },
-            "value": "#20243A"
+        {
+        "field": "record_count",
+        "type": "quantitative",
+        "title": "Records"
         }
-        }
-    }
-    ],
+    ]
+    },
 
     "config": {
     "view": {
