@@ -1,197 +1,250 @@
 {
-  "$schema": "https://vega.github.io/schema/vega/v5.json",
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
 
-  "width": 430,
-  "height": 300,
-  "padding": 5,
-  "background": "#FAF7F1",
+    "width": 470,
+    "height": 250,
+    "padding": 5,
+    "background": "#FAF7F1",
 
-  "data": [
+    "data": [
     {
-      "name": "tree",
-      "url": "data/clean/subject_treemap.csv",
+        "name": "subjects",
 
-      "format": {
+        "url": "data/clean/subject_summary.csv",
+
+        "format": {
         "type": "csv",
         "parse": {
-          "record_count": "number"
+            "record_count": "number",
+            "percentage": "number"
         }
-      },
+        },
 
-      "transform": [
+        "transform": [
         {
-          "type": "formula",
-          "as": "parent_clean",
-          "expr": "datum.parent == '' ? null : datum.parent"
+            "type": "formula",
+            "as": "parent_clean",
+            "expr": "datum.parent == '' ? null : datum.parent"
         },
 
         {
-          "type": "stratify",
-          "key": "node_id",
-          "parentKey": "parent_clean"
+            "type": "stratify",
+            "key": "node_id",
+            "parentKey": "parent_clean"
         },
 
         {
-          "type": "treemap",
-          "field": "record_count",
-          "sort": {
+            "type": "treemap",
+            "field": "record_count",
+
+            "sort": {
             "field": "value",
             "order": "descending"
-          },
+            },
 
-          "round": true,
-          "method": "squarify",
+            "method": "squarify",
+            "ratio": 1.35,
+            "round": true,
 
-          "ratio": 1.4,
-
-          "size": [
+            "size": [
             {
-              "signal": "width"
+                "signal": "width"
             },
             {
-              "signal": "height"
+                "signal": "height"
             }
-          ],
+            ],
 
-          "paddingInner": 2,
-          "paddingOuter": 1
+            "paddingInner": 2
         }
-      ]
+        ]
     }
-  ],
+    ],
 
-  "scales": [
+    "scales": [
     {
-      "name": "subjectColour",
+        "name": "subjectColour",
 
-      "type": "ordinal",
+        "type": "ordinal",
 
-      "domain": {
-        "data": "tree",
-        "field": "subject_group"
-      },
+        "domain": [
+        "Songs with piano",
+        "Piano music",
+        "Patriotic music",
+        "Songs (Medium voice) with piano",
+        "Other subjects"
+        ],
 
-      "range": [
+        "range": [
         "#E85D43",
-        "#E8AA3B",
         "#6A56AF",
+        "#E8AA3B",
         "#4E7FA9",
-        "#B64E59",
-        "#6F8C75",
-        "#A06B52",
-        "#96968E"
-      ]
+        "#D8CDB8"
+        ]
     }
-  ],
+    ],
 
-  "marks": [
+    "marks": [
     {
-      "type": "rect",
+        "type": "rect",
 
-      "from": {
-        "data": "tree"
-      },
+        "from": {
+        "data": "subjects"
+        },
 
-      "encode": {
+        "encode": {
         "enter": {
-          "x": {
+            "x": {
             "field": "x0"
-          },
+            },
 
-          "x2": {
+            "x2": {
             "field": "x1"
-          },
+            },
 
-          "y": {
+            "y": {
             "field": "y0"
-          },
+            },
 
-          "y2": {
+            "y2": {
             "field": "y1"
-          },
+            },
 
-          "stroke": {
+            "fill": {
+            "scale": "subjectColour",
+            "field": "subject_primary"
+            },
+
+            "stroke": {
             "value": "#FAF7F1"
-          },
+            },
 
-          "strokeWidth": {
-            "value": 2
-          },
+            "strokeWidth": {
+            "value": 4
+            },
 
-          "cornerRadius": {
-            "value": 3
-          },
-
-          "tooltip": {
-            "signal": "datum.data.node_type == 'leaf' ? {'Subject': datum.data.subject_group, 'Subdivision': datum.data.label, 'Records': datum.data.record_count} : {'Subject': datum.data.label, 'Records': datum.value}"
-          }
+            "tooltip": {
+            "signal": "datum.depth == 1 ? {'Subject': datum.subject_primary, 'Records': datum.record_count, 'Share': datum.percentage + '%'} : null"
+            }
         },
 
         "update": {
-          "fill": {
-            "scale": "subjectColour",
-            "field": "data.subject_group"
-          },
-
-          "fillOpacity": {
-            "signal": "datum.depth == 1 ? 0.88 : 0.68"
-          }
+            "fillOpacity": {
+            "signal": "datum.depth == 1 ? 1 : 0"
+            }
         },
 
         "hover": {
-          "fillOpacity": {
-            "value": 1
-          }
+            "fillOpacity": {
+            "value": 0.82
+            }
         }
-      }
+        }
     },
 
     {
-      "type": "text",
+    "type": "text",
 
-      "from": {
-        "data": "tree"
-      },
+    "from": {
+        "data": "subjects"
+    },
 
-      "encode": {
+    "encode": {
         "enter": {
-          "x": {
-            "signal": "(datum.x0 + datum.x1) / 2"
-          },
+        "x": {
+            "signal": "datum.x0 + 14"
+        },
 
-          "y": {
-            "signal": "(datum.y0 + datum.y1) / 2"
-          },
+        "y": {
+            "signal": "datum.y0 + 16"
+        },
 
-          "align": {
-            "value": "center"
-          },
+        "text": {
+        "signal": "datum.depth == 1 ? (datum.subject_primary == 'Songs (Medium voice) with piano' ? 'Medium voice' : datum.subject_primary) : ''"
+        },
 
-          "baseline": {
-            "value": "middle"
-          },
+        "align": {
+            "value": "left"
+        },
 
-          "font": {
+        "baseline": {
+            "value": "top"
+        },
+
+        "font": {
             "value": "Arial"
-          },
+        },
 
-          "fontSize": {
-            "signal": "datum.depth == 1 ? 11 : 9"
-          },
+        "fontSize": {
+        "signal": "(datum.x1 - datum.x0) < 150 ? 8 : 11"
+        },
 
-          "fontWeight": {
-            "signal": "datum.depth == 1 ? 'bold' : 'normal'"
-          },
+        "fontWeight": {
+            "value": "bold"
+        },
 
-          "fill": {
-            "value": "#20243A"
-          },
+        "limit": {
+            "signal": "max(0, datum.x1 - datum.x0 - 28)"
+        },
 
-          "text": {
-            "signal": "datum.depth == 1 && (datum.x1-datum.x0) > 55 && (datum.y1-datum.y0) > 25 ? datum.data.label : ''"
-          }
+        "ellipsis": {
+            "value": "…"
+        },
+
+        "fill": {
+            "signal": "datum.subject_primary == 'Other subjects' ? '#20243A' : '#FAF7F1'"
         }
-      }
+        }
     }
-  ]
+    },
+
+    {
+        "type": "text",
+
+        "from": {
+        "data": "subjects"
+        },
+
+        "encode": {
+        "enter": {
+            "x": {
+            "signal": "datum.x0 + 14"
+            },
+
+            "y": {
+            "signal": "datum.y1 - 14"
+            },
+
+            "text": {
+            "signal": "datum.depth == 1 ? datum.percentage + '%' : ''"
+            },
+
+            "align": {
+            "value": "left"
+            },
+
+            "baseline": {
+            "value": "bottom"
+            },
+
+            "font": {
+            "value": "Georgia"
+            },
+
+            "fontSize": {
+            "signal": "(datum.x1 - datum.x0) < 130 ? 22 : 26"
+            },
+
+            "fontWeight": {
+            "value": "bold"
+            },
+
+            "fill": {
+            "signal": "datum.subject_primary == 'Other subjects' ? '#20243A' : '#FAF7F1'"
+            }
+        }
+        }
+    }
+    ]
 }
