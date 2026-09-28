@@ -1,0 +1,7 @@
+node_id,parent,subject_primary,record_count,percentage
+root,,Subjects,0,0
+subject_0,root,Songs with piano,28,17
+subject_1,root,Piano music,20,12
+subject_2,root,Patriotic music,15,9
+subject_3,root,Songs (Medium voice) with piano,13,8
+subject_4,root,Other subjects,90,54
