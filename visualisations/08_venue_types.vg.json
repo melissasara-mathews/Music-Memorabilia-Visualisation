@@ -1,0 +1,141 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 290,
+  "height": 410,
+
+  "background": "#FAF7F1",
+
+  "data": {
+    "url": "data/clean/venues_clean.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+
+  "transform": [
+    {
+      "filter": "datum.space_type != 'Unknown'"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "count",
+          "as": "venue_count"
+        }
+      ],
+      "groupby": [
+        "space_type"
+      ]
+    }
+  ],
+
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "color": "#E85D43",
+        "cornerRadiusEnd": 3
+      },
+
+      "encoding": {
+        "y": {
+          "field": "space_type",
+          "type": "nominal",
+          "sort": {
+            "field": "venue_count",
+            "order": "descending"
+          },
+          "title": null,
+
+          "axis": {
+            "labelFont": "Arial",
+            "labelFontSize": 12,
+            "labelColor": "#20243A",
+            "labelPadding": 8,
+            "labelLimit": 180,
+            "ticks": false,
+            "domain": false
+          }
+        },
+
+        "x": {
+          "field": "venue_count",
+          "type": "quantitative",
+          "title": "Number of venues",
+
+          "axis": {
+            "titleFont": "Arial",
+            "titleFontSize": 12,
+            "titleFontWeight": "normal",
+            "titleColor": "#6B6F7F",
+
+            "labelFont": "Arial",
+            "labelFontSize": 11,
+            "labelColor": "#6B6F7F",
+
+            "grid": false,
+            "ticks": false,
+            "domain": false,
+            "tickMinStep": 10
+          }
+        },
+
+        "tooltip": [
+          {
+            "field": "space_type",
+            "type": "nominal",
+            "title": "Venue type"
+          },
+          {
+            "field": "venue_count",
+            "type": "quantitative",
+            "title": "Number of venues",
+            "format": ",d"
+          }
+        ]
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 6,
+        "font": "Arial",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#20243A"
+      },
+
+      "encoding": {
+        "y": {
+          "field": "space_type",
+          "type": "nominal",
+          "sort": {
+            "field": "venue_count",
+            "order": "descending"
+          }
+        },
+
+        "x": {
+          "field": "venue_count",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "venue_count",
+          "type": "quantitative",
+          "format": ",d"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

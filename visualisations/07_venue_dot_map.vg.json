@@ -2,14 +2,36 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
   "width": 900,
-  "height": 430,
+  "height": 450,
 
-  "background": "#FAF7F1",
+  "background": "#BFDFF2",
+
+  "params": [
+    {
+      "name": "venueTypeFilter",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "name": "Filter venue type: ",
+        "options": [
+          "All",
+          "Bar",
+          "Nightclub",
+          "Hotel",
+          "Performance Space",
+          "Venue",
+          "Theatre",
+          "Gallery",
+          "Museum"
+        ]
+      }
+    }
+  ],
 
   "projection": {
     "type": "equirectangular",
-    "center": [144.965, -37.812],
-    "scale": 220000
+    "center": [144.97, -37.815],
+    "scale": 360000
   },
 
   "layer": [
@@ -24,23 +46,15 @@
 
       "mark": {
         "type": "geoshape",
-        "fill": "#EAE5DB",
-        "stroke": "#FFFFFF",
+        "fill": "#C9D8B6",
+        "stroke": "#F7F4EC",
         "strokeWidth": 0.7
-      },
-
-      "encoding": {
-        "tooltip": {
-          "field": "properties.NAME",
-          "type": "nominal",
-          "title": "Suburb"
-        }
       }
     },
 
     {
       "data": {
-        "url": "data/clean/VIC_LOCALITY_LABELS.geojson",
+        "url": "data/clean/melbourne_rivers.geojson",
         "format": {
           "type": "json",
           "property": "features"
@@ -49,40 +63,143 @@
 
       "transform": [
         {
-          "filter": "datum.geometry != null"
-        },
-        {
-          "calculate": "datum.geometry.coordinates[0]",
-          "as": "label_lon"
-        },
-        {
-          "calculate": "datum.geometry.coordinates[1]",
-          "as": "label_lat"
+          "filter": "datum.properties['@id'] == 'relation/2211681' || datum.properties['@id'] == 'relation/4762727'"
         }
       ],
 
       "mark": {
+        "type": "geoshape",
+        "filled": false,
+        "stroke": "#5DA5D3",
+        "strokeWidth": 2.3,
+        "opacity": 0.95
+      },
+
+      "encoding": {
+        "tooltip": {
+          "field": "properties.name",
+          "type": "nominal",
+          "title": "River"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "name": "Brunswick",
+            "lon": 144.956,
+            "lat": -37.766
+          },
+          {
+            "name": "Parkville",
+            "lon": 144.946,
+            "lat": -37.787
+          },
+          {
+            "name": "Carlton",
+            "lon": 144.969,
+            "lat": -37.793
+          },
+          {
+            "name": "Fitzroy",
+            "lon": 144.985,
+            "lat": -37.794
+          },
+          {
+            "name": "Collingwood",
+            "lon": 144.997,
+            "lat": -37.801
+          },
+          {
+            "name": "Melbourne",
+            "lon": 144.958,
+            "lat": -37.808
+          },
+          {
+            "name": "Docklands",
+            "lon": 144.938,
+            "lat": -37.818
+          },
+          {
+            "name": "Richmond",
+            "lon": 145.008,
+            "lat": -37.824
+          },
+          {
+            "name": "South Yarra",
+            "lon": 145.001,
+            "lat": -37.844
+          },
+          {
+            "name": "St Kilda",
+            "lon": 144.981,
+            "lat": -37.858
+          }
+        ]
+      },
+
+      "mark": {
         "type": "text",
         "font": "Arial",
-        "fontSize": 9,
+        "fontSize": 14,
         "fontWeight": "normal",
-        "color": "#6F7180",
-        "opacity": 0.9
+        "color": "#59645F",
+        "opacity": 1
       },
 
       "encoding": {
         "longitude": {
-          "field": "label_lon",
+          "field": "lon",
           "type": "quantitative"
         },
 
         "latitude": {
-          "field": "label_lat",
+          "field": "lat",
           "type": "quantitative"
         },
 
         "text": {
-          "field": "properties.NAME",
+          "field": "name",
+          "type": "nominal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "name": "Yarra River",
+            "lon": 145.014,
+            "lat": -37.833
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 11,
+        "fontStyle": "italic",
+        "color": "#4D91BF",
+        "opacity": 1
+      },
+
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "name",
           "type": "nominal"
         }
       }
@@ -103,16 +220,20 @@
       "transform": [
         {
           "filter": "isValid(datum.lat) && isValid(datum.lon)"
+        },
+        {
+          "filter": "datum.space_type != 'Unknown'"
+        },
+        {
+          "filter": "venueTypeFilter == 'All' || datum.space_type == venueTypeFilter"
         }
       ],
 
       "mark": {
         "type": "circle",
-        "size": 30,
-        "color": "#E85D43",
-        "opacity": 0.78,
-        "stroke": "#FAF7F1",
-        "strokeWidth": 0.4
+        "size": 52,
+        "opacity": 0.9,
+        "strokeWidth": 0
       },
 
       "encoding": {
@@ -124,6 +245,51 @@
         "latitude": {
           "field": "lat",
           "type": "quantitative"
+        },
+
+        "color": {
+          "field": "space_type",
+          "type": "nominal",
+          "title": "Venue type",
+
+          "scale": {
+            "domain": [
+              "Bar",
+              "Nightclub",
+              "Hotel",
+              "Performance Space",
+              "Venue",
+              "Theatre",
+              "Gallery",
+              "Museum"
+            ],
+
+            "range": [
+              "#287D46",
+              "#252525",
+              "#D74F79",
+              "#E85D43",
+              "#3559A8",
+              "#5478D6",
+              "#A36C32",
+              "#85509B"
+            ]
+          },
+
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 3,
+            "title": "Venue type",
+            "titleFont": "Arial",
+            "titleFontSize": 13,
+            "titleColor": "#20243A",
+            "labelFont": "Arial",
+            "labelFontSize": 12,
+            "labelColor": "#20243A",
+            "symbolType": "circle",
+            "symbolSize": 100
+          }
         },
 
         "tooltip": [

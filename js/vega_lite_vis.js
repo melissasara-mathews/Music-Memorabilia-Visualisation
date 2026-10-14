@@ -45,3 +45,9 @@ var venueDotMap =
 vegaEmbed("#venue-dot-map", venueDotMap, {
     actions: false
 }).catch(console.error);
+
+var venueTypes = "visualisations/08_venue_types.vg.json";
+
+vegaEmbed("#venue-types", venueTypes, {
+  actions: false
+}).catch(console.error);
