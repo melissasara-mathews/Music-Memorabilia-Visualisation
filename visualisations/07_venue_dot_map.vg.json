@@ -1,0 +1,95 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+    "width": "container",
+    "height": 430,
+
+    "background": "#FAF7F1",
+
+    "projection": {
+    "type": "mercator"
+    },
+
+    "layer": [
+    {
+        "data": {
+        "url": "../data/clean/melbourne_boundary.geojson",
+        "format": {
+            "type": "json",
+            "property": "features"
+        }
+        },
+
+        "mark": {
+        "type": "geoshape",
+        "fill": "#EAE5DB",
+        "stroke": "#C3BCAF",
+        "strokeWidth": 1.2
+        }
+    },
+
+    {
+        "data": {
+        "url": "../data/clean/venues_clean.csv",
+        "format": {
+            "type": "csv",
+            "parse": {
+            "lat": "number",
+            "lon": "number"
+            }
+        }
+        },
+
+        "transform": [
+        {
+            "filter": "isValid(datum.lat) && isValid(datum.lon)"
+        }
+        ],
+
+        "mark": {
+        "type": "circle",
+        "size": 38,
+        "color": "#E85D43",
+        "opacity": 0.6,
+        "stroke": "#FAF7F1",
+        "strokeWidth": 0.5
+        },
+
+        "encoding": {
+        "longitude": {
+            "field": "lon",
+            "type": "quantitative"
+        },
+
+        "latitude": {
+            "field": "lat",
+            "type": "quantitative"
+        },
+
+        "tooltip": [
+            {
+            "field": "venue_name",
+            "type": "nominal",
+            "title": "Venue"
+            },
+            {
+            "field": "space_type",
+            "type": "nominal",
+            "title": "Venue type"
+            },
+            {
+            "field": "venue_address",
+            "type": "nominal",
+            "title": "Address"
+            }
+        ]
+        }
+    }
+    ],
+
+    "config": {
+    "view": {
+        "stroke": null
+    }
+    }
+}

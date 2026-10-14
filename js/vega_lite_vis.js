@@ -31,3 +31,17 @@ var subjectTreemap =
 vegaEmbed("#subject-composition", subjectTreemap, {
     actions: false
 }).catch(console.error);
+
+var periodTheme =
+    "visualisations/06_period_theme.vg.json";
+
+vegaEmbed("#period-theme", periodTheme, {
+    actions: false
+}).catch(console.error);
+
+var venueDotMap =
+    "visualisations/07_venue_dot_map.vg.json";
+
+vegaEmbed("#venue-dot-map", venueDotMap, {
+    actions: false
+}).catch(console.error);

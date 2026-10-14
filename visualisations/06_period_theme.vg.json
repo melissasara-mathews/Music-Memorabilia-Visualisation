@@ -1,0 +1,132 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+    "width": 760,
+    "height": 250,
+    "background": "#FAF7F1",
+
+    "data": {
+    "url": "data/clean/period_theme_composition.csv"
+    },
+
+    "mark": {
+    "type": "bar"
+    },
+
+    "encoding": {
+    "x": {
+        "field": "historical_period",
+        "type": "ordinal",
+        "sort": [
+        "Before 1900",
+        "1900-1909",
+        "1910-1919",
+        "1920-1929",
+        "1930-1939",
+        "1940-1959"
+        ],
+        "title": null,
+        "axis": {
+        "labelFont": "Arial",
+        "labelFontSize": 11,
+        "labelColor": "#20243A",
+        "labelAngle": 0,
+        "labelPadding": 10,
+        "ticks": false,
+        "domain": false
+        }
+    },
+
+    "y": {
+        "field": "record_count",
+        "type": "quantitative",
+        "stack": "normalize",
+        "title": "Share of records",
+        "axis": {
+        "format": ".0%",
+        "values": [0, 0.25, 0.5, 0.75, 1],
+        "labelFont": "Arial",
+        "labelFontSize": 10,
+        "labelColor": "#6F7180",
+        "titleFont": "Arial",
+        "titleFontSize": 11,
+        "titleColor": "#6F7180",
+        "grid": false,
+        "domain": false,
+        "ticks": false
+        }
+    },
+
+    "color": {
+        "field": "theme",
+        "type": "nominal",
+        "scale": {
+        "domain": [
+            "Piano / dance",
+            "Songs",
+            "Patriotic / national",
+            "War",
+            "Other"
+        ],
+        "range": [
+            "#6A56AF",
+            "#E85D43",
+            "#E8AA3B",
+            "#B64E59",
+            "#96968E"
+        ]
+        },
+        "legend": {
+        "orient": "top",
+        "direction": "horizontal",
+        "title": null,
+        "labelFont": "Arial",
+        "labelFontSize": 10,
+        "labelColor": "#20243A",
+        "symbolType": "square",
+        "symbolSize": 80
+        }
+    },
+
+    "order": {
+        "field": "theme",
+        "sort": [
+        "Piano / dance",
+        "Songs",
+        "Patriotic / national",
+        "War",
+        "Other"
+        ]
+    },
+
+    "tooltip": [
+        {
+        "field": "historical_period",
+        "type": "nominal",
+        "title": "Historical period"
+        },
+        {
+        "field": "theme",
+        "type": "nominal",
+        "title": "Theme"
+        },
+        {
+        "field": "record_count",
+        "type": "quantitative",
+        "title": "Records"
+        },
+        {
+        "field": "percentage",
+        "type": "quantitative",
+        "title": "Share (%)",
+        "format": ".1f"
+        }
+    ]
+    },
+
+    "config": {
+    "view": {
+        "stroke": null
+    }
+    }
+}
