@@ -1,0 +1,203 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 330,
+  "height": 330,
+
+  "background": "#FAF7F1",
+
+  "data": {
+    "url": "data/clean/abs_age_gender.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "male": "number",
+        "female": "number"
+      }
+    }
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "stroke": "#C8C9CF",
+        "strokeWidth": 2
+      },
+
+      "encoding": {
+        "y": {
+          "field": "age_group",
+          "type": "ordinal",
+
+          "sort": [
+            "15-17",
+            "18-24",
+            "25-34",
+            "35-44",
+            "45-54",
+            "55-64",
+            "65-74",
+            "75+"
+          ],
+
+          "title": null,
+
+          "axis": {
+            "labelFont": "Arial",
+            "labelFontSize": 12,
+            "labelColor": "#20243A",
+            "labelPadding": 8,
+            "ticks": false,
+            "domain": false
+          }
+        },
+
+        "x": {
+          "field": "male",
+          "type": "quantitative",
+          "title": "Attendance rate (%)",
+
+          "scale": {
+            "domain": [0, 30]
+          },
+
+          "axis": {
+            "titleFont": "Arial",
+            "titleFontSize": 12,
+            "titleFontWeight": "normal",
+            "titleColor": "#6B6F7F",
+
+            "labelFont": "Arial",
+            "labelFontSize": 11,
+            "labelColor": "#6B6F7F",
+
+            "grid": false,
+            "ticks": false,
+            "domain": false
+          }
+        },
+
+        "x2": {
+          "field": "female"
+        }
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "fold": [
+            "male",
+            "female"
+          ],
+          "as": [
+            "gender",
+            "attendance_rate"
+          ]
+        },
+
+        {
+          "calculate": "datum.gender == 'male' ? 'Male' : 'Female'",
+          "as": "gender_label"
+        }
+      ],
+
+      "mark": {
+        "type": "circle",
+        "size": 120,
+        "opacity": 1,
+        "stroke": "#FAF7F1",
+        "strokeWidth": 1
+      },
+
+      "encoding": {
+        "y": {
+          "field": "age_group",
+          "type": "ordinal",
+
+          "sort": [
+            "15-17",
+            "18-24",
+            "25-34",
+            "35-44",
+            "45-54",
+            "55-64",
+            "65-74",
+            "75+"
+          ],
+
+          "title": null
+        },
+
+        "x": {
+          "field": "attendance_rate",
+          "type": "quantitative",
+
+          "scale": {
+            "domain": [0, 30]
+          }
+        },
+
+        "color": {
+          "field": "gender_label",
+          "type": "nominal",
+          "title": "Gender",
+
+          "scale": {
+            "domain": [
+              "Male",
+              "Female"
+            ],
+
+            "range": [
+              "#3559A8",
+              "#E85D43"
+            ]
+          },
+
+          "legend": {
+            "orient": "top",
+            "direction": "horizontal",
+
+            "titleFont": "Arial",
+            "titleFontSize": 12,
+            "titleColor": "#20243A",
+
+            "labelFont": "Arial",
+            "labelFontSize": 12,
+            "labelColor": "#20243A",
+
+            "symbolType": "circle",
+            "symbolSize": 100
+          }
+        },
+
+        "tooltip": [
+          {
+            "field": "age_group",
+            "type": "nominal",
+            "title": "Age group"
+          },
+          {
+            "field": "gender_label",
+            "type": "nominal",
+            "title": "Gender"
+          },
+          {
+            "field": "attendance_rate",
+            "type": "quantitative",
+            "title": "Attendance rate (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    }
+  ],
+
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

@@ -651,3 +651,40 @@ footer p {
     margin-left: auto;
     margin-right: auto;
 }
+
+#venue-dot-map .vega-embed {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Put filter above everything */
+#venue-dot-map .vega-bindings {
+  order: -2;
+  margin-bottom: 14px;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  color: #20243A;
+}
+
+/* Keep label and dropdown together */
+#venue-dot-map .vega-bind {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Style dropdown */
+#venue-dot-map select {
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+
+  color: #20243A;
+  background: #FAF7F1;
+
+  border: 1px solid #BFC0C4;
+  border-radius: 4px;
+
+  padding: 5px 30px 5px 9px;
+}

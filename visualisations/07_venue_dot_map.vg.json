@@ -4,7 +4,7 @@
   "width": 900,
   "height": 450,
 
-  "background": "#BFDFF2",
+  "background": "#FAF7F1",
 
   "params": [
     {
@@ -277,16 +277,20 @@
           },
 
           "legend": {
-            "orient": "bottom",
+            "orient": "top",
             "direction": "horizontal",
-            "columns": 3,
+            "columns": 4,
+
             "title": "Venue type",
+
             "titleFont": "Arial",
             "titleFontSize": 13,
             "titleColor": "#20243A",
+
             "labelFont": "Arial",
             "labelFontSize": 12,
             "labelColor": "#20243A",
+
             "symbolType": "circle",
             "symbolSize": 100
           }
@@ -315,6 +319,7 @@
 
   "config": {
     "view": {
+      "fill": "#BFDFF2",
       "stroke": null
     }
   }

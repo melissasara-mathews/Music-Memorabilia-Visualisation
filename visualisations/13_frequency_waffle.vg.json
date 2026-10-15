@@ -1,0 +1,114 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 620,
+  "height": 300,
+
+  "background": "#FAF7F1",
+
+  "data": {
+    "sequence": {
+      "start": 1,
+      "stop": 101,
+      "as": "cell"
+    }
+  },
+
+  "transform": [
+    {
+      "calculate": "(datum.cell - 1) % 10",
+      "as": "column"
+    },
+    {
+      "calculate": "9 - floor((datum.cell - 1) / 10)",
+      "as": "row"
+    },
+
+    {
+      "calculate": "datum.cell <= 43 ? 'Once' : datum.cell <= 65 ? 'Twice' : datum.cell <= 76 ? '3 times' : datum.cell <= 82 ? '4 times' : datum.cell <= 87 ? '5 times' : datum.cell <= 95 ? '6-10 times' : datum.cell <= 98 ? '11-20 times' : '21+ times'",
+      "as": "frequency"
+    }
+  ],
+
+  "mark": {
+    "type": "square",
+    "size": 420,
+    "cornerRadius": 2,
+    "stroke": "#FAF7F1",
+    "strokeWidth": 1.5
+  },
+
+  "encoding": {
+    "x": {
+      "field": "column",
+      "type": "ordinal",
+      "axis": null
+    },
+
+    "y": {
+      "field": "row",
+      "type": "ordinal",
+      "axis": null
+    },
+
+    "color": {
+      "field": "frequency",
+      "type": "nominal",
+      "title": "Attendance frequency",
+
+      "scale": {
+        "domain": [
+          "Once",
+          "Twice",
+          "3 times",
+          "4 times",
+          "5 times",
+          "6-10 times",
+          "11-20 times",
+          "21+ times"
+        ],
+
+        "range": [
+          "#E85D43",
+          "#EAAE3E",
+          "#3559A8",
+          "#5478D6",
+          "#85509B",
+          "#A36C32",
+          "#6B8E6E",
+          "#6B6F7F"
+        ]
+      },
+
+      "legend": {
+        "orient": "right",
+        "direction": "vertical",
+
+        "titleFont": "Arial",
+        "titleFontSize": 13,
+        "titleColor": "#20243A",
+
+        "labelFont": "Arial",
+        "labelFontSize": 12,
+        "labelColor": "#20243A",
+
+        "symbolType": "square",
+        "symbolSize": 120
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "frequency",
+        "type": "nominal",
+        "title": "Attendance frequency"
+      }
+    ]
+  },
+
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

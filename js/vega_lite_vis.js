@@ -51,3 +51,38 @@ var venueTypes = "visualisations/08_venue_types.vg.json";
 vegaEmbed("#venue-types", venueTypes, {
   actions: false
 }).catch(console.error);
+
+var venueConcentration =
+  "visualisations/09_venue_concentration.vg.json";
+
+vegaEmbed("#venue-concentration", venueConcentration, {
+  actions: false
+}).catch(console.error);
+
+var attendanceMap =
+  "visualisations/10_attendance_map.vg.json";
+
+vegaEmbed("#attendance-map", attendanceMap, {
+  actions: false
+}).catch(console.error);
+
+var ageGender =
+  "visualisations/11_age_gender.vg.json";
+
+vegaEmbed("#age-gender", ageGender, {
+  actions: false
+}).catch(console.error);
+
+var ageAttendance =
+  "visualisations/12_age_attendance.vg.json";
+
+vegaEmbed("#age-attendance", ageAttendance, {
+  actions: false
+}).catch(console.error);
+
+var frequencyWaffle =
+  "visualisations/13_frequency_waffle.vg.json";
+
+vegaEmbed("#frequency-waffle", frequencyWaffle, {
+  actions: false
+}).catch(console.error);
