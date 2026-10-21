@@ -1,57 +1,54 @@
+
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-
-  "width": 900,
-  "height": 450,
-
-  "background": "#FAF7F1",
-
+  "width": "container",
+  "height": 470,
+  "background": "transparent",
   "params": [
     {
       "name": "venueTypeFilter",
-      "value": "All",
-      "bind": {
-        "input": "select",
-        "name": "Filter venue type: ",
-        "options": [
-          "All",
-          "Bar",
-          "Nightclub",
-          "Hotel",
-          "Performance Space",
-          "Venue",
-          "Theatre",
-          "Gallery",
-          "Museum"
-        ]
-      }
+      "value": "Bar"
     }
   ],
-
   "projection": {
     "type": "equirectangular",
     "center": [144.97, -37.815],
     "scale": 360000
   },
-
   "layer": [
     {
       "data": {
-        "url": "data/clean/VIC_LOCALITY_POLYGON_SHP.json",
+        "url": "data/clean/VIC_LOCALITY_POLYGON_SHP.topojson",
         "format": {
           "type": "topojson",
           "feature": "VIC_LOCALITY_POLYGON_SHP"
         }
       },
-
       "mark": {
         "type": "geoshape",
         "fill": "#C9D8B6",
         "stroke": "#F7F4EC",
-        "strokeWidth": 0.7
+        "strokeWidth": 0.55, 
+        "strokeOpacity": 0.85
       }
     },
-
+    
+    {
+      "data": {
+        "url": "data/clean/melbourne_boundary.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "filled": false,
+        "stroke": "#F7F4EC",
+        "strokeWidth": 0.55,
+        "strokeOpacity": 0.85
+      }
+    }, 
     {
       "data": {
         "url": "data/clean/melbourne_rivers.geojson",
@@ -60,30 +57,19 @@
           "property": "features"
         }
       },
-
       "transform": [
         {
           "filter": "datum.properties['@id'] == 'relation/2211681' || datum.properties['@id'] == 'relation/4762727'"
         }
       ],
-
       "mark": {
         "type": "geoshape",
         "filled": false,
         "stroke": "#5DA5D3",
-        "strokeWidth": 2.3,
-        "opacity": 0.95
-      },
-
-      "encoding": {
-        "tooltip": {
-          "field": "properties.name",
-          "type": "nominal",
-          "title": "River"
-        }
+        "strokeWidth": 2,
+        "opacity": 0.9
       }
     },
-
     {
       "data": {
         "values": [
@@ -114,13 +100,13 @@
           },
           {
             "name": "Melbourne",
-            "lon": 144.958,
-            "lat": -37.808
+            "lon": 144.963,
+            "lat": -37.802
           },
           {
             "name": "Docklands",
-            "lon": 144.938,
-            "lat": -37.818
+            "lon": 144.934,
+            "lat": -37.815
           },
           {
             "name": "Richmond",
@@ -139,72 +125,67 @@
           }
         ]
       },
-
       "mark": {
         "type": "text",
         "font": "Arial",
-        "fontSize": 14,
-        "fontWeight": "normal",
+        "fontSize": 12,
         "color": "#59645F",
-        "opacity": 1
+        "opacity": 0.9
       },
-
       "encoding": {
         "longitude": {
           "field": "lon",
           "type": "quantitative"
         },
-
         "latitude": {
           "field": "lat",
           "type": "quantitative"
         },
-
         "text": {
           "field": "name",
           "type": "nominal"
         }
       }
     },
-
     {
       "data": {
         "values": [
+
           {
             "name": "Yarra River",
-            "lon": 145.014,
-            "lat": -37.833
+            "lon": 145.016,
+            "lat": -37.836
+          },
+          {
+            "name": "Maribyrnong River",
+            "lon": 144.901,
+            "lat": -37.805
           }
         ]
       },
-
       "mark": {
         "type": "text",
         "font": "Arial",
         "fontSize": 11,
         "fontStyle": "italic",
-        "color": "#4D91BF",
-        "opacity": 1
+        "color": "#347FAE",
+        "dy": -8
       },
-
       "encoding": {
         "longitude": {
           "field": "lon",
           "type": "quantitative"
         },
-
         "latitude": {
           "field": "lat",
           "type": "quantitative"
         },
-
         "text": {
           "field": "name",
           "type": "nominal"
         }
       }
     },
-
     {
       "data": {
         "url": "data/clean/venues_clean.csv",
@@ -216,86 +197,56 @@
           }
         }
       },
-
       "transform": [
         {
           "filter": "isValid(datum.lat) && isValid(datum.lon)"
         },
         {
-          "filter": "datum.space_type != 'Unknown'"
-        },
-        {
-          "filter": "venueTypeFilter == 'All' || datum.space_type == venueTypeFilter"
+          "filter": "isValid(datum.space_type) && datum.space_type != 'Unknown' && datum.space_type != ''"
         }
       ],
 
       "mark": {
         "type": "circle",
-        "size": 52,
-        "opacity": 0.9,
+        "stroke": null,
         "strokeWidth": 0
       },
-
       "encoding": {
         "longitude": {
           "field": "lon",
           "type": "quantitative"
         },
-
         "latitude": {
           "field": "lat",
           "type": "quantitative"
         },
-
         "color": {
-          "field": "space_type",
-          "type": "nominal",
-          "title": "Venue type",
-
-          "scale": {
-            "domain": [
-              "Bar",
-              "Nightclub",
-              "Hotel",
-              "Performance Space",
-              "Venue",
-              "Theatre",
-              "Gallery",
-              "Museum"
-            ],
-
-            "range": [
-              "#287D46",
-              "#252525",
-              "#D74F79",
-              "#E85D43",
-              "#3559A8",
-              "#5478D6",
-              "#A36C32",
-              "#85509B"
-            ]
+          "condition": {
+            "test": "datum.space_type == venueTypeFilter",
+            "value": "#2455A4"
           },
-
-          "legend": {
-            "orient": "top",
-            "direction": "horizontal",
-            "columns": 4,
-
-            "title": "Venue type",
-
-            "titleFont": "Arial",
-            "titleFontSize": 13,
-            "titleColor": "#20243A",
-
-            "labelFont": "Arial",
-            "labelFontSize": 12,
-            "labelColor": "#20243A",
-
-            "symbolType": "circle",
-            "symbolSize": 100
-          }
+          "value": "#D7EF57"
         },
-
+        "opacity": {
+          "condition": {
+            "test": "datum.space_type == venueTypeFilter",
+            "value": 1
+          },
+          "value": 0.85
+        },
+        "size": {
+          "condition": {
+            "test": "datum.space_type == venueTypeFilter",
+            "value": 85
+          },
+          "value": 48
+        },
+        "stroke": {
+          "value": "#53614A"
+        },
+        "strokeWidth": {
+          "value": 0.5
+        },
         "tooltip": [
           {
             "field": "venue_name",
@@ -316,7 +267,6 @@
       }
     }
   ],
-
   "config": {
     "view": {
       "fill": "#BFDFF2",

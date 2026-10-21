@@ -1,10 +1,11 @@
+
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
   "width": 290,
   "height": 410,
 
-  "background": "#FAF7F1",
+  "background": "#F7F3EB",
 
   "data": {
     "url": "data/clean/venues_clean.csv",
@@ -34,7 +35,7 @@
     {
       "mark": {
         "type": "bar",
-        "color": "#E85D43",
+        "color": "#B87555",
         "cornerRadiusEnd": 3
       },
 

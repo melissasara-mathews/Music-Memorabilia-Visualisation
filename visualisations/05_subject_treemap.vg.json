@@ -1,61 +1,50 @@
+
 {
     "$schema": "https://vega.github.io/schema/vega/v5.json",
-
     "width": 470,
     "height": 250,
     "padding": 5,
-    "background": "#FAF7F1",
+    "background": "#F7F3EB",
 
     "data": [
     {
         "name": "subjects",
-
-        "url": "data/clean/subject_summary.csv",
-
+        "url": "data/clean/subject_hierarchy_detailed.csv",
         "format": {
         "type": "csv",
         "parse": {
             "record_count": "number",
-            "percentage": "number"
+            "level": "number"
         }
         },
-
         "transform": [
         {
             "type": "formula",
             "as": "parent_clean",
             "expr": "datum.parent == '' ? null : datum.parent"
         },
-
         {
             "type": "stratify",
             "key": "node_id",
             "parentKey": "parent_clean"
         },
-
         {
             "type": "treemap",
             "field": "record_count",
-
             "sort": {
             "field": "value",
             "order": "descending"
             },
-
             "method": "squarify",
             "ratio": 1.35,
             "round": true,
-
             "size": [
-            {
-                "signal": "width"
-            },
-            {
-                "signal": "height"
-            }
+            {"signal": "width"},
+            {"signal": "height"}
             ],
-
-            "paddingInner": 2
+            "paddingInner": 2,
+            "paddingOuter": 2,
+            "paddingTop": 0
         }
         ]
     }
@@ -64,23 +53,20 @@
     "scales": [
     {
         "name": "subjectColour",
-
         "type": "ordinal",
-
         "domain": [
-        "Songs with piano",
-        "Piano music",
-        "Patriotic music",
-        "Songs (Medium voice) with piano",
-        "Other subjects"
+        "Vocal & songs",
+        "Instrumental & dance",
+        "Nation & patriotism",
+        "War & military",
+        "Places, people & topics"
         ],
-
         "range": [
-        "#E85D43",
-        "#6A56AF",
-        "#E8AA3B",
-        "#4E7FA9",
-        "#D8CDB8"
+        "#876EB2",
+        "#1FA4B6",
+        "#458C6B",
+        "#E75480",
+        "#967052"
         ]
     }
     ],
@@ -88,163 +74,94 @@
     "marks": [
     {
         "type": "rect",
-
         "from": {
         "data": "subjects"
         },
-
         "encode": {
         "enter": {
-            "x": {
-            "field": "x0"
-            },
-
-            "x2": {
-            "field": "x1"
-            },
-
-            "y": {
-            "field": "y0"
-            },
-
-            "y2": {
-            "field": "y1"
-            },
-
+            "x": {"field": "x0"},
+            "x2": {"field": "x1"},
+            "y": {"field": "y0"},
+            "y2": {"field": "y1"},
             "fill": {
             "scale": "subjectColour",
-            "field": "subject_primary"
+            "field": "group"
             },
-
-            "stroke": {
-            "value": "#FAF7F1"
-            },
-
-            "strokeWidth": {
-            "value": 4
-            },
-
+            "stroke": {"value": "#F7F3EB"},
+            "strokeWidth": {"value": 1},
             "tooltip": {
-            "signal": "datum.depth == 1 ? {'Subject': datum.subject_primary, 'Records': datum.record_count, 'Share': datum.percentage + '%'} : null"
+            "signal": "datum.depth == 2 ? {'Subject': datum.label, 'Group': datum.group, 'Assignments': datum.record_count} : null"
             }
         },
-
         "update": {
             "fillOpacity": {
-            "signal": "datum.depth == 1 ? 1 : 0"
+            "signal": "datum.depth == 2 ? 0.9 : 0"
             }
         },
-
         "hover": {
             "fillOpacity": {
-            "value": 0.82
+            "signal": "datum.depth == 2 ? 1 : 0"
             }
         }
         }
     },
 
     {
-    "type": "text",
-
-    "from": {
+        "type": "rect",
+        "from": {
         "data": "subjects"
-    },
-
-    "encode": {
+        },
+        "encode": {
         "enter": {
-        "x": {
-            "signal": "datum.x0 + 14"
+            "x": {"field": "x0"},
+            "x2": {"field": "x1"},
+            "y": {"field": "y0"},
+            "y2": {"field": "y1"},
+            "fillOpacity": {"value": 0},
+            "stroke": {"value": "#F7F3EB"},
+            "strokeWidth": {"value": 4}
         },
-
-        "y": {
-            "signal": "datum.y0 + 16"
-        },
-
-        "text": {
-        "signal": "datum.depth == 1 ? (datum.subject_primary == 'Songs (Medium voice) with piano' ? 'Medium voice' : datum.subject_primary) : ''"
-        },
-
-        "align": {
-            "value": "left"
-        },
-
-        "baseline": {
-            "value": "top"
-        },
-
-        "font": {
-            "value": "Arial"
-        },
-
-        "fontSize": {
-        "signal": "(datum.x1 - datum.x0) < 150 ? 8 : 11"
-        },
-
-        "fontWeight": {
-            "value": "bold"
-        },
-
-        "limit": {
-            "signal": "max(0, datum.x1 - datum.x0 - 28)"
-        },
-
-        "ellipsis": {
-            "value": "…"
-        },
-
-        "fill": {
-            "signal": "datum.subject_primary == 'Other subjects' ? '#20243A' : '#FAF7F1'"
+        "update": {
+            "strokeOpacity": {
+            "signal": "datum.depth == 1 ? 1 : 0"
+            }
         }
         }
-    }
     },
 
     {
         "type": "text",
-
         "from": {
         "data": "subjects"
         },
-
         "encode": {
         "enter": {
             "x": {
-            "signal": "datum.x0 + 14"
+            "signal": "datum.x0 + 5"
             },
-
             "y": {
-            "signal": "datum.y1 - 14"
+            "signal": "datum.y0 + 5"
             },
-
             "text": {
-            "signal": "datum.depth == 1 ? datum.percentage + '%' : ''"
+            "signal": "datum.depth == 2 && datum.record_count >= 3 && (datum.x1 - datum.x0) > 65 && (datum.y1 - datum.y0) > 24 ? datum.label : ''"
             },
-
-            "align": {
-            "value": "left"
+            "font": {"value": "Arial"},
+            "fontSize": {"value": 9},
+            "fontWeight": {"value": "bold"},
+            "fill": {"value": "#FFFFFF"},
+            "baseline": {"value": "top"},
+            "limit": {
+            "signal": "max(0, datum.x1 - datum.x0 - 10)"
             },
-
-            "baseline": {
-            "value": "bottom"
-            },
-
-            "font": {
-            "value": "Georgia"
-            },
-
-            "fontSize": {
-            "signal": "(datum.x1 - datum.x0) < 130 ? 22 : 26"
-            },
-
-            "fontWeight": {
-            "value": "bold"
-            },
-
-            "fill": {
-            "signal": "datum.subject_primary == 'Other subjects' ? '#20243A' : '#FAF7F1'"
-            }
+            "ellipsis": {"value": "…"}
         }
         }
     }
-    ]
+    ],
+
+    "config": {
+    "view": {
+        "stroke": null
+    }
+    }
 }

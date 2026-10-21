@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Echoes of Australian Music</title>
 
@@ -47,6 +49,8 @@
 
     <main>
 
+        <!-- SECTION 1: HISTORICAL MUSIC -->
+
         <section id="section-1" class="story-section">
 
             <div class="section-intro">
@@ -78,6 +82,73 @@
 
             </div>
 
+
+            <!-- SHARED MUSIC-THEME LEGEND -->
+
+            <div class="theme-key"
+                 aria-label="Music theme colours">
+
+                <p class="theme-key-title">
+                    EXPLORE THE MUSIC THEMES
+                </p>
+
+                <div class="theme-key-items"
+                     role="group"
+                     aria-label="Music themes">
+
+                    <button type="button"
+                            data-theme="Piano / dance">
+                        <span class="theme-dot"
+                              style="background:#1FA4B6"></span>
+                        Piano / dance
+                    </button>
+
+                    <button type="button"
+                            data-theme="War">
+                        <span class="theme-dot"
+                              style="background:#E75480"></span>
+                        War
+                    </button>
+
+                    <button type="button"
+                            data-theme="Patriotic / national">
+                        <span class="theme-dot"
+                              style="background:#458C6B"></span>
+                        Patriotic / national
+                    </button>
+
+                    <button type="button"
+                            data-theme="Songs">
+                        <span class="theme-dot"
+                              style="background:#876EB2"></span>
+                        Songs
+                    </button>
+
+                    <button type="button"
+                            data-theme="Queensland / place">
+                        <span class="theme-dot"
+                              style="background:#FFDB58"></span>
+                        Queensland / place
+                    </button>
+
+                    <button type="button"
+                            data-theme="Other">
+                        <span class="theme-dot"
+                              style="background:#84465C"></span>
+                        Other
+                    </button>
+
+                </div>
+
+                <p class="theme-key-hint">
+                    Select a theme to highlight its label.
+                </p>
+
+            </div>
+
+
+            <!-- CHART 01: TIMELINE -->
+
             <div class="chart-card full-width">
 
                 <div class="chart-heading">
@@ -87,43 +158,53 @@
                     </span>
 
                     <h3>
-                        When were the preserved music items created?
+                        When did different musical themes appear?
                     </h3>
 
                 </div>
+
+                <p class="chart-description">
+                    Explore Queensland's preserved sheet music across the decades.
+                </p>
 
                 <div id="timeline"></div>
 
                 <p class="chart-note">
-                    Exact dates are only available for part of the collection.
+                    25 of 87 records have usable years.<br>
+                    Each dot represents one dated music record.<br>
+                    Undated records are excluded.
                 </p>
 
             </div>
+
+
+            <!-- CHARTS 02 AND 03 -->
 
             <div class="two-column-layout">
 
-            <div class="chart-card">
+                <div class="chart-card">
 
-                <div class="chart-heading">
+                    <div class="chart-heading">
 
-                    <span class="chart-number">
-                        02
-                    </span>
+                        <span class="chart-number">
+                            02
+                        </span>
 
-                    <h3>
-                        Which creators appear most often in the collection?
-                    </h3>
+                        <h3>
+                            Which creators appear most often in the collection?
+                        </h3>
+
+                    </div>
+
+                    <div id="creator-lollipop"></div>
+
+                    <p class="chart-note">
+                        Collection frequency reflects archival representation,<br>
+                        not necessarily the popularity of each creator.
+                    </p>
 
                 </div>
 
-                <div id="creator-lollipop"></div>
-
-                <p class="chart-note">
-                    Collection frequency reflects archival representation,<br>
-                    not necessarily the popularity of each creator.
-                </p>
-
-            </div>
 
                 <div class="chart-card">
 
@@ -134,7 +215,7 @@
                         </span>
 
                         <h3>
-                            What themes are associated with frequently
+                            What themes are associated with frequently<br>
                             represented creators?
                         </h3>
 
@@ -152,6 +233,9 @@
             </div>
 
         </section>
+
+
+        <!-- SECTION 2: ARCHIVE THEMES -->
 
         <section id="section-2" class="story-section">
 
@@ -185,23 +269,29 @@
             </div>
 
 
+            <!-- CHARTS 04 AND 05 -->
+
             <div class="two-column-layout">
 
                 <div class="chart-card">
 
                     <div class="chart-heading">
-                        <span class="chart-number">04</span>
+
+                        <span class="chart-number">
+                            04
+                        </span>
 
                         <h3>
                             Which themes appear across historical periods?
                         </h3>
+
                     </div>
 
                     <div id="theme-heatmap"></div>
 
                     <p class="chart-note">
-                        Piano / dance is the most consistent theme across periods.<br>
-                        War clusters in 1910–1919, while others appear occasionally.
+                        Piano / dance appears across the widest range of periods.<br>
+                        War becomes concentrated around the 1910s collection.
                     </p>
 
                 </div>
@@ -210,15 +300,20 @@
                 <div class="chart-card">
 
                     <div class="chart-heading">
-                        <span class="chart-number">05</span>
+
+                        <span class="chart-number">
+                            05
+                        </span>
 
                         <h3>
-                            What kinds of subjects dominate the preserved
+                            What kinds of subjects dominate the preserved<br>
                             collection?
                         </h3>
+
                     </div>
 
                     <div id="subject-composition"></div>
+
                     <p class="chart-note">
                         Over half of subject mentions span diverse smaller categories.<br>
                         Songs with piano leads the recurring named subjects.
@@ -229,14 +324,20 @@
             </div>
 
 
+            <!-- CHART 06 -->
+
             <div class="chart-card full-width">
 
                 <div class="chart-heading">
-                    <span class="chart-number">06</span>
+
+                    <span class="chart-number">
+                        06
+                    </span>
 
                     <h3>
                         How do themes shift across historical periods?
                     </h3>
+
                 </div>
 
                 <div id="period-theme"></div>
@@ -250,6 +351,9 @@
 
         </section>
 
+
+        <!-- TRANSITION: ARCHIVE TO STAGE -->
+
         <section class="transition-section">
 
             <h2>
@@ -258,6 +362,9 @@
             </h2>
 
         </section>
+
+
+        <!-- SECTION 3: MELBOURNE VENUES -->
 
         <section id="section-3" class="story-section">
 
@@ -278,7 +385,7 @@
                     </h2>
 
                     <p class="section-description">
-                        From bars and theatres to community spaces, live music
+                        From bars and theatres to community spaces, live music<br>
                         forms part of Melbourne’s urban landscape.
                     </p>
 
@@ -291,15 +398,51 @@
             </div>
 
 
+            <!-- CHART 07 -->
+
             <div class="chart-card full-width">
 
                 <div class="chart-heading">
-                    <span class="chart-number">07</span>
+
+                    <span class="chart-number">
+                        07
+                    </span>
 
                     <h3>
-                        Where does live music happen
+                        Where does live music happen<br>
                         across Melbourne?
                     </h3>
+
+                </div>
+
+                
+                <div class="venue-map-controls">
+                    <div class="venue-map-filter">
+                        <label for="venue-type-select">
+                            Filter venue type:
+                        </label>
+                        <select id="venue-type-select">
+                            <option value="Bar">Bar</option>
+                            <option value="Nightclub">Nightclub</option>
+                            <option value="Hotel">Hotel</option>
+                            <option value="Performance Space">Performance Space</option>
+                            <option value="Venue">Venue</option>
+                            <option value="Theatre">Theatre</option>
+                            <option value="Gallery">Gallery</option>
+                            <option value="Museum">Museum</option>
+                        </select>
+                    </div>
+
+                    <div class="venue-map-legend">
+                        <span class="venue-legend-item">
+                            <span class="venue-legend-dot selected"></span>
+                            Highlighted venues
+                        </span>
+                        <span class="venue-legend-item">
+                            <span class="venue-legend-dot other"></span>
+                            Other venues
+                        </span>
+                    </div>
                 </div>
 
                 <div id="venue-dot-map"></div>
@@ -314,38 +457,63 @@
             </div>
 
 
+            <!-- CHARTS 08 AND 09 -->
+
             <div class="two-column-layout">
 
                 <div class="chart-card">
-                <div class="chart-heading">
-                    <span class="chart-number">08</span>
-                    <h3>What types of places host live music?</h3>
+
+                    <div class="chart-heading">
+
+                        <span class="chart-number">
+                            08
+                        </span>
+
+                        <h3>
+                            What types of places host live music?
+                        </h3>
+
+                    </div>
+
+                    <div id="venue-types"></div>
+
+                    <p class="chart-note">
+                        Bars dominate Melbourne’s live-music spaces.<br>
+                        Nightclubs and hotels follow at equal counts.
+                    </p>
+
                 </div>
 
-                <div id="venue-types"></div>
 
-                <p class="chart-note">
-                Bars dominate Melbourne’s live-music spaces.<br>
-                Nightclubs and hotels follow at equal counts.
-                </p>
-                </div>
                 <div class="chart-card">
-                <div class="chart-heading">
-                    <span class="chart-number">09</span>
-                    <h3>Where are live-music venues most concentrated?</h3>
-                </div>
 
-                <div id="venue-concentration"></div>
+                    <div class="chart-heading">
 
-                <p class="chart-note">
-                    Larger circles represent denser venue clusters.<br>
-                    Central Melbourne contains the strongest concentration.
-                </p>
+                        <span class="chart-number">
+                            09
+                        </span>
+
+                        <h3>
+                            Where are live-music venues most concentrated?
+                        </h3>
+
+                    </div>
+
+                    <div id="venue-concentration"></div>
+
+                    <p class="chart-note">
+                        Larger circles represent denser venue clusters.<br>
+                        Central Melbourne contains the strongest concentration.
+                    </p>
+
                 </div>
 
             </div>
 
         </section>
+
+
+        <!-- TRANSITION: STAGE TO AUDIENCE -->
 
         <section class="transition-section">
 
@@ -355,6 +523,9 @@
             </h2>
 
         </section>
+
+
+        <!-- SECTION 4: ATTENDANCE -->
 
         <section id="section-4" class="story-section">
 
@@ -387,41 +558,55 @@
             </div>
 
 
+            <!-- CHART 10 -->
+
             <div class="chart-card full-width">
 
                 <div class="chart-heading">
-                    <span class="chart-number">10</span>
+
+                    <span class="chart-number">
+                        10
+                    </span>
 
                     <h3>
                         How does live-music attendance vary across Australia?
                     </h3>
+
                 </div>
 
                 <div id="attendance-map"></div>
+
                 <p class="chart-note">
-                Attendance rates vary noticeably across Australia.<br>
-                Northern Territory records the highest participation.
+                    Attendance rates vary noticeably across Australia.<br>
+                    Northern Territory records the highest participation.
                 </p>
 
             </div>
 
+
+            <!-- CHARTS 11 AND 12 -->
 
             <div class="two-column-layout">
 
                 <div class="chart-card">
 
                     <div class="chart-heading">
-                        <span class="chart-number">11</span>
+
+                        <span class="chart-number">
+                            11
+                        </span>
 
                         <h3>
                             How does live-music attendance differ by age and sex?
                         </h3>
+
                     </div>
 
                     <div id="age-gender"></div>
+
                     <p class="chart-note">
-                    Women attend more across every age group.<br>
-                    Participation peaks among those aged 18–24.
+                        Women attend more across every age group.<br>
+                        Participation peaks among those aged 18–24.
                     </p>
 
                 </div>
@@ -430,17 +615,22 @@
                 <div class="chart-card">
 
                     <div class="chart-heading">
-                        <span class="chart-number">12</span>
+
+                        <span class="chart-number">
+                            12
+                        </span>
 
                         <h3>
                             When is live-music participation highest?
                         </h3>
+
                     </div>
 
                     <div id="age-attendance"></div>
+
                     <p class="chart-note">
-                    Attendance peaks among people aged 18–24.<br>
-                    Participation generally declines with older age.
+                        Attendance peaks among people aged 18–24.<br>
+                        Participation generally declines with older age.
                     </p>
 
                 </div>
@@ -448,6 +638,9 @@
             </div>
 
         </section>
+
+
+        <!-- SECTION 5: ATTENDANCE FREQUENCY -->
 
         <section id="section-5" class="story-section">
 
@@ -468,7 +661,7 @@
                     </h2>
 
                     <p class="section-description">
-                        Attendance frequency reveals how often people return
+                        Attendance frequency reveals how often people return<br>
                         to live music.
                     </p>
 
@@ -481,25 +674,35 @@
             </div>
 
 
+            <!-- CHART 13 -->
+
             <div class="chart-card full-width">
 
                 <div class="chart-heading">
-                    <span class="chart-number">13</span>
+
+                    <span class="chart-number">
+                        13
+                    </span>
 
                     <h3>
                         How often do live-music attendees go?
                     </h3>
+
                 </div>
 
                 <div id="frequency-waffle"></div>
+
                 <p class="chart-note">
-                Most attendees go only once or twice.<br>
-                Frequent attendance is comparatively uncommon.
+                    Most attendees go only once or twice.<br>
+                    Frequent attendance is comparatively uncommon.
                 </p>
 
             </div>
 
         </section>
+
+
+        <!-- CONCLUSION -->
 
         <section class="conclusion">
 
@@ -508,7 +711,7 @@
             </p>
 
             <h2>
-                Australian music lives on through what we preserve,
+                Australian music lives on through what we preserve,<br>
                 where we gather and who keeps returning.
             </h2>
 
@@ -533,18 +736,23 @@
 
         </section>
 
-
     </main>
 
+
+    <!-- FOOTER -->
+
     <footer>
+
         <div class="sources">
+
             <h4>Data Sources</h4>
 
             <p>
                 <strong>City of Melbourne</strong><br>
                 Live Music Venues —
                 <a href="https://data.melbourne.vic.gov.au/explore/dataset/live-music-venues/export/"
-                target="_blank">
+                   target="_blank"
+                   rel="noopener noreferrer">
                     View dataset
                 </a>
             </p>
@@ -553,7 +761,8 @@
                 <strong>State Library of Queensland</strong><br>
                 Music Queensland —
                 <a href="https://www.data.qld.gov.au/dataset/music-queensland"
-                target="_blank">
+                   target="_blank"
+                   rel="noopener noreferrer">
                     View dataset
                 </a>
             </p>
@@ -562,12 +771,14 @@
                 <strong>Australian Bureau of Statistics</strong><br>
                 Cultural and Creative Activities, 2021–22 —
                 <a href="https://www.abs.gov.au/statistics/people/people-and-communities/cultural-and-creative-activities/2021-22"
-                target="_blank">
+                   target="_blank"
+                   rel="noopener noreferrer">
                     View dataset
                 </a>
             </p>
+
         </div>
-        
+
         <div>
 
             <h4>About</h4>

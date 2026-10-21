@@ -1,114 +1,339 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-  "width": 620,
-  "height": 300,
+  "background": "transparent",
 
-  "background": "#FAF7F1",
-
-  "data": {
-    "sequence": {
-      "start": 1,
-      "stop": 101,
-      "as": "cell"
-    }
-  },
-
-  "transform": [
-    {
-      "calculate": "(datum.cell - 1) % 10",
-      "as": "column"
-    },
-    {
-      "calculate": "9 - floor((datum.cell - 1) / 10)",
-      "as": "row"
-    },
-
-    {
-      "calculate": "datum.cell <= 43 ? 'Once' : datum.cell <= 65 ? 'Twice' : datum.cell <= 76 ? '3 times' : datum.cell <= 82 ? '4 times' : datum.cell <= 87 ? '5 times' : datum.cell <= 95 ? '6-10 times' : datum.cell <= 98 ? '11-20 times' : '21+ times'",
-      "as": "frequency"
-    }
-  ],
-
-  "mark": {
-    "type": "square",
-    "size": 420,
-    "cornerRadius": 2,
-    "stroke": "#FAF7F1",
-    "strokeWidth": 1.5
-  },
-
-  "encoding": {
-    "x": {
-      "field": "column",
-      "type": "ordinal",
-      "axis": null
-    },
-
-    "y": {
-      "field": "row",
-      "type": "ordinal",
-      "axis": null
-    },
-
-    "color": {
-      "field": "frequency",
-      "type": "nominal",
-      "title": "Attendance frequency",
-
-      "scale": {
-        "domain": [
-          "Once",
-          "Twice",
-          "3 times",
-          "4 times",
-          "5 times",
-          "6-10 times",
-          "11-20 times",
-          "21+ times"
-        ],
-
-        "range": [
-          "#E85D43",
-          "#EAAE3E",
-          "#3559A8",
-          "#5478D6",
-          "#85509B",
-          "#A36C32",
-          "#6B8E6E",
-          "#6B6F7F"
-        ]
-      },
-
-      "legend": {
-        "orient": "right",
-        "direction": "vertical",
-
-        "titleFont": "Arial",
-        "titleFontSize": 13,
-        "titleColor": "#20243A",
-
-        "labelFont": "Arial",
-        "labelFontSize": 12,
-        "labelColor": "#20243A",
-
-        "symbolType": "square",
-        "symbolSize": 120
-      }
-    },
-
-    "tooltip": [
-      {
-        "field": "frequency",
-        "type": "nominal",
-        "title": "Attendance frequency"
-      }
-    ]
-  },
+  "spacing": 40,
 
   "config": {
     "view": {
       "stroke": null
+    },
+    "axis": {
+      "domain": false,
+      "ticks": false,
+      "labels": false,
+      "grid": false,
+      "title": null
     }
-  }
+  },
+
+  "hconcat": [
+    {
+      "width": 500,
+      "height": 500,
+
+      "data": {
+        "url": "data/clean/abs_frequency.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "percentage": "number"
+          }
+        }
+      },
+
+      "transform": [
+        {
+          "calculate": "datum.frequency == 'Once' ? 'Once' : datum.frequency == 'Twice' ? 'Twice' : datum.frequency == '3 times' || datum.frequency == '4 times' || datum.frequency == '5 times' ? '3–5 times' : datum.frequency == '6-10 times' ? '6–10 times' : '11+ times'",
+          "as": "group"
+        },
+        {
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "percentage",
+              "as": "pct"
+            }
+          ],
+          "groupby": [
+            "group"
+          ]
+        },
+        {
+          "calculate": "datum.group == 'Once' ? 1 : datum.group == 'Twice' ? 2 : datum.group == '3–5 times' ? 3 : datum.group == '6–10 times' ? 4 : 5",
+          "as": "order"
+        },
+        {
+          "calculate": "datum.group == 'Once' ? '#B2A084' : datum.group == 'Twice' ? '#E3B145' : datum.group == '3–5 times' ? '#E66043' : datum.group == '6–10 times' ? '#6A5DB0' : '#2B314D'",
+          "as": "color"
+        },
+        {
+          "calculate": "round(datum.pct)",
+          "as": "square_count"
+        },
+        {
+          "window": [
+            {
+              "op": "sum",
+              "field": "square_count",
+              "as": "cume"
+            }
+          ],
+          "sort": [
+            {
+              "field": "order",
+              "order": "ascending"
+            }
+          ]
+        },
+        {
+          "calculate": "datum.cume - datum.square_count",
+          "as": "start"
+        },
+        {
+          "calculate": "sequence(0, datum.square_count)",
+          "as": "squareIndex"
+        },
+        {
+          "flatten": [
+            "squareIndex"
+          ]
+        },
+        {
+          "calculate": "datum.start + datum.squareIndex",
+          "as": "id"
+        },
+        {
+          "calculate": "datum.id % 10",
+          "as": "col"
+        },
+        {
+          "calculate": "9 - floor(datum.id / 10)",
+          "as": "row"
+        }
+      ],
+
+      "mark": {
+        "type": "square",
+        "size": 1850,
+        "filled": true,
+        "stroke": "#F7F3EB",
+        "strokeWidth": 2
+      },
+
+      "encoding": {
+        "x": {
+          "field": "col",
+          "type": "ordinal",
+          "scale": {
+            "paddingInner": 0.12,
+            "paddingOuter": 0.08
+          }
+        },
+
+        "y": {
+          "field": "row",
+          "type": "ordinal",
+          "scale": {
+            "paddingInner": 0.12,
+            "paddingOuter": 0.08
+          }
+        },
+
+        "color": {
+          "field": "color",
+          "type": "nominal",
+          "scale": null,
+          "legend": null
+        },
+
+        "tooltip": [
+          {
+            "field": "group",
+            "type": "nominal",
+            "title": "Attendance frequency"
+          },
+          {
+            "field": "pct",
+            "type": "quantitative",
+            "title": "Percentage",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+
+    {
+      "width": 470,
+      "height": 500,
+
+      "data": {
+        "url": "data/clean/abs_frequency.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "percentage": "number"
+          }
+        }
+      },
+
+      "transform": [
+        {
+          "calculate": "datum.frequency == 'Once' ? 'Once' : datum.frequency == 'Twice' ? 'Twice' : datum.frequency == '3 times' || datum.frequency == '4 times' || datum.frequency == '5 times' ? '3–5 times' : datum.frequency == '6-10 times' ? '6–10 times' : '11+ times'",
+          "as": "group"
+        },
+        {
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "percentage",
+              "as": "pct"
+            }
+          ],
+          "groupby": [
+            "group"
+          ]
+        },
+        {
+          "calculate": "datum.group == 'Once' ? 1 : datum.group == 'Twice' ? 2 : datum.group == '3–5 times' ? 3 : datum.group == '6–10 times' ? 4 : 5",
+          "as": "order"
+        },
+        {
+          "calculate": "datum.group == 'Once' ? '#B2A084' : datum.group == 'Twice' ? '#E3B145' : datum.group == '3–5 times' ? '#E66043' : datum.group == '6–10 times' ? '#6A5DB0' : '#2B314D'",
+          "as": "color"
+        },
+        {
+          "calculate": "6 - datum.order",
+          "as": "ypos"
+        }
+      ],
+
+      "layer": [
+        {
+          "mark": {
+            "type": "point",
+            "shape": "square",
+            "filled": true,
+            "size": 130
+          },
+
+          "encoding": {
+            "x": {
+              "value": 28
+            },
+
+            "y": {
+              "field": "ypos",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0.5,
+                  5.5
+                ]
+              }
+            },
+
+            "color": {
+              "field": "color",
+              "type": "nominal",
+              "scale": null,
+              "legend": null
+            }
+          }
+        },
+
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "middle",
+            "dx": 18,
+            "font": "DM Sans",
+            "fontSize": 16,
+            "color": "#20243A"
+          },
+
+          "encoding": {
+            "x": {
+              "value": 40
+            },
+
+            "y": {
+              "field": "ypos",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0.5,
+                  5.5
+                ]
+              }
+            },
+
+            "text": {
+              "field": "group"
+            }
+          }
+        },
+
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "baseline": "middle",
+            "font": "Playfair Display",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "color": "#20243A"
+          },
+
+          "encoding": {
+            "x": {
+              "value": 440
+            },
+
+            "y": {
+              "field": "ypos",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0.5,
+                  5.5
+                ]
+              }
+            },
+
+            "text": {
+              "field": "pct",
+              "type": "quantitative",
+              "format": ".1f"
+            }
+          }
+        },
+
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "middle",
+            "font": "Playfair Display",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "color": "#20243A"
+          },
+
+          "encoding": {
+            "x": {
+              "value": 445
+            },
+
+            "y": {
+              "field": "ypos",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0.5,
+                  5.5
+                ]
+              }
+            },
+
+            "text": {
+              "value": "%"
+            }
+          }
+        }
+      ]
+    }
+  ]
 }

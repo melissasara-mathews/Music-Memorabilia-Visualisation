@@ -1,14 +1,12 @@
+
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-
     "width": 430,
     "height": 300,
-    "background": "#FAF7F1",
-
+    "background": "#F7F3EB",
     "data": {
     "url": "data/clean/music_qld_clean.csv"
     },
-
     "transform": [
     {
         "filter": "datum.creator_clean != null && datum.creator_clean != 'Unknown'"
@@ -47,7 +45,6 @@
         "filter": "datum.rank <= 8"
     }
     ],
-
     "encoding": {
     "y": {
         "field": "creator_short",
@@ -66,7 +63,6 @@
         "domain": false
         }
     },
-
     "x": {
         "field": "record_count",
         "type": "quantitative",
@@ -92,41 +88,37 @@
         }
     }
     },
-
     "layer": [
     {
         "mark": {
         "type": "bar",
         "size": 2.5,
-        "color": "#E85D43"
+        "color": "#936B4F"
         }
     },
-
     {
-    "mark": {
+        "mark": {
         "type": "circle",
         "filled": true,
         "size": 220,
-        "color": "#E85D43",
+        "color": "#936B4F",
         "opacity": 1
-    },
-
-    "encoding": {
+        },
+        "encoding": {
         "tooltip": [
-        {
+            {
             "field": "creator_clean",
             "type": "nominal",
             "title": "Creator"
-        },
-        {
+            },
+            {
             "field": "record_count",
             "type": "quantitative",
             "title": "Preserved records"
-        }
+            }
         ]
-    }
+        }
     },
-
     {
         "mark": {
         "type": "text",
@@ -146,7 +138,6 @@
         }
     }
     ],
-
     "config": {
     "view": {
         "stroke": null

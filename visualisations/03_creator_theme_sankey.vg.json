@@ -1,9 +1,10 @@
+
 {
     "$schema": "https://vega.github.io/schema/vega/v5.json",
     "width": 430,
     "height": 300,
     "padding": 10,
-    "background": "#FAF7F1",
+    "background": "#F7F3EB",
 
     "data": [
     {
@@ -16,7 +17,6 @@
         }
         }
     },
-
     {
         "name": "creators",
         "source": "links",
@@ -47,7 +47,6 @@
         }
         ]
     },
-
     {
         "name": "themes",
         "source": "links",
@@ -78,7 +77,6 @@
         }
         ]
     },
-
     {
         "name": "sankey_links",
         "source": "links",
@@ -116,15 +114,14 @@
         "Other"
         ],
         "range": [
-        "#E85D43",
-        "#E8AA3B",
-        "#B64E59",
-        "#6A56AF",
-        "#4E7FA9",
-        "#96968E"
+        "#876EB2",
+        "#458C6B",
+        "#E75480",
+        "#1FA4B6",
+        "#FFDB58",
+        "#84465C"
         ]
     },
-
     {
         "name": "linkWidth",
         "type": "linear",
@@ -169,7 +166,6 @@
         }
         }
     },
-
     {
         "type": "rect",
         "from": {
@@ -190,7 +186,7 @@
             "signal": "datum.y + 10"
             },
             "fill": {
-            "value": "#20243A"
+            "value": "#967052"
             },
             "cornerRadius": {
             "value": 2
@@ -198,7 +194,6 @@
         }
         }
     },
-
     {
         "type": "text",
         "from": {
@@ -233,7 +228,6 @@
         }
         }
     },
-
     {
         "type": "rect",
         "from": {
@@ -263,7 +257,6 @@
         }
         }
     },
-
     {
         "type": "text",
         "from": {
@@ -298,7 +291,6 @@
         }
         }
     },
-
     {
         "type": "text",
         "encode": {
@@ -330,7 +322,6 @@
         }
         }
     },
-
     {
         "type": "text",
         "encode": {

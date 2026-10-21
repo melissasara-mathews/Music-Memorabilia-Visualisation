@@ -1,9 +1,10 @@
+
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
     "width": 760,
     "height": 250,
-    "background": "#FAF7F1",
+    "background": "#F7F3EB",
 
     "data": {
     "url": "data/clean/period_theme_composition.csv"
@@ -69,11 +70,11 @@
             "Other"
         ],
         "range": [
-            "#6A56AF",
-            "#E85D43",
-            "#E8AA3B",
-            "#B64E59",
-            "#96968E"
+            "#1FA4B6",
+            "#876EB2",
+            "#458C6B",
+            "#E75480",
+            "#84465C"
         ]
         },
         "legend": {

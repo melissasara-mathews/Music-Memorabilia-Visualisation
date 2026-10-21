@@ -1,151 +1,207 @@
+
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-    "width": 390,
-    "height": 225,
-    "background": "#FAF7F1",
+  "width": 390,
+  "height": 225,
+  "background": "#F7F3EB",
 
-    "data": {
+  "data": {
     "url": "data/clean/theme_period_counts.csv"
-    },
+  },
 
-    "transform": [
+  "transform": [
     {
-        "filter": "datum.historical_period != 'Unknown'"
+      "filter": "datum.historical_period != 'Unknown'"
     },
     {
-        "impute": "record_count",
-        "key": "historical_period",
-        "groupby": ["theme"],
-        "keyvals": [
+      "impute": "record_count",
+      "key": "historical_period",
+      "groupby": ["theme"],
+      "keyvals": [
         "Before 1900",
         "1900-1909",
         "1910-1919",
         "1920-1929",
         "1930-1939",
         "1940-1959"
-        ],
-        "value": 0
+      ],
+      "value": 0
     }
-    ],
+  ],
 
-    "mark": {
-    "type": "rect",
-    "stroke": "#FAF7F1",
-    "strokeWidth": 2
-    },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "#F7F3EB",
+        "strokeWidth": 2
+      },
 
-    "encoding": {
-    "x": {
-        "field": "historical_period",
-        "type": "ordinal",
+      "encoding": {
+        "x": {
+          "field": "historical_period",
+          "type": "ordinal",
 
-        "sort": [
-        "Before 1900",
-        "1900-1909",
-        "1910-1919",
-        "1920-1929",
-        "1930-1939",
-        "1940-1959"
-        ],
+          "sort": [
+            "Before 1900",
+            "1900-1909",
+            "1910-1919",
+            "1920-1929",
+            "1930-1939",
+            "1940-1959"
+          ],
 
-        "title": null,
+          "title": null,
 
-        "axis": {
-        "orient": "top",
-        "labelFont": "Arial",
-        "labelFontSize": 9,
-        "labelColor": "#20243A",
-        "labelAngle": 0,
-        "labelPadding": 10,
-        "ticks": false,
-        "domain": false
-        }
-    },
+          "axis": {
+            "orient": "top",
+            "labelFont": "Arial",
+            "labelFontSize": 9,
+            "labelColor": "#20243A",
+            "labelAngle": 0,
+            "labelPadding": 10,
+            "ticks": false,
+            "domain": false
+          }
+        },
 
-    "y": {
-        "field": "theme",
-        "type": "nominal",
+        "y": {
+          "field": "theme",
+          "type": "nominal",
 
-        "title": null,
+          "title": null,
 
-        "sort": [
-        "Piano / dance",
-        "Songs",
-        "Patriotic / national",
-        "War",
-        "Other"
-        ],
+          "sort": [
+            "Piano / dance",
+            "Songs",
+            "Patriotic / national",
+            "War",
+            "Other"
+          ],
 
-        "axis": {
-        "labelFont": "Arial",
-        "labelFontSize": 10,
-        "labelColor": "#20243A",
+          "axis": {
+            "labelFont": "Arial",
+            "labelFontSize": 10,
+            "labelColor": "#20243A",
+            "labelPadding": 12,
+            "ticks": false,
+            "domain": false
+          }
+        },
 
-        "labelPadding": 12,
+        "color": {
+          "field": "record_count",
+          "type": "quantitative",
 
-        "ticks": false,
-        "domain": false
-        }
-    },
+          "title": "Records",
 
-    "color": {
-        "field": "record_count",
-        "type": "quantitative",
+          "scale": {
+            "domain": [0, 4],
+            "range": [
+              "#D2D9E3",
+              "#A9B7CA",
+              "#8094AE",
+              "#536C8B",
+              "#304762"
+            ]
+          },
 
-        "title": "Records",
+          "legend": {
+            "orient": "top",
+            "direction": "horizontal",
 
-        "scale": {
-        "domain": [0, 4],
-        "range": [
-            "#EEEAF3",
-            "#D5CDE4",
-            "#B5A7D2",
-            "#8F7ABC",
-            "#6A56AF"
+            "titleFont": "Arial",
+            "titleFontSize": 9,
+            "titleFontWeight": "bold",
+            "titleColor": "#6F7180",
+
+            "labelFont": "Arial",
+            "labelFontSize": 9,
+            "labelColor": "#6F7180",
+
+            "gradientLength": 140,
+            "gradientThickness": 7
+          }
+        },
+
+        "tooltip": [
+          {
+            "field": "historical_period",
+            "type": "nominal",
+            "title": "Historical period"
+          },
+          {
+            "field": "theme",
+            "type": "nominal",
+            "title": "Theme"
+          },
+          {
+            "field": "record_count",
+            "type": "quantitative",
+            "title": "Records"
+          }
         ]
-        },
-
-        "legend": {
-        "orient": "top",
-        "direction": "horizontal",
-
-        "titleFont": "Arial",
-        "titleFontSize": 9,
-        "titleFontWeight": "bold",
-        "titleColor": "#6F7180",
-
-        "labelFont": "Arial",
-        "labelFontSize": 9,
-        "labelColor": "#6F7180",
-
-        "gradientLength": 140,
-        "gradientThickness": 7
-        }
+      }
     },
 
-    "tooltip": [
+    {
+      "transform": [
         {
-        "field": "historical_period",
-        "type": "nominal",
-        "title": "Historical period"
-        },
-        {
-        "field": "theme",
-        "type": "nominal",
-        "title": "Theme"
-        },
-        {
-        "field": "record_count",
-        "type": "quantitative",
-        "title": "Records"
+          "filter": "datum.record_count >= 3"
         }
-    ]
-    },
+      ],
 
-    "config": {
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 11,
+        "fontWeight": "bold"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "historical_period",
+          "type": "ordinal",
+
+          "sort": [
+            "Before 1900",
+            "1900-1909",
+            "1910-1919",
+            "1920-1929",
+            "1930-1939",
+            "1940-1959"
+          ]
+        },
+
+        "y": {
+          "field": "theme",
+          "type": "nominal",
+
+          "sort": [
+            "Piano / dance",
+            "Songs",
+            "Patriotic / national",
+            "War",
+            "Other"
+          ]
+        },
+
+        "text": {
+          "field": "record_count",
+          "type": "quantitative"
+        },
+
+        "color": {
+          "value": "#FFFFFF"
+        }
+      }
+    }
+  ],
+
+  "config": {
     "view": {
-        "stroke": null
+      "stroke": null
     }
-    }
+  }
 }
