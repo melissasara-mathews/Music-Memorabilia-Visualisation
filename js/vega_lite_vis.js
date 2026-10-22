@@ -149,11 +149,6 @@ embedChart(
     venueConcentration
 );
 
-
-/* =========================================
-   SECTION 4: AUDIENCE ATTENDANCE
-========================================= */
-
 // Chart 10: State attendance map
 var attendanceMap =
     "visualisations/10_attendance_map.vg.json";
