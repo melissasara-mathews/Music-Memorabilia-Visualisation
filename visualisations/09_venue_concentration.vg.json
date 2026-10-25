@@ -1,21 +1,20 @@
+
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-
-  "width": 430,
+  "width": "container",
   "height": 360,
-
-  "background": "#FAF7F1",
+  "background": "#F7F3EB",
 
   "projection": {
     "type": "equirectangular",
     "center": [144.97, -37.815],
-    "scale": 360000
+    "scale": 300000
   },
 
   "layer": [
     {
       "data": {
-        "url": "data/clean/VIC_LOCALITY_POLYGON_SHP.json",
+        "url": "data/clean/VIC_LOCALITY_POLYGON_SHP.topojson",
         "format": {
           "type": "topojson",
           "feature": "VIC_LOCALITY_POLYGON_SHP"
@@ -23,9 +22,9 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#C9D8B6",
-        "stroke": "#F7F4EC",
-        "strokeWidth": 0.7
+        "fill": "#D5E0C9",
+        "stroke": "#F7F3EB",
+        "strokeWidth": 0.4
       }
     },
 
@@ -47,19 +46,18 @@
         "filled": false,
         "stroke": "#5DA5D3",
         "strokeWidth": 2,
-        "opacity": 0.95
+        "opacity": 0.9
       }
     },
 
     {
       "data": {
         "values": [
-          { "name": "Parkville", "lon": 144.946, "lat": -37.787 },
-          { "name": "Carlton", "lon": 144.969, "lat": -37.793 },
-          { "name": "Fitzroy", "lon": 144.985, "lat": -37.794 },
-          { "name": "Melbourne", "lon": 144.958, "lat": -37.808 },
-          { "name": "Richmond", "lon": 145.008, "lat": -37.824 },
-          { "name": "South Yarra", "lon": 145.001, "lat": -37.844 }
+          {
+            "name": "Parkville",
+            "lon": 144.946,
+            "lat": -37.787
+          }
         ]
       },
       "mark": {
@@ -67,7 +65,190 @@
         "font": "Arial",
         "fontSize": 11,
         "color": "#59645F",
-        "opacity": 1
+        "align": "right",
+        "baseline": "bottom",
+        "dx": -8,
+        "dy": -14
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "name",
+          "type": "nominal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "name": "Carlton",
+            "lon": 144.969,
+            "lat": -37.793
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 11,
+        "color": "#59645F",
+        "align": "right",
+        "baseline": "bottom",
+        "dx": -15,
+        "dy": -16
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "name",
+          "type": "nominal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "name": "Fitzroy",
+            "lon": 144.985,
+            "lat": -37.794
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 11,
+        "color": "#59645F",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 5,
+        "dy": -5
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "name",
+          "type": "nominal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "name": "Melbourne",
+            "lon": 144.958,
+            "lat": -37.808
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 11,
+        "color": "#59645F",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "dy": 15
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "name",
+          "type": "nominal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "name": "Richmond",
+            "lon": 144.999,
+            "lat": -37.824
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 11,
+        "color": "#59645F",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 8,
+        "dy": -5
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "name",
+          "type": "nominal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "name": "South Yarra",
+            "lon": 145.001,
+            "lat": -37.844
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 11,
+        "color": "#59645F",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 5,
+        "dy": -5
       },
       "encoding": {
         "longitude": {
@@ -101,18 +282,35 @@
           "filter": "isValid(datum.lat) && isValid(datum.lon)"
         },
         {
-          "bin": { "step": 0.01 },
+          "bin": {
+            "step": 0.01
+          },
           "field": "lon",
           "as": ["lon_start", "lon_end"]
         },
         {
-          "bin": { "step": 0.01 },
+          "bin": {
+            "step": 0.01
+          },
           "field": "lat",
           "as": ["lat_start", "lat_end"]
         },
         {
           "aggregate": [
-            { "op": "count", "as": "venue_count" }
+            {
+              "op": "count",
+              "as": "venue_count"
+            },
+            {
+              "op": "mean",
+              "field": "lon",
+              "as": "cluster_lon"
+            },
+            {
+              "op": "mean",
+              "field": "lat",
+              "as": "cluster_lat"
+            }
           ],
           "groupby": [
             "lon_start",
@@ -122,20 +320,32 @@
           ]
         },
         {
-          "calculate": "(datum.lon_start + datum.lon_end) / 2",
-          "as": "cluster_lon"
-        },
-        {
-          "calculate": "(datum.lat_start + datum.lat_end) / 2",
-          "as": "cluster_lat"
+          "window": [
+            {
+              "op": "row_number",
+              "as": "cluster_rank"
+            }
+          ],
+          "sort": [
+            {
+              "field": "venue_count",
+              "order": "descending"
+            },
+            {
+              "field": "cluster_lon",
+              "order": "ascending"
+            },
+            {
+              "field": "cluster_lat",
+              "order": "ascending"
+            }
+          ]
         }
       ],
       "mark": {
         "type": "circle",
         "color": "#E85D43",
-        "opacity": 0.72,
-        "stroke": "#B94330",
-        "strokeWidth": 0.7
+        "opacity": 0.85
       },
       "encoding": {
         "longitude": {
@@ -151,11 +361,15 @@
           "type": "quantitative",
           "title": "Number of venues",
           "scale": {
+            "type": "linear",
+            "zero": true,
             "range": [80, 1800]
           },
           "legend": {
             "orient": "top",
             "direction": "horizontal",
+            "offset": 6,
+            "values": [5, 20, 50, 90],
             "title": "Number of venues",
             "titleFont": "Arial",
             "titleFontSize": 12,
@@ -164,24 +378,366 @@
             "labelFontSize": 11,
             "labelColor": "#20243A",
             "symbolFillColor": "#E85D43",
-            "symbolStrokeColor": "#B94330"
+            "symbolStrokeColor": "#A83E30",
+            "symbolStrokeWidth": 1
           }
+        },
+        "stroke": {
+          "condition": {
+            "test": "datum.cluster_rank == 1",
+            "value": "#20243A"
+          },
+          "value": "#A83E30"
+        },
+        "strokeWidth": {
+          "condition": {
+            "test": "datum.cluster_rank == 1",
+            "value": 2.5
+          },
+          "value": 1
         },
         "tooltip": [
           {
             "field": "venue_count",
             "type": "quantitative",
-            "title": "Venues in area",
+            "title": "Venues in this area",
             "format": ",d"
           }
         ]
+      }
+    },
+
+    {
+      "data": {
+        "url": "data/clean/venues_clean.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "lat": "number",
+            "lon": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "isValid(datum.lat) && isValid(datum.lon)"
+        },
+        {
+          "bin": {
+            "step": 0.01
+          },
+          "field": "lon",
+          "as": ["lon_start", "lon_end"]
+        },
+        {
+          "bin": {
+            "step": 0.01
+          },
+          "field": "lat",
+          "as": ["lat_start", "lat_end"]
+        },
+        {
+          "aggregate": [
+            {
+              "op": "count",
+              "as": "venue_count"
+            },
+            {
+              "op": "mean",
+              "field": "lon",
+              "as": "cluster_lon"
+            },
+            {
+              "op": "mean",
+              "field": "lat",
+              "as": "cluster_lat"
+            }
+          ],
+          "groupby": [
+            "lon_start",
+            "lon_end",
+            "lat_start",
+            "lat_end"
+          ]
+        },
+        {
+          "window": [
+            {
+              "op": "row_number",
+              "as": "cluster_rank"
+            }
+          ],
+          "sort": [
+            {
+              "field": "venue_count",
+              "order": "descending"
+            },
+            {
+              "field": "cluster_lon",
+              "order": "ascending"
+            },
+            {
+              "field": "cluster_lat",
+              "order": "ascending"
+            }
+          ]
+        },
+        {
+          "filter": "datum.cluster_rank == 1"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#FFFFFF",
+        "align": "center",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "cluster_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "cluster_lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "venue_count",
+          "type": "quantitative",
+          "format": ",d"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [{}]
+      },
+      "mark": {
+        "type": "rect",
+        "color": "#F7F3EB",
+        "opacity": 0.97,
+        "cornerRadius": 5
+      },
+      "encoding": {
+        "x": {"value": 9},
+        "x2": {"value": 200},
+        "y": {"value": 250},
+        "y2": {"value": 355}
+      }
+    },
+
+    {
+      "data": {
+        "url": "data/clean/venues_clean.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "lat": "number",
+            "lon": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "isValid(datum.lat) && isValid(datum.lon)"
+        },
+        {
+          "bin": {
+            "step": 0.01
+          },
+          "field": "lon",
+          "as": ["lon_start", "lon_end"]
+        },
+        {
+          "bin": {
+            "step": 0.01
+          },
+          "field": "lat",
+          "as": ["lat_start", "lat_end"]
+        },
+        {
+          "aggregate": [
+            {
+              "op": "count",
+              "as": "venue_count"
+            }
+          ],
+          "groupby": [
+            "lon_start",
+            "lon_end",
+            "lat_start",
+            "lat_end"
+          ]
+        },
+        {
+          "joinaggregate": [
+            {
+              "op": "sum",
+              "field": "venue_count",
+              "as": "total_venues"
+            }
+          ]
+        },
+        {
+          "window": [
+            {
+              "op": "row_number",
+              "as": "cluster_rank"
+            }
+          ],
+          "sort": [
+            {
+              "field": "venue_count",
+              "order": "descending"
+            },
+            {
+              "field": "lon_start",
+              "order": "ascending"
+            },
+            {
+              "field": "lat_start",
+              "order": "ascending"
+            }
+          ]
+        },
+        {
+          "filter": "datum.cluster_rank == 1"
+        },
+        {
+          "calculate": "format(100 * datum.venue_count / datum.total_venues, '.1f') + '% in one grid cell'",
+          "as": "share_label"
+        },
+        {
+          "calculate": "datum.venue_count + ' of ' + datum.total_venues + ' mapped venues'",
+          "as": "count_label"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "text",
+            "font": "Arial",
+            "fontSize": 13,
+            "fontWeight": "bold",
+            "color": "#20243A",
+            "align": "left",
+            "baseline": "middle"
+          },
+          "encoding": {
+            "x": {
+              "value": 19
+            },
+            "y": {
+              "value": 267
+            },
+            "text": {
+              "field": "share_label",
+              "type": "nominal"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "font": "Arial",
+            "fontSize": 12,
+            "color": "#424B49",
+            "align": "left",
+            "baseline": "middle"
+          },
+          "encoding": {
+            "x": {
+              "value": 19
+            },
+            "y": {
+              "value": 288
+            },
+            "text": {
+              "field": "count_label",
+              "type": "nominal"
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "text": "Mixed uses and connected streets",
+            "line_y": 309
+          },
+          {
+            "text": "may help explain this pattern.",
+            "line_y": 326
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 11,
+        "color": "#424B49",
+        "align": "left",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "x": {
+          "value": 19
+        },
+        "y": {
+          "field": "line_y",
+          "type": "quantitative",
+          "scale": null,
+          "axis": null
+        },
+        "text": {
+          "field": "text",
+          "type": "nominal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "text": "Pan and Pafka (2021)"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#59645F",
+        "align": "left",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "x": {
+          "value": 19
+        },
+        "y": {
+          "value": 344
+        },
+        "text": {
+          "field": "text",
+          "type": "nominal"
+        }
       }
     }
   ],
 
   "config": {
     "view": {
-      "fill": "#BFDFF2",
+      "fill": "#C7E5F2",
       "stroke": null
     }
   }

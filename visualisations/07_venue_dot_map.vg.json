@@ -4,18 +4,68 @@
   "width": "container",
   "height": 470,
   "background": "transparent",
+
   "params": [
     {
       "name": "venueTypeFilter",
       "value": "Bar"
     }
   ],
+
+
   "projection": {
     "type": "equirectangular",
     "center": [144.97, -37.815],
-    "scale": 360000
+    "scale": 375000
   },
+
   "layer": [
+    {
+      "data": {
+        "values": [{}]
+      },
+      "mark": {
+        "type": "rect",
+        "fill": "#C7E5F2"
+      },
+      "encoding": {
+        "x": {
+          "value": 0
+        },
+        "x2": {
+          "value": 1100
+        },
+        "y": {
+          "value": 0
+        },
+        "y2": {
+          "value": 470
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [{}]
+      },
+      "mark": {
+        "type": "rect",
+        "fill": "#C9D8B6"
+      },
+      "encoding": {
+        "x": {
+          "value": 900
+        },
+        "x2": {
+          "value": 1100
+        },
+        "y": {
+          "value": 0
+        },
+        "y2": {
+          "value": 470
+        }
+      }
+    },
     {
       "data": {
         "url": "data/clean/VIC_LOCALITY_POLYGON_SHP.topojson",
@@ -26,29 +76,13 @@
       },
       "mark": {
         "type": "geoshape",
+        "filled": true,
         "fill": "#C9D8B6",
-        "stroke": "#F7F4EC",
-        "strokeWidth": 0.55, 
-        "strokeOpacity": 0.85
-      }
-    },
-    
-    {
-      "data": {
-        "url": "data/clean/melbourne_boundary.geojson",
-        "format": {
-          "type": "json",
-          "property": "features"
-        }
-      },
-      "mark": {
-        "type": "geoshape",
-        "filled": false,
         "stroke": "#F7F4EC",
         "strokeWidth": 0.55,
         "strokeOpacity": 0.85
       }
-    }, 
+    },
     {
       "data": {
         "url": "data/clean/melbourne_rivers.geojson",
@@ -150,7 +184,6 @@
     {
       "data": {
         "values": [
-
           {
             "name": "Yarra River",
             "lon": 145.016,
@@ -205,7 +238,6 @@
           "filter": "isValid(datum.space_type) && datum.space_type != 'Unknown' && datum.space_type != ''"
         }
       ],
-
       "mark": {
         "type": "circle",
         "stroke": null,
@@ -267,9 +299,9 @@
       }
     }
   ],
+
   "config": {
     "view": {
-      "fill": "#BFDFF2",
       "stroke": null
     }
   }

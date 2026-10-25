@@ -1,760 +1,2301 @@
 
+
 /* Google Fonts: body and heading typography */
+
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
 
+
+
 /* Global box sizing */
+
 * {
+
     box-sizing: border-box;
+
 }
+
+
 
 /* Smooth page scrolling */
+
 html {
+
     scroll-behavior: smooth;
+
 }
+
+
 
 /* Page background and base typography */
+
 body {
+
     margin: 0;
+
     background-color: #F7F3EB;
+
     color: #20243A;
+
     font-family: "DM Sans", Arial, sans-serif;
+
 }
+
+
 
 /* Default link appearance */
+
 a {
+
     color: inherit;
+
     text-decoration: none;
+
 }
+
+
 
 /* Header logo typography */
+
 .logo {
+
     font-size: 13px;
+
     font-weight: 600;
+
     letter-spacing: 3px;
+
     color: #20243A;
+
     white-space: nowrap;
+
 }
+
+
 
 /* Opening section layout */
+
 .hero {
+
     min-height: 720px;
+
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     justify-content: center;
+
     text-align: center;
+
     padding: 90px 40px 70px;
+
 }
+
+
 
 /* Opening section label */
+
 .eyebrow {
+
     margin: 0 0 24px;
+
     font-size: 13px;
+
     font-weight: 600;
+
     letter-spacing: 4px;
+
     color: #EA5E43;
+
 }
+
+
 
 /* Main title: serif typography and responsive size */
+
 .hero h1 {
+
     margin: 0;
+
     max-width: 1000px;
+
     font-family: "Playfair Display", Georgia, serif;
+
     font-size: clamp(70px, 9vw, 135px);
+
     line-height: 0.9;
+
     font-weight: 600;
+
     color: #20243A;
+
 }
+
+
 
 /* Main title accent colour */
+
 .hero h1 span {
+
     display: block;
+
     color: #EA5E43;
+
     font-style: italic;
+
 }
+
+
 
 /* Opening subtitle typography */
+
 .subtitle {
+
     max-width: 720px;
+
     margin: 48px auto 0;
+
     font-size: 21px;
+
     line-height: 1.55;
+
     color: #6B6F7F;
+
 }
+
+
 
 /* Story navigation layout */
+
 .story-path {
+
     margin-top: 40px;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     gap: 35px;
+
 }
+
+
 
 .story-path span {
+
     position: relative;
+
     font-size: 12px;
+
     font-weight: 600;
+
     letter-spacing: 3px;
+
     color: #20243A;
+
 }
+
+
 
 /* Navigation separator lines */
+
 .story-path span:not(:last-child)::after {
+
     content: "";
+
     display: inline-block;
+
     width: 55px;
+
     height: 1px;
+
     margin-left: 35px;
+
     margin-bottom: 4px;
+
     background-color: #BDB8AD;
+
 }
+
+
 
 /* Research question typography */
+
 .research-question {
+
     max-width: 690px;
+
     margin: 85px auto 0;
+
     padding-top: 30px;
+
     border-top: 1px solid #CAC5BA;
+
     font-family: "Playfair Display", Georgia, serif;
+
     font-size: 24px;
+
     line-height: 1.45;
+
     font-weight: 600;
+
     color: #20243A;
+
 }
+
+
 
 /* Story section spacing */
+
 .story-section {
+
     padding: 0 5% 100px;
+
 }
+
+
 
 /* Section introduction: grid layout */
+
 .section-intro {
+
     min-height: 480px;
+
     display: grid;
+
     grid-template-columns: 120px minmax(0, 850px);
+
     gap: 40px;
+
     align-items: center;
+
     max-width: 1200px;
+
     margin: 0 auto;
+
 }
+
+
 
 /* Section number: visual hierarchy */
+
 .section-number {
+
     align-self: start;
+
     padding-top: 105px;
+
     font-family: "Playfair Display", Georgia, serif;
+
     font-size: 86px;
+
     line-height: 1;
+
     color: #EA5E43;
+
 }
+
+
 
 /* Section text container */
+
 .section-text {
+
     max-width: 850px;
+
 }
+
+
 
 /* Section label typography */
+
 .section-label {
+
     margin: 0 0 25px;
+
     font-size: 13px;
+
     font-weight: 600;
+
     letter-spacing: 4px;
+
     color: #EA5E43;
+
 }
+
+
 
 /* Section heading: serif typography */
+
 .section-text h2 {
+
     margin: 0;
+
     max-width: 850px;
+
     font-family: "Playfair Display", Georgia, serif;
+
     font-size: clamp(55px, 6vw, 86px);
+
     line-height: 1.04;
+
     font-weight: 600;
+
     color: #20243A;
+
 }
+
+
 
 /* Section description typography */
+
 .section-description {
+
     max-width: 760px;
+
     margin: 32px 0 0;
+
     font-size: 18px;
+
     line-height: 1.8;
+
     color: #6B6F7F;
+
 }
+
+
 
 /* Section data source label */
+
 .section-source {
+
     margin-top: 20px;
+
     font-size: 11px;
+
     font-weight: 600;
+
     letter-spacing: 2px;
+
     color: #20243A;
+
 }
+
+
 
 /* Chart container: background, border and spacing */
+
 .chart-card {
+
     background-color: #F7F3EB;
+
     border: 1px solid #D1CCC0;
+
     padding: 35px 38px;
+
     min-width: 0;
+
 }
+
+
 
 /* Full-width chart layout */
+
 .chart-card.full-width {
+
     width: 100%;
+
     max-width: 1250px;
+
     margin: 0 auto 40px;
+
     padding: 35px 40px;
+
     background-color: #F7F3EB;
+
 }
+
+
 
 /* Chart heading alignment */
+
 .chart-heading {
+
     display: flex;
+
     align-items: flex-start;
+
     gap: 22px;
+
     margin-bottom: 25px;
+
 }
+
+
 
 /* Chart number styling */
+
 .chart-number {
+
     padding-top: 7px;
+
     font-size: 12px;
+
     font-weight: 600;
+
     color: #EA5E43;
+
 }
+
+
 
 /* Chart title: serif typography */
+
 .chart-heading h3 {
+
     margin: 0;
+
     max-width: 650px;
+
     font-family: "Playfair Display", Georgia, serif;
+
     font-size: 30px;
+
     line-height: 1.2;
+
     font-weight: 600;
+
     color: #20243A;
+
 }
+
+
 
 /* Chart description typography */
+
 .chart-description {
+
     margin: 0 0 25px;
+
     font-size: 15px;
+
     line-height: 1.7;
+
     color: #6B6F7F;
+
 }
 
+
+
 /* Chart notes and annotation text */
+
 .chart-note {
+
     margin: 22px 0 0;
+
     padding-top: 20px;
+
     border-top: 1px solid #D4CFC4;
+
     font-size: 13px;
+
     line-height: 1.8;
+
     color: #747783;
+
 }
+
+
 
 /* Shared music-theme legend */
 
+
+
 /* Legend container */
+
 .theme-key {
+
     width: 100%;
+
     max-width: 1250px;
+
     margin: 0 auto 40px;
+
     padding: 24px 28px;
+
     border: 1px solid #D1CCC0;
+
     border-radius: 8px;
+
     background-color: #F7F3EB;
+
     text-align: center;
+
 }
+
+
 
 /* Legend title typography */
+
 .theme-key-title {
+
     margin: 0 0 16px;
+
     font-size: 12px;
+
     font-weight: 600;
+
     letter-spacing: 2px;
+
     color: #20243A;
+
 }
+
+
 
 /* Legend items: flexible horizontal layout */
+
 .theme-key-items {
+
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 10px;
+
     justify-content: center;
+
 }
+
+
 
 /* Interactive legend button styling */
+
 .theme-key-items button {
+
     display: inline-flex;
+
     align-items: center;
+
     justify-content: center;
+
     gap: 9px;
+
     padding: 9px 14px;
+
     border: 1px solid #D1CCC0;
+
     border-radius: 24px;
+
     background-color: transparent;
+
     color: #20243A;
+
     font-family: "DM Sans", Arial, sans-serif;
+
     font-size: 13px;
+
     font-weight: 500;
+
     cursor: pointer;
+
     transition: background-color 0.2s ease,
+
                 border-color 0.2s ease;
+
 }
+
+
 
 /* Legend button hover state */
+
 .theme-key-items button:hover {
+
     background-color: #F0EAE0;
+
     border-color: #A8A295;
+
 }
+
+
 
 /* Selected theme button styling */
+
 .theme-key-items button.active {
+
     background-color: #EAE4D9;
+
     border-color: #20243A;
+
 }
+
+
 
 /* Keyboard focus indicator */
+
 .theme-key-items button:focus-visible {
+
     outline: 2px solid #20243A;
+
     outline-offset: 3px;
+
 }
+
+
 
 /* Legend colour circle marks */
+
 .theme-dot {
+
     display: inline-block;
+
     width: 12px;
+
     height: 12px;
+
     flex-shrink: 0;
+
     border-radius: 50%;
+
     border: 1px solid rgba(32, 36, 58, 0.12);
+
 }
 
+
+
 /* Legend interaction instructions */
+
 .theme-key-hint {
+
     margin: 16px 0 0;
+
     font-size: 12px;
+
     line-height: 1.6;
+
     color: #747783;
+
 }
+
+
 
 /* Chart layouts */
 
+
+
 /* Two-column chart grid */
+
 .two-column-layout {
+
     max-width: 1250px;
+
     margin: 0 auto 40px;
+
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 24px;
+
 }
+
+
 
 /* Vega-Lite chart alignment */
+
 .chart-card .vega-embed {
+
     display: flex;
+
     justify-content: center;
+
     width: 100%;
+
 }
+
+
 
 .chart-card .vega-embed > div {
+
     margin-left: auto;
+
     margin-right: auto;
+
 }
+
+
 
 /* Timeline chart container */
+
 #timeline {
+
     width: 100%;
+
     display: flex;
+
     justify-content: center;
+
     overflow: hidden;
+
 }
+
+
 
 #timeline .vega-embed {
+
     width: 100%;
+
 }
+
+
 
 /* Creator lollipop chart container */
+
 #creator-lollipop {
+
     width: 100%;
+
     overflow: hidden;
+
 }
+
+
 
 #creator-lollipop .vega-embed {
+
     width: 100%;
+
     max-width: 100%;
+
 }
+
+
 
 /* Subject composition chart alignment */
+
 #subject-composition {
+
     width: 100%;
+
     display: flex;
+
     justify-content: center;
+
 }
+
+
 
 #subject-composition .vega-embed {
+
     margin-left: auto;
+
     margin-right: auto;
+
 }
 
+
+
 /* Venue dot map container */
+
+
+/* Chart 07: Match the original map dimensions */
+
 #venue-dot-map {
     position: relative;
     width: 100%;
-    max-width: 100%;
+    max-width: 1100px;
     margin: 0 auto;
     background: transparent;
 }
 
+
+
+
 /* Map embedding layout */
+
 #venue-dot-map .vega-embed {
+
     position: relative;
+
     display: block;
+
     width: 100%;
+
     background: transparent !important;
+
 }
+
+
 
 #venue-dot-map .vega-embed > div {
+
     width: 100%;
+
     margin: 0;
+
     background: transparent !important;
+
 }
+
+
 
 /* Transparent map rendering background */
+
 #venue-dot-map canvas,
+
 #venue-dot-map svg {
+
     background: transparent !important;
+
 }
+
+
 
 /* Vega-Lite dropdown filter position */
+
 #venue-dot-map .vega-bindings {
+
     position: absolute;
+
     top: 10px;
+
     right: 0;
+
     z-index: 10;
+
     margin: 0;
+
     background: transparent;
+
     font-family: "DM Sans", sans-serif;
+
     font-size: 13px;
+
     color: #20243A;
+
 }
+
+
 
 /* Dropdown label and control alignment */
+
 #venue-dot-map .vega-bind {
+
     display: flex;
+
     align-items: center;
+
     justify-content: flex-end;
+
     gap: 10px;
+
     margin: 0;
+
     background: transparent;
+
 }
 
+
+
 /* Dropdown filter styling */
+
 #venue-dot-map select {
+
     min-width: 145px;
+
     padding: 6px 28px 6px 10px;
+
     font-family: "DM Sans", sans-serif;
+
     font-size: 13px;
+
     color: #20243A;
+
     background-color: #F7F3EB;
+
     border: 1px solid #C8C4BB;
+
     border-radius: 4px;
+
 }
+
+
 
 /* Story transitions */
 
+
+
 /* Transition section spacing and alignment */
+
 .transition-section {
+
     margin: 25px 0;
+
     padding: 45px 30px;
+
     background-color: #F7F3EB;
+
     text-align: center;
+
 }
+
+
 
 /* Transition heading typography */
+
 .transition-section h2 {
+
     max-width: 1050px;
+
     margin: 0 auto;
+
     font-family: "Playfair Display", Georgia, serif;
+
     font-size: clamp(45px, 5vw, 70px);
+
     line-height: 1.15;
+
     color: #20243A;
+
 }
 
+
+
 /* Transition heading accent colour */
+
 .transition-section h2 span {
+
     display: block;
+
     color: #EAAE3E;
+
     font-style: italic;
+
 }
+
+
 
 /* Conclusion */
 
+
+
 /* Conclusion section colour and spacing */
+
 .conclusion {
+
     padding: 110px 8%;
+
     text-align: center;
+
     background-color: #EA5E43;
+
     color: #F7F3EB;
+
 }
+
+
 
 /* Conclusion label colour */
+
 .conclusion .section-label {
+
     color: #20243A;
+
 }
+
+
 
 /* Conclusion heading typography */
+
 .conclusion h2 {
+
     max-width: 1150px;
+
     margin: 25px auto 75px;
+
     font-family: "Playfair Display", Georgia, serif;
+
     font-size: clamp(50px, 6vw, 80px);
+
     line-height: 1.15;
+
     color: #F7F3EB;
+
 }
+
+
 
 /* Conclusion story path layout */
+
 .conclusion-path {
+
     display: flex;
+
     justify-content: center;
+
     gap: 100px;
+
 }
+
+
 
 .conclusion-path div {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 10px;
+
 }
+
+
 
 /* Conclusion path labels */
+
 .conclusion-path span {
+
     font-size: 11px;
+
     font-weight: 600;
+
     letter-spacing: 2px;
+
 }
 
+
+
 /* Conclusion path headings */
+
 .conclusion-path strong {
+
     font-family: "Playfair Display", Georgia, serif;
+
     font-size: 22px;
+
 }
+
+
 
 /* Footer */
 
+
+
 /* Footer grid layout and background */
+
 footer {
+
     display: grid;
+
     grid-template-columns: 1.5fr 1fr;
+
     gap: 70px;
+
     padding: 70px 6%;
+
     background-color: #252A43;
+
     color: #F7F3EB;
+
 }
+
+
 
 /* Footer headings */
+
 footer h4 {
+
     margin: 0 0 18px;
+
     font-size: 12px;
+
     text-transform: uppercase;
+
     letter-spacing: 3px;
+
     color: #EAAE3E;
+
 }
+
+
 
 /* Footer paragraph typography */
+
 footer p {
+
     margin: 8px 0;
+
     font-size: 14px;
+
     line-height: 1.6;
+
     color: #D2D4DD;
+
 }
+
+
 
 /* Data source link styling */
+
 .sources a {
+
     color: #6FA8DC;
+
     text-decoration: underline;
+
     text-underline-offset: 3px;
+
 }
+
+
 
 .sources a:visited {
+
     color: #6FA8DC;
+
 }
 
+
+
 .sources a:hover {
+
     color: #9AC6EC;
+
 }
+
+
 
 /* Responsive layout */
 
+
+
 /* Tablet layout adjustments */
+
 @media (max-width: 1000px) {
 
+
+
     .hero {
+
         min-height: auto;
+
         padding: 100px 25px;
+
     }
+
+
 
     .section-intro {
+
         grid-template-columns: 1fr;
+
         gap: 15px;
+
         min-height: auto;
+
         padding: 80px 0;
+
     }
+
+
 
     .section-number {
+
         padding: 0;
+
         font-size: 60px;
+
     }
+
+
 
     /* Single-column chart layout */
+
     .two-column-layout {
+
         grid-template-columns: 1fr;
+
     }
+
+
 
     .conclusion-path {
+
         flex-direction: column;
+
         gap: 35px;
+
     }
+
+
 
     footer {
+
         grid-template-columns: 1fr;
+
     }
 
+
+
     /* Responsive map dropdown position */
+
     #venue-dot-map .vega-bindings {
+
         position: static;
+
         display: flex;
+
         justify-content: flex-end;
+
         margin-bottom: 12px;
+
+    }
+
+}
+
+
+
+/* Mobile layout adjustments */
+
+@media (max-width: 600px) {
+
+
+
+    .chart-card,
+
+    .chart-card.full-width {
+
+        padding: 24px 18px;
+
+    }
+
+
+
+    .chart-heading h3 {
+
+        font-size: 25px;
+
+    }
+
+
+
+    .theme-key {
+
+        padding: 20px 18px;
+
+    }
+
+
+
+    .theme-key-items {
+
+        gap: 8px;
+
+    }
+
+
+
+    .theme-key-items button {
+
+        font-size: 12px;
+
+        padding: 8px 11px;
+
+    }
+
+
+
+    .story-path {
+
+        gap: 15px;
+
+    }
+
+
+
+    .story-path span:not(:last-child)::after {
+
+        width: 18px;
+
+        margin-left: 15px;
+
+    }
+
+}
+
+
+
+/* Venue map controls */
+
+
+
+/* Map filter and legend layout */
+
+.venue-map-controls {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 24px;
+
+    margin: 0;
+
+    padding: 0 0 8px;
+
+}
+
+
+
+/* Map filter label and dropdown layout */
+
+.venue-map-filter {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+}
+
+
+
+.venue-map-filter label {
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: #20243A;
+
+}
+
+
+
+/* Venue type dropdown styling */
+
+.venue-map-filter select {
+
+    min-width: 220px;
+
+    padding: 9px 12px;
+
+    border: 1px solid #C8C4BB;
+
+    border-radius: 4px;
+
+    background: #F7F3EB;
+
+    color: #20243A;
+
+    font-family: "DM Sans", Arial, sans-serif;
+
+    font-size: 13px;
+
+}
+
+
+
+/* Venue map legend alignment */
+
+.venue-map-legend {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 20px;
+
+    padding-bottom: 10px;
+
+}
+
+
+
+/* Venue legend item layout */
+
+.venue-legend-item {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 13px;
+
+    color: #20243A;
+
+    white-space: nowrap;
+
+}
+
+
+
+/* Venue legend circle marks */
+
+.venue-legend-dot {
+
+    width: 12px;
+
+    height: 12px;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+
+}
+
+
+
+/* Selected venue legend colour */
+
+.venue-legend-dot.selected {
+
+    background-color: #2455A4;
+
+}
+
+
+
+/* Other venue legend colour */
+
+.venue-legend-dot.other {
+
+    background-color: #D7EF57;
+
+    border: 1px solid #53614A;
+
+}
+
+
+
+/* Venue map top spacing */
+
+#venue-dot-map {
+
+    margin-top: 0;
+
+}
+
+
+
+/* Mobile venue map controls */
+
+@media (max-width: 600px) {
+
+
+
+    .venue-map-controls {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 14px;
+
+    }
+
+
+
+    .venue-map-legend {
+
+        justify-content: flex-start;
+
+        padding-bottom: 0;
+
+    }
+
+}
+
+
+
+
+
+/* ==================================================
+
+    VISUAL BALANCE IMPROVEMENTS*
+
+    Layout only — original content and charts preserved*
+
+    ================================================== */
+
+
+
+
+
+/* 1. Balance the interpretation beneath full-width charts */
+
+
+
+.chart-note.note-columns {
+
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+    column-gap: clamp(32px, 5vw, 90px);
+
+    align-items: start;
+
+}
+
+
+
+.chart-note.note-columns p {
+
+    margin: 0;
+
+    min-width: 0;
+
+}
+
+
+
+
+
+/* 2. Make paired chart cards equal in height */
+
+
+
+.two-column-layout {
+
+    align-items: stretch;
+
+}
+
+
+
+.two-column-layout .chart-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    height: 100%;
+
+}
+
+
+
+
+
+/* 3. Align paired-chart annotations near the bottom */
+
+
+
+.two-column-layout .chart-card > .chart-note {
+
+    margin-top: auto;
+
+}
+
+
+
+
+
+/* 4. Balance section introductions horizontally */
+
+
+
+.section-intro {
+
+    max-width: 1100px;
+
+    grid-template-columns: 110px minmax(0, 850px);
+
+    justify-content: center;
+
+    column-gap: 40px;
+
+}
+
+
+
+
+
+/* 5. Preserve comfortable reading widths on smaller screens */
+
+
+
+@media (max-width: 1000px) {
+
+    .section-intro {
+
+        grid-template-columns: 1fr;
+
+        justify-content: stretch;
+
+        gap: 15px;
+
+    }
+
+}
+
+
+
+@media (max-width: 700px) {
+
+    .chart-note.note-columns {
+
+        grid-template-columns: 1fr;
+
+        row-gap: 12px;
+
+    }
+
+}
+
+
+
+
+
+/* ==========================================================
+
+    COMPACT CENTRED SECTION INTRODUCTIONS (SECTIONS 01–05)*
+
+    Matches the updated section-kicker HTML structure.*
+
+    Keeps existing font families, colours and text unchanged.*
+
+    ========================================================== */
+
+
+
+.story-section {
+
+    padding-bottom: 56px;
+
+}
+
+
+
+.section-intro {
+
+    min-height: 0;
+
+    max-width: 1100px;
+
+    margin: 0 auto 34px;
+
+    padding: 64px 16px 24px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 0;
+
+    text-align: center;
+
+}
+
+
+
+.section-text {
+
+    width: 100%;
+
+    max-width: 1050px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+
+
+.section-kicker {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    column-gap: 18px;
+
+    row-gap: 8px;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.section-kicker .section-number {
+
+    align-self: auto;
+
+    margin: 0;
+
+    padding: 0;
+
+    font-size: 44px;
+
+    line-height: 1;
+
+}
+
+
+
+.section-kicker .section-label {
+
+    margin: 0;
+
+}
+
+
+
+.section-text h2 {
+
+    max-width: 1000px;
+
+    font-size: clamp(48px, 5.2vw, 78px);
+
+    line-height: 1.08;
+
+    text-align: center;
+
+}
+
+
+
+.section-description {
+
+    max-width: 700px;
+
+    margin: 24px auto 0;
+
+    text-align: center;
+
+}
+
+
+
+.section-source {
+
+    margin: 20px auto 0;
+
+    text-align: center;
+
+}
+
+
+
+.transition-section {
+
+    margin: 0;
+
+    padding: 38px 30px;
+
+}
+
+
+
+@media (max-width: 1000px) {
+
+    .section-intro {
+
+        padding: 54px 16px 22px;
+
+        margin-bottom: 28px;
+
+    }
+
+}
+
+
+
+@media (max-width: 600px) {
+
+    .story-section {
+
+        padding-bottom: 44px;
+
+    }
+
+
+
+    .section-intro {
+
+        padding: 42px 10px 20px;
+
+        margin-bottom: 24px;
+
+    }
+
+
+
+    .section-kicker {
+
+        column-gap: 12px;
+
+        margin-bottom: 16px;
+
+    }
+
+
+
+    .section-kicker .section-number {
+
+        font-size: 36px;
+
+    }
+
+
+
+    .section-text h2 {
+
+        font-size: clamp(38px, 9vw, 58px);
+
+    }
+
+
+
+    .section-description {
+
+        font-size: 16px;
+
+        margin-top: 20px;
+
+    }
+
+
+
+    .transition-section {
+
+        padding: 32px 20px;
+
+    }
+
+}
+
+
+
+.section-kicker {
+
+    margin: 0 0 20px 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px 14px;
+
+}
+
+
+
+.section-number-inline,
+
+.section-label {
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 18px;
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+
+    color: #F05A3A;
+
+}
+
+
+
+.section-number-inline {
+
+    letter-spacing: 0.08em;
+
+}
+
+
+
+.section-label {
+
+    letter-spacing: 0.32em;
+
+}
+
+
+
+
+
+/* FINAL FIX: SECTION NUMBER AND LABEL ALIGNMENT */
+
+
+
+.section-intro .section-kicker {
+
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin: 0 0 22px;
+
+}
+
+
+
+.section-intro .section-kicker .section-number-inline {
+
+    font-family: "DM Sans", Arial, sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    letter-spacing: 2px;
+
+    color: #EA5E43;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+
+.section-intro .section-kicker .section-label {
+
+    font-family: "DM Sans", Arial, sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    letter-spacing: 4px;
+
+    color: #EA5E43;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+
+@media (max-width: 600px) {
+
+    .section-intro .section-kicker {
+
+        gap: 10px;
+
+    }
+
+
+
+    .section-intro .section-kicker .section-number-inline,
+
+    .section-intro .section-kicker .section-label {
+
+        font-size: 11px;
+
+    }
+
+}
+
+
+
+
+
+/* Match section numbers to their uppercase labels */
+
+
+
+.section-intro .section-kicker .section-number,
+
+.section-intro .section-kicker .section-number-inline,
+
+.section-intro .section-kicker .section-label {
+
+    font-family: "DM Sans", Arial, sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    letter-spacing: 4px;
+
+    color: #EA5E43;
+
+    margin: 0;
+
+    padding: 0;
+
+    align-self: center;
+
+}
+
+
+
+.section-intro .section-kicker {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    margin-bottom: 22px;
+
+}
+
+
+
+
+
+/* Reduce whitespace between the hero and Section 01 */
+
+
+
+.hero {
+
+    min-height: 0;
+
+    padding-bottom: 30px;
+
+}
+
+
+
+.research-question {
+
+    margin-bottom: 0;
+
+}
+
+
+
+#section-1 .section-intro {
+
+    padding-top: 24px;
+
+}
+
+
+
+/* Tighter spacing on smaller screens */
+
+
+
+@media (max-width: 600px) {
+
+    .hero {
+
+        padding-bottom: 20px;
+
+    }
+
+
+
+    #section-1 .section-intro {
+
+        padding-top: 16px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SHARED THEME KEY: STICKY ONLY THROUGH ARCHIVE SECTIONS 01–02
+   The theme-key is a direct child of .theme-sections.
+   ========================================================= */
+.theme-sections {
+    /* Keep overflow visible so sticky can use the page scroll. */
+    overflow: visible;
+}
+
+/* Section 01's existing introduction precedes the shared key. */
+.theme-sections > #section-1 {
+    padding-bottom: 0;
+}
+
+.theme-sections > #section-1 .section-intro {
+    margin-bottom: 22px;
+}
+
+.theme-sections > .theme-key {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    width: calc(100% - 10%);
+    max-width: 1250px;
+    padding: 10px 16px 9px;
+    margin: 0 auto 25px;
+    border: 1px solid #D1CCC0;
+    border-radius: 4px;
+    background-color: #F7F3EB;
+    box-shadow: 0 3px 10px rgba(32, 36, 58, 0.04);
+}
+
+.theme-sections .theme-key-title {
+    margin-bottom: 7px;
+    font-size: 11px;
+}
+
+.theme-sections .theme-key-items {
+    gap: 6px 9px;
+}
+
+.theme-sections .theme-key-items button {
+    padding: 6px 10px;
+    font-size: 12px;
+}
+
+.theme-sections .theme-key-hint {
+    margin-top: 6px;
+    font-size: 11px;
+    line-height: 1.3;
+}
+
+/* Extra balance: paired chart notes align without changing chart data. */
+.two-column-layout > .chart-card {
+    min-width: 0;
+}
+
+/* Mobile: a single, horizontally scrollable row limits sticky height. */
+@media (max-width: 700px) {
+    .theme-sections > .theme-key {
+        width: calc(100% - 10%);
+        padding: 8px 10px;
+    }
+    .theme-sections .theme-key-items {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 3px;
+        -webkit-overflow-scrolling: touch;
+    }
+    .theme-sections .theme-key-items button {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+    .theme-sections .theme-key-title {
+        margin-bottom: 5px;
+    }
+    .theme-sections .theme-key-hint {
+        margin-top: 4px;
     }
 }
 
-/* Mobile layout adjustments */
+
+/* Spread the shared music-theme buttons evenly */
+
+.theme-key {
+    width: 100%;
+    max-width: 1250px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 24px;
+}
+
+.theme-key-items {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+}
+
+.theme-key-items button {
+    width: 100%;
+    min-width: 0;
+    padding: 10px 8px;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+/* Tablet: three buttons per row */
+@media (max-width: 1100px) {
+    .theme-key-items {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* Mobile: two buttons per row */
 @media (max-width: 600px) {
-
-    .chart-card,
-    .chart-card.full-width {
-        padding: 24px 18px;
-    }
-
-    .chart-heading h3 {
-        font-size: 25px;
-    }
-
     .theme-key {
-        padding: 20px 18px;
+        padding: 16px 12px;
     }
 
     .theme-key-items {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 8px;
     }
 
     .theme-key-items button {
-        font-size: 12px;
-        padding: 8px 11px;
-    }
-
-    .story-path {
-        gap: 15px;
-    }
-
-    .story-path span:not(:last-child)::after {
-        width: 18px;
-        margin-left: 15px;
+        white-space: normal;
+        font-size: 11px;
+        padding: 9px 6px;
     }
 }
 
-/* Venue map controls */
 
-/* Map filter and legend layout */
-.venue-map-controls {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 24px;
-    margin: 0;
-    padding: 0 0 8px;
+/* Chart 07: align filter, legend and map edges */
+
+#section-3 .venue-map-controls {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
-/* Map filter label and dropdown layout */
-.venue-map-filter {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+#section-3 #venue-dot-map {
+    width: 100%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.venue-map-filter label {
-    font-size: 13px;
-    font-weight: 600;
-    color: #20243A;
+#section-3 .venue-map-filter {
+    align-items: flex-start;
 }
 
-/* Venue type dropdown styling */
-.venue-map-filter select {
-    min-width: 220px;
-    padding: 9px 12px;
-    border: 1px solid #C8C4BB;
-    border-radius: 4px;
-    background: #F7F3EB;
-    color: #20243A;
-    font-family: "DM Sans", Arial, sans-serif;
-    font-size: 13px;
-}
-
-/* Venue map legend alignment */
-.venue-map-legend {
-    display: flex;
-    align-items: center;
+#section-3 .venue-map-legend {
     justify-content: flex-end;
-    gap: 20px;
-    padding-bottom: 10px;
 }
 
-/* Venue legend item layout */
-.venue-legend-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: #20243A;
-    white-space: nowrap;
-}
-
-/* Venue legend circle marks */
-.venue-legend-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-
-/* Selected venue legend colour */
-.venue-legend-dot.selected {
-    background-color: #2455A4;
-}
-
-/* Other venue legend colour */
-.venue-legend-dot.other {
-    background-color: #D7EF57;
-    border: 1px solid #53614A;
-}
-
-/* Venue map top spacing */
-#venue-dot-map {
-    margin-top: 0;
-}
-
-/* Mobile venue map controls */
-@media (max-width: 600px) {
-
-    .venue-map-controls {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 14px;
-    }
-
-    .venue-map-legend {
-        justify-content: flex-start;
-        padding-bottom: 0;
-    }
-}

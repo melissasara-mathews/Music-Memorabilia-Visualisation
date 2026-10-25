@@ -1,357 +1,374 @@
 
 {
-    "$schema": "https://vega.github.io/schema/vega/v5.json",
-    "width": 430,
-    "height": 300,
-    "padding": 10,
-    "background": "#F7F3EB",
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "width": 430,
+  "height": 300,
+  "padding": 10,
+  "background": "#F7F3EB",
 
-    "data": [
+  "signals": [
     {
-        "name": "links",
-        "url": "./data/clean/creator_theme_links.csv",
-        "format": {
+      "name": "selectedThemes",
+      "value": []
+    }
+  ],
+
+  "data": [
+    {
+      "name": "links",
+      "url": "./data/clean/creator_theme_links.csv",
+      "format": {
         "type": "csv",
         "parse": {
-            "record_count": "number"
+          "record_count": "number"
         }
-        }
+      }
     },
     {
-        "name": "creators",
-        "source": "links",
-        "transform": [
+      "name": "creators",
+      "source": "links",
+      "transform": [
         {
-            "type": "aggregate",
-            "groupby": ["creator_short"],
-            "fields": ["record_count"],
-            "ops": ["sum"],
-            "as": ["total"]
+          "type": "aggregate",
+          "groupby": ["creator_short"],
+          "fields": ["record_count"],
+          "ops": ["sum"],
+          "as": ["total"]
         },
         {
-            "type": "collect",
-            "sort": {
+          "type": "collect",
+          "sort": {
             "field": "total",
             "order": "descending"
-            }
+          }
         },
         {
-            "type": "window",
-            "ops": ["row_number"],
-            "as": ["rank"]
+          "type": "window",
+          "ops": ["row_number"],
+          "as": ["rank"]
         },
         {
-            "type": "formula",
-            "as": "y",
-            "expr": "30 + (datum.rank - 1) * 55"
+          "type": "formula",
+          "as": "y",
+          "expr": "30 + (datum.rank - 1) * 55"
         }
-        ]
+      ]
     },
     {
-        "name": "themes",
-        "source": "links",
-        "transform": [
+      "name": "themes",
+      "source": "links",
+      "transform": [
         {
-            "type": "aggregate",
-            "groupby": ["theme"],
-            "fields": ["record_count"],
-            "ops": ["sum"],
-            "as": ["total"]
+          "type": "aggregate",
+          "groupby": ["theme"],
+          "fields": ["record_count"],
+          "ops": ["sum"],
+          "as": ["total"]
         },
         {
-            "type": "collect",
-            "sort": {
+          "type": "collect",
+          "sort": {
             "field": "total",
             "order": "descending"
-            }
+          }
         },
         {
-            "type": "window",
-            "ops": ["row_number"],
-            "as": ["rank"]
+          "type": "window",
+          "ops": ["row_number"],
+          "as": ["rank"]
         },
         {
-            "type": "formula",
-            "as": "y",
-            "expr": "30 + (datum.rank - 1) * 48"
+          "type": "formula",
+          "as": "y",
+          "expr": "30 + (datum.rank - 1) * 48"
         }
-        ]
+      ]
     },
     {
-        "name": "sankey_links",
-        "source": "links",
-        "transform": [
+      "name": "sankey_links",
+      "source": "links",
+      "transform": [
         {
-            "type": "lookup",
-            "from": "creators",
-            "key": "creator_short",
-            "fields": ["creator_short"],
-            "values": ["y"],
-            "as": ["source_y"]
+          "type": "lookup",
+          "from": "creators",
+          "key": "creator_short",
+          "fields": ["creator_short"],
+          "values": ["y"],
+          "as": ["source_y"]
         },
         {
-            "type": "lookup",
-            "from": "themes",
-            "key": "theme",
-            "fields": ["theme"],
-            "values": ["y"],
-            "as": ["target_y"]
+          "type": "lookup",
+          "from": "themes",
+          "key": "theme",
+          "fields": ["theme"],
+          "values": ["y"],
+          "as": ["target_y"]
         }
-        ]
+      ]
     }
-    ],
+  ],
 
-    "scales": [
+  "scales": [
     {
-        "name": "themeColor",
-        "type": "ordinal",
-        "domain": [
+      "name": "themeColor",
+      "type": "ordinal",
+      "domain": [
         "Songs",
         "Patriotic / national",
         "War",
         "Piano / dance",
         "Queensland / place",
         "Other"
-        ],
-        "range": [
+      ],
+      "range": [
         "#876EB2",
         "#458C6B",
         "#E75480",
         "#1FA4B6",
         "#FFDB58",
         "#84465C"
-        ]
+      ]
     },
     {
-        "name": "linkWidth",
-        "type": "linear",
-        "domain": {
+      "name": "linkWidth",
+      "type": "linear",
+      "domain": {
         "data": "links",
         "field": "record_count"
-        },
-        "range": [2, 12]
+      },
+      "range": [2, 12]
     }
-    ],
+  ],
 
-    "marks": [
+  "marks": [
     {
-        "type": "path",
-        "from": {
+      "type": "path",
+      "from": {
         "data": "sankey_links"
-        },
-        "encode": {
+      },
+      "encode": {
         "enter": {
-            "stroke": {
+          "stroke": {
             "scale": "themeColor",
             "field": "theme"
-            },
-            "strokeOpacity": {
-            "value": 0.45
-            },
-            "strokeWidth": {
+          },
+          "strokeWidth": {
             "scale": "linkWidth",
             "field": "record_count"
-            },
-            "fill": {
+          },
+          "fill": {
             "value": null
-            }
+          }
         },
         "update": {
-            "path": {
+          "path": {
             "signal": "'M 95,' + datum.source_y + ' C 190,' + datum.source_y + ' 240,' + datum.target_y + ' 335,' + datum.target_y"
-            },
-            "tooltip": {
+          },
+          "strokeOpacity": {
+            "signal": "length(selectedThemes) === 0 ? 0.45 : (indexof(selectedThemes, datum.theme) >= 0 ? 0.85 : 0.07)"
+          },
+          "tooltip": {
             "signal": "{'Creator': datum.creator_clean, 'Theme': datum.theme, 'Records': datum.record_count}"
-            }
+          }
         }
-        }
+      }
     },
     {
-        "type": "rect",
-        "from": {
+      "type": "rect",
+      "from": {
         "data": "creators"
-        },
-        "encode": {
+      },
+      "encode": {
         "enter": {
-            "x": {
+          "x": {
             "value": 85
-            },
-            "x2": {
+          },
+          "x2": {
             "value": 95
-            },
-            "y": {
+          },
+          "y": {
             "signal": "datum.y - 10"
-            },
-            "y2": {
+          },
+          "y2": {
             "signal": "datum.y + 10"
-            },
-            "fill": {
+          },
+          "fill": {
             "value": "#967052"
-            },
-            "cornerRadius": {
+          },
+          "cornerRadius": {
             "value": 2
-            }
+          }
         }
-        }
+      }
     },
     {
-        "type": "text",
-        "from": {
+      "type": "text",
+      "from": {
         "data": "creators"
-        },
-        "encode": {
+      },
+      "encode": {
         "enter": {
-            "x": {
+          "x": {
             "value": 75
-            },
-            "y": {
+          },
+          "y": {
             "field": "y"
-            },
-            "align": {
+          },
+          "align": {
             "value": "right"
-            },
-            "baseline": {
+          },
+          "baseline": {
             "value": "middle"
-            },
-            "font": {
+          },
+          "font": {
             "value": "Arial"
-            },
-            "fontSize": {
+          },
+          "fontSize": {
             "value": 11
-            },
-            "fill": {
+          },
+          "fill": {
             "value": "#20243A"
-            },
-            "text": {
+          },
+          "text": {
             "field": "creator_short"
-            }
+          }
         }
-        }
+      }
     },
     {
-        "type": "rect",
-        "from": {
+      "type": "rect",
+      "from": {
         "data": "themes"
-        },
-        "encode": {
+      },
+      "encode": {
         "enter": {
-            "x": {
+          "x": {
             "value": 335
-            },
-            "x2": {
+          },
+          "x2": {
             "value": 345
-            },
-            "y": {
+          },
+          "y": {
             "signal": "datum.y - 10"
-            },
-            "y2": {
+          },
+          "y2": {
             "signal": "datum.y + 10"
-            },
-            "fill": {
+          },
+          "fill": {
             "scale": "themeColor",
             "field": "theme"
-            },
-            "cornerRadius": {
+          },
+          "cornerRadius": {
             "value": 2
-            }
-        }
-        }
-    },
-    {
-        "type": "text",
-        "from": {
-        "data": "themes"
+          }
         },
-        "encode": {
+        "update": {
+          "fillOpacity": {
+            "signal": "length(selectedThemes) === 0 || indexof(selectedThemes, datum.theme) >= 0 ? 1 : 0.18"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "themes"
+      },
+      "encode": {
         "enter": {
-            "x": {
+          "x": {
             "value": 355
-            },
-            "y": {
+          },
+          "y": {
             "field": "y"
-            },
-            "align": {
+          },
+          "align": {
             "value": "left"
-            },
-            "baseline": {
+          },
+          "baseline": {
             "value": "middle"
-            },
-            "font": {
+          },
+          "font": {
             "value": "Arial"
-            },
-            "fontSize": {
+          },
+          "fontSize": {
             "value": 11
-            },
-            "fill": {
+          },
+          "fill": {
             "value": "#20243A"
-            },
-            "text": {
+          },
+          "text": {
             "field": "theme"
-            }
+          }
+        },
+        "update": {
+          "opacity": {
+            "signal": "length(selectedThemes) === 0 || indexof(selectedThemes, datum.theme) >= 0 ? 1 : 0.25"
+          }
         }
-        }
+      }
     },
     {
-        "type": "text",
-        "encode": {
+      "type": "text",
+      "encode": {
         "enter": {
-            "x": {
+          "x": {
             "value": 85
-            },
-            "y": {
+          },
+          "y": {
             "value": 8
-            },
-            "text": {
+          },
+          "text": {
             "value": "Creators"
-            },
-            "font": {
+          },
+          "font": {
             "value": "Arial"
-            },
-            "fontSize": {
+          },
+          "fontSize": {
             "value": 10
-            },
-            "fontWeight": {
+          },
+          "fontWeight": {
             "value": "bold"
-            },
-            "fill": {
+          },
+          "fill": {
             "value": "#6F7180"
-            },
-            "align": {
+          },
+          "align": {
             "value": "right"
-            }
+          }
         }
-        }
+      }
     },
     {
-        "type": "text",
-        "encode": {
+      "type": "text",
+      "encode": {
         "enter": {
-            "x": {
+          "x": {
             "value": 345
-            },
-            "y": {
+          },
+          "y": {
             "value": 8
-            },
-            "text": {
+          },
+          "text": {
             "value": "Themes"
-            },
-            "font": {
+          },
+          "font": {
             "value": "Arial"
-            },
-            "fontSize": {
+          },
+          "fontSize": {
             "value": 10
-            },
-            "fontWeight": {
+          },
+          "fontWeight": {
             "value": "bold"
-            },
-            "fill": {
+          },
+          "fill": {
             "value": "#6F7180"
-            },
-            "align": {
+          },
+          "align": {
             "value": "left"
-            }
+          }
         }
-        }
+      }
     }
-    ]
+  ]
 }

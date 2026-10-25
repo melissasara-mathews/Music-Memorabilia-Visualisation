@@ -1,133 +1,212 @@
-
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 760,
+  "height": 250,
+  "background": "#F7F3EB",
+  "padding": {
+    "top": 28,
+    "left": 5,
+    "right": 5,
+    "bottom": 5
+  },
 
-    "width": 760,
-    "height": 250,
-    "background": "#F7F3EB",
+  "params": [
+    {
+      "name": "selectedThemes",
+      "value": []
+    }
+  ],
 
-    "data": {
+  "data": {
     "url": "data/clean/period_theme_composition.csv"
-    },
+  },
+  
+  "transform": [
+    {
+      "calculate": "format(datum.percentage, '.1f') + '%'",
+      "as": "percentage_label"
+    }
+  ],
 
-    "mark": {
-    "type": "bar"
-    },
-
-    "encoding": {
-    "x": {
-        "field": "historical_period",
-        "type": "ordinal",
-        "sort": [
-        "Before 1900",
-        "1900-1909",
-        "1910-1919",
-        "1920-1929",
-        "1930-1939",
-        "1940-1959"
-        ],
-        "title": null,
-        "axis": {
-        "labelFont": "Arial",
-        "labelFontSize": 11,
-        "labelColor": "#20243A",
-        "labelAngle": 0,
-        "labelPadding": 10,
-        "ticks": false,
-        "domain": false
-        }
-    },
-
-    "y": {
-        "field": "record_count",
-        "type": "quantitative",
-        "stack": "normalize",
-        "title": "Share of records",
-        "axis": {
-        "format": ".0%",
-        "values": [0, 0.25, 0.5, 0.75, 1],
-        "labelFont": "Arial",
-        "labelFontSize": 10,
-        "labelColor": "#6F7180",
-        "titleFont": "Arial",
-        "titleFontSize": 11,
-        "titleColor": "#6F7180",
-        "grid": false,
-        "domain": false,
-        "ticks": false
-        }
-    },
-
-    "color": {
-        "field": "theme",
-        "type": "nominal",
-        "scale": {
-        "domain": [
+  "layer": [
+    {
+      "mark": {
+        "type": "bar"
+      },
+      "encoding": {
+        "x": {
+          "field": "historical_period",
+          "type": "ordinal",
+          "sort": [
+            "Before 1900",
+            "1900-1909",
+            "1910-1919",
+            "1920-1929",
+            "1930-1939",
+            "1940-1959"
+          ],
+          "title": null,
+          "axis": {
+            "labelFont": "Arial",
+            "labelFontSize": 11,
+            "labelColor": "#20243A",
+            "labelAngle": 0,
+            "labelPadding": 10,
+            "ticks": false,
+            "domain": false
+          }
+        },
+        "y": {
+          "field": "record_count",
+          "type": "quantitative",
+          "stack": "normalize",
+          "title": "Percentage of music records",
+          "scale": {
+            "domain": [0, 1]
+          },
+          "axis": {
+            "format": ".0%",
+            "values": [0, 0.25, 0.5, 0.75, 1],
+            "labelFont": "Arial",
+            "labelFontSize": 10,
+            "labelColor": "#6F7180",
+            "titleFont": "Arial",
+            "titleFontSize": 11,
+            "titleColor": "#6F7180",
+            "grid": false,
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "color": {
+          "field": "theme",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Piano / dance",
+              "War",
+              "Patriotic / national",
+              "Songs",
+              "Queensland / place",
+              "Other"
+            ],
+            "range": [
+              "#1FA4B6",
+              "#E75480",
+              "#458C6B",
+              "#876EB2",
+              "#FFDB58",
+              "#84465C"
+            ]
+          },
+          "legend": null
+        },
+        "opacity": {
+          "condition": {
+            "test": "length(selectedThemes) == 0 || indexof(selectedThemes, datum.theme) >= 0",
+            "value": 1
+          },
+          "value": 0.2
+        },
+        "order": {
+          "field": "theme",
+          "type": "nominal",
+          "sort": [
             "Piano / dance",
-            "Songs",
-            "Patriotic / national",
             "War",
+            "Patriotic / national",
+            "Songs",
+            "Queensland / place",
             "Other"
-        ],
-        "range": [
-            "#1FA4B6",
-            "#876EB2",
-            "#458C6B",
-            "#E75480",
-            "#84465C"
+          ]
+        },
+        "tooltip": [
+          {
+            "field": "historical_period",
+            "type": "nominal",
+            "title": "Historical period"
+          },
+          {
+            "field": "theme",
+            "type": "nominal",
+            "title": "Music theme"
+          },
+          {
+            "field": "record_count",
+            "type": "quantitative",
+            "title": "Music records"
+          },
+          {
+            "field": "percentage_label",
+            "type": "nominal",
+            "title": "Percentage within this period"
+          }
         ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "record_count",
+              "as": "period_total"
+            }
+          ],
+          "groupby": [
+            "historical_period"
+          ]
         },
-        "legend": {
-        "orient": "top",
-        "direction": "horizontal",
-        "title": null,
-        "labelFont": "Arial",
-        "labelFontSize": 10,
-        "labelColor": "#20243A",
-        "symbolType": "square",
-        "symbolSize": 80
+        {
+          "calculate": "datum.period_total + ' records'",
+          "as": "sample_label"
         }
-    },
-
-    "order": {
-        "field": "theme",
-        "sort": [
-        "Piano / dance",
-        "Songs",
-        "Patriotic / national",
-        "War",
-        "Other"
-        ]
-    },
-
-    "tooltip": [
-        {
-        "field": "historical_period",
-        "type": "nominal",
-        "title": "Historical period"
+      ],
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#20243A",
+        "dy": -12,
+        "clip": false
+      },
+      "encoding": {
+        "x": {
+          "field": "historical_period",
+          "type": "ordinal",
+          "sort": [
+            "Before 1900",
+            "1900-1909",
+            "1910-1919",
+            "1920-1929",
+            "1930-1939",
+            "1940-1959"
+          ]
         },
-        {
-        "field": "theme",
-        "type": "nominal",
-        "title": "Theme"
+        "y": {
+          "datum": 1,
+          "type": "quantitative"
         },
-        {
-        "field": "record_count",
-        "type": "quantitative",
-        "title": "Records"
-        },
-        {
-        "field": "percentage",
-        "type": "quantitative",
-        "title": "Share (%)",
-        "format": ".1f"
+        "text": {
+          "field": "sample_label",
+          "type": "nominal"
         }
-    ]
-    },
+      }
+    }
+  ],
 
-    "config": {
+  "resolve": {
+    "scale": {
+      "x": "shared",
+      "y": "shared"
+    }
+  },
+
+  "config": {
     "view": {
-        "stroke": null
+      "stroke": null
     }
-    }
+  }
 }

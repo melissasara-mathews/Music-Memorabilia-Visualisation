@@ -1,12 +1,12 @@
 
-
-// Store views for charts using music themes.
+/* Store views for charts using music themes. */
 var themeViews = {};
 
-// Empty array means all themes are visible.
+/* Empty array means all themes are visible. */
 var selectedThemes = [];
 
 
+/* Embed charts and register those supporting theme selection. */
 function embedChart(elementId, filePath, themeChartName) {
 
     return vegaEmbed(elementId, filePath, {
@@ -14,12 +14,12 @@ function embedChart(elementId, filePath, themeChartName) {
     })
     .then(function(result) {
 
-        // Register charts supporting multi-select.
+        /* Register charts supporting multi-select. */
         if (themeChartName) {
 
             themeViews[themeChartName] = result.view;
 
-            // Apply selections made before loading.
+            /* Apply selections made before loading. */
             return result.view
                 .signal("selectedThemes", selectedThemes.slice())
                 .runAsync();
@@ -38,7 +38,7 @@ function embedChart(elementId, filePath, themeChartName) {
 }
 
 
-// Chart 01: Music timeline
+/* Chart 01: Music timeline */
 var timeline =
     "visualisations/01_timeline.vg.json";
 
@@ -49,7 +49,7 @@ embedChart(
 );
 
 
-// Chart 02: Top creators
+/* Chart 02: Top creators */
 var creatorLollipop =
     "visualisations/02_creator_lollipop.vg.json";
 
@@ -59,55 +59,59 @@ embedChart(
 );
 
 
-// Chart 03: Creator-theme Sankey
+/* Chart 03: Creator-theme Sankey */
 var creatorThemeSankey =
     "visualisations/03_creator_theme_sankey.vg.json";
 
 embedChart(
     "#creator-theme",
-    creatorThemeSankey
+    creatorThemeSankey,
+    "creatorTheme"
 );
 
 
-// Chart 04: Theme heatmap
+
+/* Chart 04: Theme heatmap */
 var themeHeatmap =
     "visualisations/04_theme_heatmap.vg.json";
 
 embedChart(
     "#theme-heatmap",
-    themeHeatmap
+    themeHeatmap,
+    "themeHeatmap"
 );
 
 
-// Chart 05: Subject treemap
+/* Chart 05: Subject treemap */
 var subjectTreemap =
     "visualisations/05_subject_treemap.vg.json";
-
 embedChart(
     "#subject-composition",
     subjectTreemap
 );
 
 
-// Chart 06: Theme distribution
+
+/* Chart 06: Theme distribution */
 var periodTheme =
     "visualisations/06_period_theme.vg.json";
-
 embedChart(
     "#period-theme",
-    periodTheme
+    periodTheme,
+    "periodTheme"
 );
 
 
-// Chart 07: Venue dot map
-
-var venueDotMap = "visualisations/07_venue_dot_map.vg.json";
+/* Chart 07: Venue dot map */
+var venueDotMap =
+    "visualisations/07_venue_dot_map.vg.json";
 
 vegaEmbed("#venue-dot-map", venueDotMap, {
     actions: false,
     renderer: "canvas"
 })
 .then(function(result) {
+
     var venueMapView = result.view;
     var venueSelect = document.getElementById("venue-type-select");
 
@@ -119,18 +123,19 @@ vegaEmbed("#venue-dot-map", venueDotMap, {
     venueSelect.value = "Bar";
 
     venueSelect.addEventListener("change", function() {
+
         venueMapView
             .signal("venueTypeFilter", venueSelect.value)
             .runAsync()
             .catch(console.error);
+
     });
+
 })
 .catch(console.error);
 
 
-
-
-// Chart 08: Venue types
+/* Chart 08: Venue types */
 var venueTypes =
     "visualisations/08_venue_types.vg.json";
 
@@ -140,7 +145,7 @@ embedChart(
 );
 
 
-// Chart 09: Venue concentration
+/* Chart 09: Venue concentration */
 var venueConcentration =
     "visualisations/09_venue_concentration.vg.json";
 
@@ -149,7 +154,8 @@ embedChart(
     venueConcentration
 );
 
-// Chart 10: State attendance map
+
+/* Chart 10: State attendance map */
 var attendanceMap =
     "visualisations/10_attendance_map.vg.json";
 
@@ -159,7 +165,7 @@ embedChart(
 );
 
 
-// Chart 11: Age and gender
+/* Chart 11: Age and gender */
 var ageGender =
     "visualisations/11_age_gender.vg.json";
 
@@ -169,7 +175,7 @@ embedChart(
 );
 
 
-// Chart 12: Attendance by age
+/* Chart 12: Attendance by age */
 var ageAttendance =
     "visualisations/12_age_attendance.vg.json";
 
@@ -178,7 +184,8 @@ embedChart(
     ageAttendance
 );
 
-// Chart 13: Attendance frequency waffle
+
+/* Chart 13: Attendance frequency waffle */
 var frequencyWaffle =
     "visualisations/13_frequency_waffle.vg.json";
 
@@ -187,12 +194,14 @@ embedChart(
     frequencyWaffle
 );
 
+
+/* Theme legend buttons */
 var themeButtons = document.querySelectorAll(
     ".theme-key-items button"
 );
 
 
-// Apply selected themes to registered charts.
+/* Apply selected themes to registered charts. */
 function updateThemeCharts() {
 
     Object.keys(themeViews).forEach(function(chartName) {
@@ -217,7 +226,7 @@ function updateThemeCharts() {
 }
 
 
-// Update the appearance of selected buttons.
+/* Update the appearance of selected buttons. */
 function updateThemeButtons() {
 
     themeButtons.forEach(function(button) {
@@ -241,7 +250,7 @@ function updateThemeButtons() {
 }
 
 
-// Handle multiple theme selections.
+/* Handle multiple theme selections. */
 themeButtons.forEach(function(button) {
 
     button.setAttribute("aria-pressed", "false");
@@ -252,7 +261,7 @@ themeButtons.forEach(function(button) {
 
         if (selectedThemes.includes(clickedTheme)) {
 
-            // Deselect an existing theme.
+            /* Deselect an existing theme. */
             selectedThemes = selectedThemes.filter(
                 function(theme) {
                     return theme !== clickedTheme;
@@ -261,7 +270,7 @@ themeButtons.forEach(function(button) {
 
         } else {
 
-            // Add another theme to the selection.
+            /* Add another theme to the selection. */
             selectedThemes.push(clickedTheme);
 
         }

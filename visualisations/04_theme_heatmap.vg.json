@@ -6,6 +6,13 @@
   "height": 225,
   "background": "#F7F3EB",
 
+  "params": [
+    {
+      "name": "selectedThemes",
+      "value": []
+    }
+  ],
+
   "data": {
     "url": "data/clean/theme_period_counts.csv"
   },
@@ -42,7 +49,6 @@
         "x": {
           "field": "historical_period",
           "type": "ordinal",
-
           "sort": [
             "Before 1900",
             "1900-1909",
@@ -51,9 +57,7 @@
             "1930-1939",
             "1940-1959"
           ],
-
           "title": null,
-
           "axis": {
             "orient": "top",
             "labelFont": "Arial",
@@ -69,9 +73,7 @@
         "y": {
           "field": "theme",
           "type": "nominal",
-
           "title": null,
-
           "sort": [
             "Piano / dance",
             "Songs",
@@ -79,7 +81,6 @@
             "War",
             "Other"
           ],
-
           "axis": {
             "labelFont": "Arial",
             "labelFontSize": 10,
@@ -93,9 +94,7 @@
         "color": {
           "field": "record_count",
           "type": "quantitative",
-
           "title": "Records",
-
           "scale": {
             "domain": [0, 4],
             "range": [
@@ -106,23 +105,27 @@
               "#304762"
             ]
           },
-
           "legend": {
             "orient": "top",
             "direction": "horizontal",
-
             "titleFont": "Arial",
             "titleFontSize": 9,
             "titleFontWeight": "bold",
             "titleColor": "#6F7180",
-
             "labelFont": "Arial",
             "labelFontSize": 9,
             "labelColor": "#6F7180",
-
             "gradientLength": 140,
             "gradientThickness": 7
           }
+        },
+
+        "opacity": {
+          "condition": {
+            "test": "length(selectedThemes) == 0 || indexof(selectedThemes, datum.theme) >= 0",
+            "value": 1
+          },
+          "value": 0.18
         },
 
         "tooltip": [
@@ -163,7 +166,6 @@
         "x": {
           "field": "historical_period",
           "type": "ordinal",
-
           "sort": [
             "Before 1900",
             "1900-1909",
@@ -177,7 +179,6 @@
         "y": {
           "field": "theme",
           "type": "nominal",
-
           "sort": [
             "Piano / dance",
             "Songs",
@@ -194,6 +195,14 @@
 
         "color": {
           "value": "#FFFFFF"
+        },
+
+        "opacity": {
+          "condition": {
+            "test": "length(selectedThemes) == 0 || indexof(selectedThemes, datum.theme) >= 0",
+            "value": 1
+          },
+          "value": 0.18
         }
       }
     }

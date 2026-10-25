@@ -95,9 +95,9 @@
     },
     "tooltip": [
       {
-        "field": "Title",
+        "field": "title_display",
         "type": "nominal",
-        "title": "Music item"
+        "title": "Music title"
       },
       {
         "field": "creator_clean",

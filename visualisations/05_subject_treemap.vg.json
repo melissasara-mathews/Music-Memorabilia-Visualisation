@@ -1,167 +1,310 @@
 
 {
-    "$schema": "https://vega.github.io/schema/vega/v5.json",
-    "width": 470,
-    "height": 250,
-    "padding": 5,
-    "background": "#F7F3EB",
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "width": 500,
+  "height": 300,
+  "padding": 0,
+  "background": "#F7F3EB",
 
-    "data": [
+  "data": [
     {
-        "name": "subjects",
-        "url": "data/clean/subject_hierarchy_detailed.csv",
-        "format": {
+      "name": "subjects",
+      "url": "data/clean/subject_hierarchy_top4.csv",
+      "format": {
         "type": "csv",
         "parse": {
-            "record_count": "number",
-            "level": "number"
+          "record_count": "number",
+          "level": "number",
+          "merged_subjects": "number"
         }
-        },
-        "transform": [
+      },
+      "transform": [
         {
-            "type": "formula",
-            "as": "parent_clean",
-            "expr": "datum.parent == '' ? null : datum.parent"
-        },
-        {
-            "type": "stratify",
-            "key": "node_id",
-            "parentKey": "parent_clean"
+          "type": "formula",
+          "as": "parent_clean",
+          "expr": "datum.parent == '' ? null : datum.parent"
         },
         {
-            "type": "treemap",
-            "field": "record_count",
-            "sort": {
+          "type": "stratify",
+          "key": "node_id",
+          "parentKey": "parent_clean"
+        },
+        {
+          "type": "treemap",
+          "field": "record_count",
+          "sort": {
             "field": "value",
             "order": "descending"
-            },
-            "method": "squarify",
-            "ratio": 1.35,
-            "round": true,
-            "size": [
+          },
+          "method": "squarify",
+          "ratio": 1.35,
+          "round": true,
+          "size": [
             {"signal": "width"},
             {"signal": "height"}
-            ],
-            "paddingInner": 2,
-            "paddingOuter": 2,
-            "paddingTop": 0
-        }
-        ]
-    }
-    ],
-
-    "scales": [
-    {
-        "name": "subjectColour",
-        "type": "ordinal",
-        "domain": [
-        "Vocal & songs",
-        "Instrumental & dance",
-        "Nation & patriotism",
-        "War & military",
-        "Places, people & topics"
-        ],
-        "range": [
-        "#876EB2",
-        "#1FA4B6",
-        "#458C6B",
-        "#E75480",
-        "#967052"
-        ]
-    }
-    ],
-
-    "marks": [
-    {
-        "type": "rect",
-        "from": {
-        "data": "subjects"
+          ],
+          "paddingInner": 3,
+          "paddingOuter": 0,
+          "paddingTop": 22
         },
-        "encode": {
+        {
+          "type": "formula",
+          "as": "theme_display",
+          "expr": "datum.group == 'Vocal & songs' || datum.label == 'Vocal & songs' ? 'Songs' : datum.group == 'Instrumental & dance' || datum.label == 'Instrumental & dance' ? 'Piano / dance' : datum.group == 'Nation & patriotism' || datum.label == 'Nation & patriotism' ? 'Patriotic / national' : datum.group == 'War & military' || datum.label == 'War & military' ? 'War' : datum.group == 'Places, people & topics' || datum.label == 'Places, people & topics' ? 'Other' : ''"
+        },
+        {
+          "type": "formula",
+          "as": "original_label",
+          "expr": "datum.display_label && datum.display_label != '' ? datum.display_label : datum.label"
+        },
+        {
+          "type": "formula",
+          "as": "cell_label",
+          "expr": "datum.merged_subjects > 0 ? (datum.theme_display == 'Songs' ? 'Other song subjects' : datum.theme_display == 'Piano / dance' ? 'Other piano subjects' : datum.theme_display == 'Patriotic / national' ? 'Other patriotic subjects' : datum.theme_display == 'War' ? 'Other war subjects' : 'Other subjects') : indexof(datum.original_label, 'Patriotic music--Australia') >= 0 ? 'Patriotic music (Australia)' : datum.original_label"
+        },
+        {
+          "type": "formula",
+          "as": "short_label",
+          "expr": "indexof(datum.original_label, 'Australian Imperial Force') >= 0 ? 'Australian Imperial Force music' : datum.node_id == 'g3-0' ? 'World War I' : datum.node_id == 'g0-1' ? 'Medium-voice songs' : datum.node_id == 'g0-other' ? 'Other songs' : datum.merged_subjects > 0 ? (datum.theme_display == 'Piano / dance' ? 'Other piano subjects' : datum.theme_display == 'Patriotic / national' ? 'Other patriotic subjects' : datum.theme_display == 'War' ? 'Other war subjects' : 'Other subjects') : datum.cell_label == 'Patriotic music (Australia)' ? 'Patriotic music' : datum.cell_label"
+        },
+        {
+          "type": "formula",
+          "as": "cell_width",
+          "expr": "datum.x1 - datum.x0"
+        },
+        {
+          "type": "formula",
+          "as": "cell_height",
+          "expr": "datum.y1 - datum.y0"
+        },
+        {
+          "type": "formula",
+          "as": "label_to_show",
+          "expr": "datum.cell_width >= length(datum.cell_label) * 5.5 + 14 ? datum.cell_label : datum.cell_width >= length(datum.short_label) * 5.5 + 14 ? datum.short_label : ''"
+        },
+        {
+          "type": "formula",
+          "as": "show_label",
+          "expr": "datum.depth == 2 && datum.cell_height >= 35 && datum.label_to_show != '' && datum.cell_width >= length('' + datum.record_count) * 6 + 18"
+        }
+      ]
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "headerColour",
+      "type": "ordinal",
+      "domain": [
+        "Songs",
+        "Piano / dance",
+        "Patriotic / national",
+        "War",
+        "Other"
+      ],
+      "range": [
+        "#7756A6",
+        "#148597",
+        "#3F8963",
+        "#D94D7E",
+        "#84465C"
+      ]
+    },
+    {
+      "name": "cellColour",
+      "type": "ordinal",
+      "domain": [
+        "Songs",
+        "Piano / dance",
+        "Patriotic / national",
+        "War",
+        "Other"
+      ],
+      "range": [
+        "#CFC2E7",
+        "#B8DDE4",
+        "#BDD8C7",
+        "#E8BED0",
+        "#C6A8B6"
+      ]
+    }
+  ],
+
+  "marks": [
+    {
+      "type": "rect",
+      "from": {
+        "data": "subjects"
+      },
+      "encode": {
         "enter": {
-            "x": {"field": "x0"},
-            "x2": {"field": "x1"},
-            "y": {"field": "y0"},
-            "y2": {"field": "y1"},
-            "fill": {
-            "scale": "subjectColour",
-            "field": "group"
-            },
-            "stroke": {"value": "#F7F3EB"},
-            "strokeWidth": {"value": 1},
-            "tooltip": {
-            "signal": "datum.depth == 2 ? {'Subject': datum.label, 'Group': datum.group, 'Assignments': datum.record_count} : null"
-            }
+          "x": {"field": "x0"},
+          "x2": {"field": "x1"},
+          "y": {"field": "y0"},
+          "y2": {
+            "signal": "datum.y0 + 20"
+          }
         },
         "update": {
-            "fillOpacity": {
-            "signal": "datum.depth == 2 ? 0.9 : 0"
-            }
+          "fill": {
+            "scale": "headerColour",
+            "field": "theme_display"
+          },
+          "fillOpacity": {
+            "signal": "datum.depth == 1 ? 1 : 0"
+          }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "from": {
+        "data": "subjects"
+      },
+      "encode": {
+        "enter": {
+          "x": {"field": "x0"},
+          "x2": {"field": "x1"},
+          "y": {"field": "y0"},
+          "y2": {"field": "y1"},
+          "stroke": {
+            "value": "#F7F3EB"
+          },
+          "strokeWidth": {
+            "value": 1.4
+          }
+        },
+        "update": {
+          "fill": {
+            "signal": "datum.depth == 2 ? (datum.merged_subjects > 0 && datum.theme_display != 'Other' ? '#B0ABA6' : scale('cellColour', datum.theme_display)) : null"
+          },
+          "fillOpacity": {
+            "signal": "datum.depth == 2 ? 1 : 0"
+          },
+          "tooltip": {
+            "signal": "datum.depth != 2 ? null : datum.merged_subjects > 0 ? {'Music category': datum.short_label, 'Music grouping': datum.theme_display, 'Catalogue mentions': datum.record_count, 'Smaller categories combined': datum.merged_subjects} : {'Music category': datum.node_id == 'g3-0' ? 'World War I music' : datum.short_label, 'Music grouping': datum.theme_display, 'Catalogue mentions': datum.record_count}"
+          }
         },
         "hover": {
-            "fillOpacity": {
-            "signal": "datum.depth == 2 ? 1 : 0"
-            }
+          "fillOpacity": {
+            "signal": "datum.depth == 2 ? 0.88 : 0"
+          }
         }
-        }
+      }
     },
-
     {
-        "type": "rect",
-        "from": {
+      "type": "text",
+      "from": {
         "data": "subjects"
-        },
-        "encode": {
+      },
+      "encode": {
         "enter": {
-            "x": {"field": "x0"},
-            "x2": {"field": "x1"},
-            "y": {"field": "y0"},
-            "y2": {"field": "y1"},
-            "fillOpacity": {"value": 0},
-            "stroke": {"value": "#F7F3EB"},
-            "strokeWidth": {"value": 4}
+          "x": {
+            "signal": "datum.x0 + 7"
+          },
+          "y": {
+            "signal": "datum.y0 + 10"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "font": {
+            "value": "Arial"
+          },
+          "fontSize": {
+            "value": 10
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "value": "#FFFFFF"
+          }
         },
         "update": {
-            "strokeOpacity": {
-            "signal": "datum.depth == 1 ? 1 : 0"
-            }
+          "text": {
+            "signal": "datum.depth == 1 && (datum.x1 - datum.x0) >= length(datum.theme_display) * 6 + 14 ? datum.theme_display : ''"
+          }
         }
-        }
+      }
     },
-
     {
-        "type": "text",
-        "from": {
+      "type": "text",
+      "from": {
         "data": "subjects"
-        },
-        "encode": {
+      },
+      "encode": {
         "enter": {
-            "x": {
-            "signal": "datum.x0 + 5"
-            },
-            "y": {
-            "signal": "datum.y0 + 5"
-            },
-            "text": {
-            "signal": "datum.depth == 2 && datum.record_count >= 3 && (datum.x1 - datum.x0) > 65 && (datum.y1 - datum.y0) > 24 ? datum.label : ''"
-            },
-            "font": {"value": "Arial"},
-            "fontSize": {"value": 9},
-            "fontWeight": {"value": "bold"},
-            "fill": {"value": "#FFFFFF"},
-            "baseline": {"value": "top"},
-            "limit": {
-            "signal": "max(0, datum.x1 - datum.x0 - 10)"
-            },
-            "ellipsis": {"value": "…"}
+          "x": {
+            "signal": "datum.x0 + 7"
+          },
+          "y": {
+            "signal": "datum.y0 + 8"
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "font": {
+            "value": "Arial"
+          },
+          "fontSize": {
+            "value": 9
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fill": {
+            "value": "#20243A"
+          }
+        },
+        "update": {
+          "text": {
+            "signal": "datum.show_label ? datum.label_to_show : ''"
+          }
         }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "subjects"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "datum.x0 + 7"
+          },
+          "y": {
+            "signal": "datum.y0 + 23"
+          },
+          "baseline": {
+            "value": "top"
+          },
+          "font": {
+            "value": "Arial"
+          },
+          "fontSize": {
+            "value": 9
+          },
+          "fontWeight": {
+            "value": "normal"
+          },
+          "fill": {
+            "value": "#20243A"
+          }
+        },
+        "update": {
+          "text": {
+            "signal": "datum.show_label ? datum.record_count : ''"
+          }
         }
+      }
     }
-    ],
+  ],
 
-    "config": {
+  "config": {
     "view": {
-        "stroke": null
+      "stroke": null
     }
-    }
+  }
 }

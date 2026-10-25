@@ -1,0 +1,31 @@
+node_id,parent,label,group,record_count,level,display_label,merged_subjects
+root,,All subjects,,0,0,All subjects,0
+g0,root,Vocal & songs,Vocal & songs,0,1,Vocal & songs,0
+g1,root,Instrumental & dance,Instrumental & dance,0,1,Instrumental & dance,0
+g2,root,Nation & patriotism,Nation & patriotism,0,1,Nation & patriotism,0
+g3,root,War & military,War & military,0,1,War & military,0
+g4,root,"Places, people & topics","Places, people & topics",0,1,"Places, people & topics",0
+g0-0,g0,Songs with piano,Vocal & songs,28,2,Songs with piano,0
+g0-1,g0,Songs (Medium voice) with piano,Vocal & songs,13,2,Songs (Medium voice) with piano,0
+g0-2,g0,Popular music--Australia,Vocal & songs,3,2,Popular music--Australia,0
+g0-3,g0,"Songs, English--Australia",Vocal & songs,3,2,"Songs, English--Australia",0
+g1-0,g1,Piano music,Instrumental & dance,15,2,Piano music,0
+g1-1,g1,Waltzes,Instrumental & dance,11,2,Waltzes,0
+g1-2,g1,Marches (Piano),Instrumental & dance,3,2,Marches (Piano),0
+g1-3,g1,Piano music--Australia,Instrumental & dance,2,2,Piano music--Australia,0
+g2-0,g2,Patriotic music--Australia,Nation & patriotism,15,2,Patriotic music--Australia,0
+g2-1,g2,National songs--Australia,Nation & patriotism,5,2,National songs--Australia,0
+g2-2,g2,Confederation of states--Australia--Songs and music,Nation & patriotism,1,2,Confederation of states--Australia--Songs and music,0
+g2-3,g2,Federal government--Australia--Songs and music,Nation & patriotism,1,2,Federal government--Australia--Songs and music,0
+g3-0,g3,"World War, 1914-1918--Australia--Songs and music",War & military,9,2,"World War, 1914-1918--Australia--Songs and music",0
+g3-1,g3,War songs--Australia,War & military,3,2,War songs--Australia,0
+g3-2,g3,Australia.--Army.--Australian Imperial Force (1914-1921)--Songs and music,War & military,2,2,Australia.--Army.--Australian Imperial Force (1914-1921)--Songs and music,0
+g3-3,g3,Armistice Day--Songs and music,War & military,1,2,Armistice Day--Songs and music,0
+g4-0,g4,Cricket--Songs and music,"Places, people & topics",2,2,Cricket--Songs and music,0
+g4-1,g4,Air pilots--Australia--Songs and music,"Places, people & topics",1,2,Air pilots--Australia--Songs and music,0
+g4-2,g4,Air pilots--Great Britain--Songs and music,"Places, people & topics",1,2,Air pilots--Great Britain--Songs and music,0
+g4-3,g4,Air pilots--Queensland--Song and music,"Places, people & topics",1,2,Air pilots--Queensland--Song and music,0
+g0-other,g0,Other subjects,Vocal & songs,20,2,Other subjects,16
+g1-other,g1,Other subjects,Instrumental & dance,7,2,Other subjects,6
+g3-other,g3,Other subjects,War & military,3,2,Other subjects,3
+g4-other,g4,Other subjects,"Places, people & topics",16,2,Other subjects,16
