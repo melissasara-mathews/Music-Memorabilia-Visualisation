@@ -1,7 +1,6 @@
 
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-
   "width": 390,
   "height": 225,
   "background": "#F7F3EB",
@@ -60,11 +59,14 @@
           "title": null,
           "axis": {
             "orient": "top",
-            "labelFont": "Arial",
-            "labelFontSize": 9,
+            "labelFont": "DM Sans",
+            "labelFontSize": 12,
+            "labelFontWeight": "normal",
             "labelColor": "#20243A",
             "labelAngle": 0,
-            "labelPadding": 10,
+            "labelPadding": 12,
+            "labelLimit": 95,
+            "labelExpr": "datum.label === 'Before 1900' ? 'Pre-1900' : replace(datum.label, '-', '–')",
             "ticks": false,
             "domain": false
           }
@@ -82,10 +84,12 @@
             "Other"
           ],
           "axis": {
-            "labelFont": "Arial",
-            "labelFontSize": 10,
+            "labelFont": "DM Sans",
+            "labelFontSize": 13,
+            "labelFontWeight": "normal",
             "labelColor": "#20243A",
             "labelPadding": 12,
+            "labelLimit": 180,
             "ticks": false,
             "domain": false
           }
@@ -108,15 +112,16 @@
           "legend": {
             "orient": "top",
             "direction": "horizontal",
-            "titleFont": "Arial",
-            "titleFontSize": 9,
-            "titleFontWeight": "bold",
-            "titleColor": "#6F7180",
-            "labelFont": "Arial",
-            "labelFontSize": 9,
-            "labelColor": "#6F7180",
+            "titleFont": "DM Sans",
+            "titleFontSize": 13,
+            "titleFontWeight": "normal",
+            "titleColor": "#20243A",
+            "labelFont": "DM Sans",
+            "labelFontSize": 13,
+            "labelFontWeight": "normal",
+            "labelColor": "#20243A",
             "gradientLength": 140,
-            "gradientThickness": 7
+            "gradientThickness": 9
           }
         },
 
@@ -142,7 +147,8 @@
           {
             "field": "record_count",
             "type": "quantitative",
-            "title": "Records"
+            "title": "Records",
+            "format": "d"
           }
         ]
       }
@@ -157,9 +163,9 @@
 
       "mark": {
         "type": "text",
-        "font": "Arial",
-        "fontSize": 11,
-        "fontWeight": "bold"
+        "font": "DM Sans",
+        "fontSize": 14,
+        "fontWeight": "normal"
       },
 
       "encoding": {
@@ -190,7 +196,8 @@
 
         "text": {
           "field": "record_count",
-          "type": "quantitative"
+          "type": "quantitative",
+          "format": "d"
         },
 
         "color": {
@@ -211,6 +218,14 @@
   "config": {
     "view": {
       "stroke": null
+    },
+    "axis": {
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans"
+    },
+    "legend": {
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans"
     }
   }
 }

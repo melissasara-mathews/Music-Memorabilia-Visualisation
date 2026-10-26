@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-  "width": 330,
+  "width": 420,
   "height": 330,
 
-  "background": "#FAF7F1",
+  "background": "#F7F3EB",
 
   "data": {
     "url": "data/clean/abs_age_gender.csv",
@@ -29,7 +29,6 @@
         "y": {
           "field": "age_group",
           "type": "ordinal",
-
           "sort": [
             "15-17",
             "18-24",
@@ -40,14 +39,12 @@
             "65-74",
             "75+"
           ],
-
           "title": null,
-
           "axis": {
-            "labelFont": "Arial",
-            "labelFontSize": 12,
+            "labelFont": "DM Sans",
+            "labelFontSize": 14,
             "labelColor": "#20243A",
-            "labelPadding": 8,
+            "labelPadding": 10,
             "ticks": false,
             "domain": false
           }
@@ -57,24 +54,31 @@
           "field": "male",
           "type": "quantitative",
           "title": "Attendance rate (%)",
-
           "scale": {
             "domain": [0, 30]
           },
-
           "axis": {
-            "titleFont": "Arial",
-            "titleFontSize": 12,
+            "titleFont": "DM Sans",
+            "titleFontSize": 14,
             "titleFontWeight": "normal",
-            "titleColor": "#6B6F7F",
+            "titleColor": "#20243A",
+            "titlePadding": 12,
 
-            "labelFont": "Arial",
-            "labelFontSize": 11,
-            "labelColor": "#6B6F7F",
+            "labelFont": "DM Sans",
+            "labelFontSize": 13,
+            "labelColor": "#20243A",
+            "labelPadding": 6,
+
+            "values": [0, 5, 10, 15, 20, 25, 30],
 
             "grid": false,
-            "ticks": false,
-            "domain": false
+            "ticks": true,
+            "tickColor": "#20243A",
+            "tickSize": 4,
+
+            "domain": true,
+            "domainColor": "#20243A",
+            "domainWidth": 1
           }
         },
 
@@ -87,16 +91,9 @@
     {
       "transform": [
         {
-          "fold": [
-            "male",
-            "female"
-          ],
-          "as": [
-            "gender",
-            "attendance_rate"
-          ]
+          "fold": ["male", "female"],
+          "as": ["gender", "attendance_rate"]
         },
-
         {
           "calculate": "datum.gender == 'male' ? 'Male' : 'Female'",
           "as": "gender_label"
@@ -107,7 +104,7 @@
         "type": "circle",
         "size": 120,
         "opacity": 1,
-        "stroke": "#FAF7F1",
+        "stroke": "#F7F3EB",
         "strokeWidth": 1
       },
 
@@ -115,7 +112,6 @@
         "y": {
           "field": "age_group",
           "type": "ordinal",
-
           "sort": [
             "15-17",
             "18-24",
@@ -126,14 +122,12 @@
             "65-74",
             "75+"
           ],
-
           "title": null
         },
 
         "x": {
           "field": "attendance_rate",
           "type": "quantitative",
-
           "scale": {
             "domain": [0, 30]
           }
@@ -143,33 +137,26 @@
           "field": "gender_label",
           "type": "nominal",
           "title": "Gender",
-
           "scale": {
-            "domain": [
-              "Male",
-              "Female"
-            ],
-
-            "range": [
-              "#3559A8",
-              "#E85D43"
-            ]
+            "domain": ["Male", "Female"],
+            "range": ["#3559A8", "#E85D43"]
           },
-
           "legend": {
             "orient": "top",
             "direction": "horizontal",
 
-            "titleFont": "Arial",
-            "titleFontSize": 12,
+            "titleFont": "DM Sans",
+            "titleFontSize": 14,
+            "titleFontWeight": "bold",
             "titleColor": "#20243A",
 
-            "labelFont": "Arial",
-            "labelFontSize": 12,
+            "labelFont": "DM Sans",
+            "labelFontSize": 14,
             "labelColor": "#20243A",
 
             "symbolType": "circle",
-            "symbolSize": 100
+            "symbolSize": 120,
+            "offset": 6
           }
         },
 
@@ -192,11 +179,122 @@
           }
         ]
       }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "age_group": "15-17",
+            "note": "Pandemic-era survey\nLive events faced restrictions."
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 8,
+        "dy": -8,
+        "font": "DM Sans",
+        "fontSize": 12,
+        "fontWeight": "normal",
+        "lineBreak": "\n",
+        "lineHeight": 15,
+        "color": "#20243A"
+      },
+
+      "encoding": {
+        "x": {
+          "datum": 17.5,
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 30]
+          }
+        },
+
+        "y": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": [
+            "15-17",
+            "18-24",
+            "25-34",
+            "35-44",
+            "45-54",
+            "55-64",
+            "65-74",
+            "75+"
+          ]
+        },
+
+        "text": {
+          "field": "note",
+          "type": "nominal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "age_group": "75+",
+            "note": "The survey shows attendance differences,\nnot their causes."
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 8,
+        "dy": -10,
+        "font": "DM Sans",
+        "fontSize": 12,
+        "fontWeight": "normal",
+        "lineBreak": "\n",
+        "lineHeight": 15,
+        "color": "#20243A"
+      },
+
+      "encoding": {
+        "x": {
+          "datum": 12.2,
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 30]
+          }
+        },
+
+        "y": {
+          "field": "age_group",
+          "type": "ordinal",
+          "sort": [
+            "15-17",
+            "18-24",
+            "25-34",
+            "35-44",
+            "45-54",
+            "55-64",
+            "65-74",
+            "75+"
+          ]
+        },
+
+        "text": {
+          "field": "note",
+          "type": "nominal"
+        }
+      }
     }
   ],
 
   "config": {
     "view": {
+      "fill": "#F7F3EB",
       "stroke": null
     }
   }

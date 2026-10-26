@@ -1,118 +1,282 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-  "width": 760,
-  "height": 480,
-
-  "background": "#FAF7F1",
+  "width": 650,
+  "height": 380,
+  "background": "#F7F3EB",
 
   "projection": {
     "type": "equalEarth"
   },
 
-  "data": {
-    "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/refs/heads/master/states.geojson",
-    "format": {
-      "type": "json",
-      "property": "features"
-    }
-  },
-
-  "transform": [
+  "layer": [
     {
-      "calculate": "datum.properties.STATE_NAME",
-      "as": "state_name"
-    },
+      "data": {
+        "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/refs/heads/master/states.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
 
-    {
-      "calculate": "datum.state_name == 'New South Wales' ? 'NSW' : datum.state_name == 'Australian Capital Territory' ? 'ACT' : datum.state_name",
-      "as": "join_state"
-    },
-
-    {
-      "lookup": "join_state",
-
-      "from": {
-        "data": {
-          "url": "data/clean/abs_state_attendance.csv",
-          "format": {
-            "type": "csv",
-            "parse": {
-              "attendance_rate": "number",
-              "attendees_thousands": "number"
-            }
+      "transform": [
+        {
+          "calculate": "datum.properties.STATE_NAME",
+          "as": "state_name"
+        },
+        {
+          "calculate": "datum.state_name == 'New South Wales' ? 'NSW' : datum.state_name == 'Australian Capital Territory' ? 'ACT' : datum.state_name",
+          "as": "join_state"
+        },
+        {
+          "lookup": "join_state",
+          "from": {
+            "data": {
+              "url": "data/clean/abs_state_attendance.csv",
+              "format": {
+                "type": "csv",
+                "parse": {
+                  "attendance_rate": "number",
+                  "attendees_thousands": "number"
+                }
+              }
+            },
+            "key": "state",
+            "fields": [
+              "attendance_rate",
+              "attendees_thousands"
+            ]
           }
+        }
+      ],
+
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#F7F3EB",
+        "strokeWidth": 1
+      },
+
+      "encoding": {
+        "color": {
+          "condition": {
+            "test": "isValid(datum.attendance_rate)",
+            "field": "attendance_rate",
+            "type": "quantitative",
+            "scale": {
+              "scheme": "oranges"
+            },
+            "legend": {
+              "orient": "top",
+              "direction": "horizontal",
+              "offset": 0,
+              "title": "Attendance rate (%)",
+              "titleAnchor": "middle",
+              "titleAlign": "center",
+              "titleFont": "DM Sans",
+              "titleFontSize": 13,
+              "titleFontWeight": "bold",
+              "titleColor": "#20243A",
+              "labelFont": "DM Sans",
+              "labelFontSize": 12,
+              "labelColor": "#20243A"
+            }
+          },
+          "value": "#D8D8D8"
         },
 
-        "key": "state",
-
-        "fields": [
-          "attendance_rate",
-          "attendees_thousands"
+        "tooltip": [
+          {
+            "field": "state_name",
+            "type": "nominal",
+            "title": "State or territory"
+          },
+          {
+            "field": "attendance_rate",
+            "type": "quantitative",
+            "title": "Attendance rate (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "attendees_thousands",
+            "type": "quantitative",
+            "title": "Attendees (thousands)",
+            "format": ",.1f"
+          }
         ]
+      }
+    },
+
+    {
+      "data": { "values": [{}] },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "font": "DM Sans",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#20243A",
+        "clip": false
+      },
+      "encoding": {
+        "x": { "value": -105 },
+        "y": { "value": 175 },
+        "text": { "value": "Rates, not audience totals" }
+      }
+    },
+
+    {
+      "data": { "values": [{}] },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "font": "DM Sans",
+        "fontSize": 12,
+        "fontWeight": "normal",
+        "lineBreak": "\n",
+        "lineHeight": 18,
+        "color": "#20243A",
+        "clip": false
+      },
+      "encoding": {
+        "x": { "value": -105 },
+        "y": { "value": 208 },
+        "text": {
+          "value": "A higher percentage does not\nnecessarily mean more people\nattended live music."
+        }
+      }
+    },
+
+    {
+      "data": { "values": [{}] },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "font": "DM Sans",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#20243A",
+        "clip": false
+      },
+      "encoding": {
+        "x": { "value": 540 },
+        "y": { "value": 255 },
+        "text": { "value": "2021–22 participation" }
+      }
+    },
+
+    {
+      "data": { "values": [{}] },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "font": "DM Sans",
+        "fontSize": 12,
+        "fontWeight": "normal",
+        "lineBreak": "\n",
+        "lineHeight": 18,
+        "color": "#20243A",
+        "clip": false
+      },
+      "encoding": {
+        "x": { "value": 540 },
+        "y": { "value": 285 },
+        "text": {
+          "value": "Rates compare attendance\nshares across states\nand territories."
+        }
+      }
+    },
+
+    {
+      "data": { "values": [{}] },
+      "mark": {
+        "type": "rule",
+        "stroke": "#20243A",
+        "strokeWidth": 1.2,
+        "clip": false
+      },
+      "encoding": {
+        "x": { "value": 530 },
+        "y": { "value": 118 },
+        "x2": { "value": 455 },
+        "y2": { "value": 155 }
+      }
+    },
+
+    {
+      "data": { "values": [{}] },
+      "mark": {
+        "type": "point",
+        "shape": "circle",
+        "filled": true,
+        "size": 20,
+        "color": "#20243A",
+        "clip": false
+      },
+      "encoding": {
+        "x": { "value": 455 },
+        "y": { "value": 155 }
+      }
+    },
+
+    {
+      "data": { "values": [{}] },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "font": "DM Sans",
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#20243A",
+        "clip": false
+      },
+      "encoding": {
+        "x": { "value": 540 },
+        "y": { "value": 95 },
+        "text": { "value": "Northern Territory" }
+      }
+    },
+
+    {
+      "data": { "values": [{}] },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "font": "DM Sans",
+        "fontSize": 12,
+        "fontWeight": "normal",
+        "lineBreak": "\n",
+        "lineHeight": 18,
+        "color": "#20243A",
+        "clip": false
+      },
+      "encoding": {
+        "x": { "value": 540 },
+        "y": { "value": 128 },
+        "text": {
+          "value": "At 26.6%, it records the\nhighest attendance rate\nin the country."
+        }
       }
     }
   ],
 
-  "mark": {
-    "type": "geoshape",
-    "stroke": "#FAF7F1",
-    "strokeWidth": 1
-  },
-
-  "encoding": {
-    "color": {
-      "condition": {
-        "test": "isValid(datum.attendance_rate)",
-        "field": "attendance_rate",
-        "type": "quantitative",
-
-        "scale": {
-          "scheme": "oranges"
-        },
-
-        "legend": {
-          "orient": "top",
-          "direction": "horizontal",
-          "title": "Attendance rate (%)",
-
-          "titleFont": "Arial",
-          "titleFontSize": 13,
-          "titleColor": "#20243A",
-
-          "labelFont": "Arial",
-          "labelFontSize": 12,
-          "labelColor": "#20243A"
-        }
-      },
-
-      "value": "#D8D8D8"
-    },
-
-    "tooltip": [
-      {
-        "field": "state_name",
-        "type": "nominal",
-        "title": "State or territory"
-      },
-      {
-        "field": "attendance_rate",
-        "type": "quantitative",
-        "title": "Attendance rate (%)",
-        "format": ".1f"
-      },
-      {
-        "field": "attendees_thousands",
-        "type": "quantitative",
-        "title": "Attendees (thousands)",
-        "format": ",.1f"
-      }
-    ]
-  },
-
   "config": {
     "view": {
+      "fill": "#F7F3EB",
       "stroke": null
+    },
+    "legend": {
+      "layout": {
+        "top": {
+          "anchor": "middle",
+          "center": true
+        }
+      }
     }
   }
 }

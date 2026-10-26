@@ -40,8 +40,12 @@
           "ratio": 1.35,
           "round": true,
           "size": [
-            {"signal": "width"},
-            {"signal": "height"}
+            {
+              "signal": "width"
+            },
+            {
+              "signal": "height"
+            }
           ],
           "paddingInner": 3,
           "paddingOuter": 0,
@@ -80,7 +84,7 @@
         {
           "type": "formula",
           "as": "label_to_show",
-          "expr": "datum.cell_width >= length(datum.cell_label) * 5.5 + 14 ? datum.cell_label : datum.cell_width >= length(datum.short_label) * 5.5 + 14 ? datum.short_label : ''"
+          "expr": "datum.cell_width >= length(datum.cell_label) * 6 + 12 ? datum.cell_label : datum.cell_width >= length(datum.short_label) * 6 + 12 ? datum.short_label : ''"
         },
         {
           "type": "formula",
@@ -138,9 +142,15 @@
       },
       "encode": {
         "enter": {
-          "x": {"field": "x0"},
-          "x2": {"field": "x1"},
-          "y": {"field": "y0"},
+          "x": {
+            "field": "x0"
+          },
+          "x2": {
+            "field": "x1"
+          },
+          "y": {
+            "field": "y0"
+          },
           "y2": {
             "signal": "datum.y0 + 20"
           }
@@ -156,6 +166,7 @@
         }
       }
     },
+
     {
       "type": "rect",
       "from": {
@@ -163,10 +174,18 @@
       },
       "encode": {
         "enter": {
-          "x": {"field": "x0"},
-          "x2": {"field": "x1"},
-          "y": {"field": "y0"},
-          "y2": {"field": "y1"},
+          "x": {
+            "field": "x0"
+          },
+          "x2": {
+            "field": "x1"
+          },
+          "y": {
+            "field": "y0"
+          },
+          "y2": {
+            "field": "y1"
+          },
           "stroke": {
             "value": "#F7F3EB"
           },
@@ -176,7 +195,7 @@
         },
         "update": {
           "fill": {
-            "signal": "datum.depth == 2 ? (datum.merged_subjects > 0 && datum.theme_display != 'Other' ? '#B0ABA6' : scale('cellColour', datum.theme_display)) : null"
+            "signal": "datum.depth == 2 ? (datum.merged_subjects > 0 && datum.theme_display != 'Other' ? '#C2BDB7' : scale('cellColour', datum.theme_display)) : null"
           },
           "fillOpacity": {
             "signal": "datum.depth == 2 ? 1 : 0"
@@ -192,6 +211,7 @@
         }
       }
     },
+
     {
       "type": "text",
       "from": {
@@ -209,13 +229,13 @@
             "value": "middle"
           },
           "font": {
-            "value": "Arial"
+            "value": "DM Sans"
           },
           "fontSize": {
-            "value": 10
+            "value": 13
           },
           "fontWeight": {
-            "value": "bold"
+            "value": "normal"
           },
           "fill": {
             "value": "#FFFFFF"
@@ -223,11 +243,12 @@
         },
         "update": {
           "text": {
-            "signal": "datum.depth == 1 && (datum.x1 - datum.x0) >= length(datum.theme_display) * 6 + 14 ? datum.theme_display : ''"
+            "signal": "datum.depth == 1 && (datum.x1 - datum.x0) >= length(datum.theme_display) * 7 + 14 ? datum.theme_display : ''"
           }
         }
       }
     },
+
     {
       "type": "text",
       "from": {
@@ -245,25 +266,26 @@
             "value": "top"
           },
           "font": {
-            "value": "Arial"
+            "value": "DM Sans"
           },
           "fontSize": {
-            "value": 9
+            "value": 12
           },
           "fontWeight": {
-            "value": "bold"
-          },
-          "fill": {
-            "value": "#20243A"
+            "value": "normal"
           }
         },
         "update": {
+          "fill": {
+            "value": "#20243A"
+          },
           "text": {
             "signal": "datum.show_label ? datum.label_to_show : ''"
           }
         }
       }
     },
+
     {
       "type": "text",
       "from": {
@@ -275,25 +297,25 @@
             "signal": "datum.x0 + 7"
           },
           "y": {
-            "signal": "datum.y0 + 23"
+            "signal": "datum.y0 + 25"
           },
           "baseline": {
             "value": "top"
           },
           "font": {
-            "value": "Arial"
+            "value": "DM Sans"
           },
           "fontSize": {
-            "value": 9
+            "value": 12
           },
           "fontWeight": {
             "value": "normal"
-          },
-          "fill": {
-            "value": "#20243A"
           }
         },
         "update": {
+          "fill": {
+            "value": "#20243A"
+          },
           "text": {
             "signal": "datum.show_label ? datum.record_count : ''"
           }

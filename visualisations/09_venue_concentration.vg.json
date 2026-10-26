@@ -344,7 +344,7 @@
       ],
       "mark": {
         "type": "circle",
-        "color": "#E85D43",
+        "color": "#859EAC",
         "opacity": 0.85
       },
       "encoding": {
@@ -377,8 +377,8 @@
             "labelFont": "Arial",
             "labelFontSize": 11,
             "labelColor": "#20243A",
-            "symbolFillColor": "#E85D43",
-            "symbolStrokeColor": "#A83E30",
+            "symbolFillColor": "#859EAC",
+            "symbolStrokeColor": "#859EAC",
             "symbolStrokeWidth": 1
           }
         },
@@ -387,7 +387,7 @@
             "test": "datum.cluster_rank == 1",
             "value": "#20243A"
           },
-          "value": "#A83E30"
+          "value": "#859EAC"
         },
         "strokeWidth": {
           "condition": {
@@ -491,7 +491,7 @@
         "font": "Arial",
         "fontSize": 13,
         "fontWeight": "bold",
-        "color": "#FFFFFF",
+        "color": "#20243A",
         "align": "center",
         "baseline": "middle"
       },
@@ -523,10 +523,18 @@
         "cornerRadius": 5
       },
       "encoding": {
-        "x": {"value": 9},
-        "x2": {"value": 200},
-        "y": {"value": 250},
-        "y2": {"value": 355}
+        "x": {
+          "value": 9
+        },
+        "x2": {
+          "value": 200
+        },
+        "y": {
+          "value": 250
+        },
+        "y2": {
+          "value": 355
+        }
       }
     },
 
@@ -735,10 +743,20 @@
     }
   ],
 
+
   "config": {
     "view": {
       "fill": "#C7E5F2",
       "stroke": null
+    },
+    "legend": {
+      "layout": {
+        "top": {
+          "anchor": "middle",
+          "center": true
+        }
+      }
     }
   }
+
 }

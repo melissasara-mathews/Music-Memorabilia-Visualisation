@@ -1,3510 +1,1830 @@
-
-
-/* Google Fonts: body and heading typography */
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
-
-
-
-/* Global box sizing */
-
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap");
 * {
-
-    box-sizing: border-box;
-
+  box-sizing: border-box;
 }
-
-
-
-/* Smooth page scrolling */
 
 html {
-
-    scroll-behavior: smooth;
-
+  scroll-behavior: smooth;
 }
-
-
-
-/* Page background and base typography */
 
 body {
-
-    margin: 0;
-
-    background-color: #F7F3EB;
-
-    color: #20243A;
-
-    font-family: "DM Sans", Arial, sans-serif;
-
+  margin: 0;
+  background-color: #F7F3EB;
+  color: #20243A;
+  font-family: "DM Sans", Arial, sans-serif;
 }
-
-
-
-/* Default link appearance */
 
 a {
-
-    color: inherit;
-
-    text-decoration: none;
-
+  color: inherit;
+  text-decoration: none;
 }
-
-
-
-/* Header logo typography */
 
 .logo {
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    letter-spacing: 3px;
-
-    color: #20243A;
-
-    white-space: nowrap;
-
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #20243A;
+  white-space: nowrap;
 }
-
-
-
-/* Opening section layout */
-
-.hero {
-
-    min-height: 720px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-    padding: 90px 40px 70px;
-
-}
-
-
-
-/* Opening section label */
 
 .eyebrow {
-
-    margin: 0 0 24px;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    letter-spacing: 4px;
-
-    color: #EA5E43;
-
+  margin: 0 0 24px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: #EA5E43;
 }
-
-
-
-/* Main title: serif typography and responsive size */
-
-.hero h1 {
-
-    margin: 0;
-
-    max-width: 1000px;
-
-    font-family: "Playfair Display", Georgia, serif;
-
-    font-size: clamp(70px, 9vw, 135px);
-
-    line-height: 0.9;
-
-    font-weight: 600;
-
-    color: #20243A;
-
-}
-
-
-
-/* Main title accent colour */
-
-.hero h1 span {
-
-    display: block;
-
-    color: #EA5E43;
-
-    font-style: italic;
-
-}
-
-
-
-/* Opening subtitle typography */
 
 .subtitle {
-
-    max-width: 720px;
-
-    margin: 48px auto 0;
-
-    font-size: 21px;
-
-    line-height: 1.55;
-
-    color: #6B6F7F;
-
+  color: #6B6F7F;
 }
-
-
-
-/* Story navigation layout */
 
 .story-path {
-
-    margin-top: 40px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 35px;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
 }
-
-
 
 .story-path span {
-
-    position: relative;
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    letter-spacing: 3px;
-
-    color: #20243A;
-
+  position: relative;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #20243A;
 }
-
-
-
-/* Navigation separator lines */
 
 .story-path span:not(:last-child)::after {
-
-    content: "";
-
-    display: inline-block;
-
-    width: 55px;
-
-    height: 1px;
-
-    margin-left: 35px;
-
-    margin-bottom: 4px;
-
-    background-color: #BDB8AD;
-
+  content: "";
+  display: inline-block;
+  width: 55px;
+  height: 1px;
+  margin-left: 35px;
+  margin-bottom: 4px;
+  background-color: #BDB8AD;
 }
-
-
-
-/* Research question typography */
 
 .research-question {
-
-    max-width: 690px;
-
-    margin: 85px auto 0;
-
-    padding-top: 30px;
-
-    border-top: 1px solid #CAC5BA;
-
-    font-family: "Playfair Display", Georgia, serif;
-
-    font-size: 24px;
-
-    line-height: 1.45;
-
-    font-weight: 600;
-
-    color: #20243A;
-
+  margin: 85px auto 0;
+  border-top: 1px solid #CAC5BA;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  color: #20243A;
 }
-
-
-
-/* Story section spacing */
 
 .story-section {
-
-    padding: 0 5% 100px;
-
+  padding: 0 5% 100px;
 }
-
-
-
-/* Section introduction: grid layout */
-
-.section-intro {
-
-    min-height: 480px;
-
-    display: grid;
-
-    grid-template-columns: 120px minmax(0, 850px);
-
-    gap: 40px;
-
-    align-items: center;
-
-    max-width: 1200px;
-
-    margin: 0 auto;
-
-}
-
-
-
-/* Section number: visual hierarchy */
 
 .section-number {
-
-    align-self: start;
-
-    padding-top: 105px;
-
-    font-family: "Playfair Display", Georgia, serif;
-
-    font-size: 86px;
-
-    line-height: 1;
-
-    color: #EA5E43;
-
+  align-self: start;
+  padding-top: 105px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 86px;
+  line-height: 1;
+  color: #EA5E43;
 }
-
-
-
-/* Section text container */
-
-.section-text {
-
-    max-width: 850px;
-
-}
-
-
-
-/* Section label typography */
 
 .section-label {
-
-    margin: 0 0 25px;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    letter-spacing: 4px;
-
-    color: #EA5E43;
-
+  margin: 0 0 25px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #EA5E43;
 }
-
-
-
-/* Section heading: serif typography */
 
 .section-text h2 {
-
-    margin: 0;
-
-    max-width: 850px;
-
-    font-family: "Playfair Display", Georgia, serif;
-
-    font-size: clamp(55px, 6vw, 86px);
-
-    line-height: 1.04;
-
-    font-weight: 600;
-
-    color: #20243A;
-
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  color: #20243A;
 }
-
-
-
-/* Section description typography */
 
 .section-description {
-
-    max-width: 760px;
-
-    margin: 32px 0 0;
-
-    font-size: 18px;
-
-    line-height: 1.8;
-
-    color: #6B6F7F;
-
+  color: #6B6F7F;
 }
-
-
-
-/* Section data source label */
 
 .section-source {
-
-    margin-top: 20px;
-
-    font-size: 11px;
-
-    font-weight: 600;
-
-    letter-spacing: 2px;
-
-    color: #20243A;
-
+  margin-top: 20px;
+  font-weight: 600;
+  color: #20243A;
 }
-
-
-
-/* Chart container: background, border and spacing */
 
 .chart-card {
-
-    background-color: #F7F3EB;
-
-    border: 1px solid #D1CCC0;
-
-    padding: 35px 38px;
-
-    min-width: 0;
-
+  background-color: #F7F3EB;
+  min-width: 0;
 }
-
-
-
-/* Full-width chart layout */
 
 .chart-card.full-width {
-
-    width: 100%;
-
-    max-width: 1250px;
-
-    margin: 0 auto 40px;
-
-    padding: 35px 40px;
-
-    background-color: #F7F3EB;
-
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto 40px;
+  background-color: #F7F3EB;
 }
-
-
-
-/* Chart heading alignment */
 
 .chart-heading {
-
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 22px;
-
-    margin-bottom: 25px;
-
+  display: flex;
 }
-
-
-
-/* Chart number styling */
 
 .chart-number {
-
-    padding-top: 7px;
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    color: #EA5E43;
-
+  color: #EA5E43;
 }
-
-
-
-/* Chart title: serif typography */
 
 .chart-heading h3 {
-
-    margin: 0;
-
-    max-width: 650px;
-
-    font-family: "Playfair Display", Georgia, serif;
-
-    font-size: 30px;
-
-    line-height: 1.2;
-
-    font-weight: 600;
-
-    color: #20243A;
-
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  color: #20243A;
 }
-
-
-
-/* Chart description typography */
 
 .chart-description {
-
-    margin: 0 0 25px;
-
-    font-size: 15px;
-
-    line-height: 1.7;
-
-    color: #6B6F7F;
-
+  margin: 0 0 25px;
+  color: #6B6F7F;
 }
-
-
-
-/* Chart notes and annotation text */
 
 .chart-note {
-
-    margin: 22px 0 0;
-
-    padding-top: 20px;
-
-    border-top: 1px solid #D4CFC4;
-
-    font-size: 13px;
-
-    line-height: 1.8;
-
-    color: #747783;
-
+  margin: 22px 0 0;
+  border-top: 1px solid #D4CFC4;
 }
-
-
-
-/* Shared music-theme legend */
-
-
-
-/* Legend container */
 
 .theme-key {
-
-    width: 100%;
-
-    max-width: 1250px;
-
-    margin: 0 auto 40px;
-
-    padding: 24px 28px;
-
-    border: 1px solid #D1CCC0;
-
-    border-radius: 8px;
-
-    background-color: #F7F3EB;
-
-    text-align: center;
-
+  margin: 0 auto 40px;
+  border: 1px solid #D1CCC0;
+  border-radius: 8px;
+  background-color: #F7F3EB;
+  text-align: center;
 }
-
-
-
-/* Legend title typography */
 
 .theme-key-title {
-
-    margin: 0 0 16px;
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    letter-spacing: 2px;
-
-    color: #20243A;
-
+  margin: 0 0 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #20243A;
 }
-
-
-
-/* Legend items: flexible horizontal layout */
 
 .theme-key-items {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-
-    justify-content: center;
-
+  flex-wrap: wrap;
+  justify-content: center;
 }
-
-
-
-/* Interactive legend button styling */
 
 .theme-key-items button {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 9px;
-
-    padding: 9px 14px;
-
-    border: 1px solid #D1CCC0;
-
-    border-radius: 24px;
-
-    background-color: transparent;
-
-    color: #20243A;
-
-    font-family: "DM Sans", Arial, sans-serif;
-
-    font-size: 13px;
-
-    font-weight: 500;
-
-    cursor: pointer;
-
-    transition: background-color 0.2s ease,
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 1px solid #D1CCC0;
+  border-radius: 24px;
+  background-color: transparent;
+  color: #20243A;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease,
 
                 border-color 0.2s ease;
-
 }
-
-
-
-/* Legend button hover state */
 
 .theme-key-items button:hover {
-
-    background-color: #F0EAE0;
-
-    border-color: #A8A295;
-
+  background-color: #F0EAE0;
+  border-color: #A8A295;
 }
-
-
-
-/* Selected theme button styling */
 
 .theme-key-items button.active {
-
-    background-color: #EAE4D9;
-
-    border-color: #20243A;
-
+  background-color: #EAE4D9;
+  border-color: #20243A;
 }
-
-
-
-/* Keyboard focus indicator */
 
 .theme-key-items button:focus-visible {
-
-    outline: 2px solid #20243A;
-
-    outline-offset: 3px;
-
+  outline: 2px solid #20243A;
+  outline-offset: 3px;
 }
-
-
-
-/* Legend colour circle marks */
 
 .theme-dot {
-
-    display: inline-block;
-
-    width: 12px;
-
-    height: 12px;
-
-    flex-shrink: 0;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(32, 36, 58, 0.12);
-
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(32, 36, 58, 0.12);
 }
-
-
-
-/* Legend interaction instructions */
 
 .theme-key-hint {
-
-    margin: 16px 0 0;
-
-    font-size: 12px;
-
-    line-height: 1.6;
-
-    color: #747783;
-
+  margin: 16px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #747783;
 }
-
-
-
-/* Chart layouts */
-
-
-
-/* Two-column chart grid */
 
 .two-column-layout {
-
-    max-width: 1250px;
-
-    margin: 0 auto 40px;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 24px;
-
+  max-width: 1250px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
-
-
-
-/* Vega-Lite chart alignment */
 
 .chart-card .vega-embed {
-
-    display: flex;
-
-    justify-content: center;
-
-    width: 100%;
-
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
-
-
 
 .chart-card .vega-embed > div {
-
-    margin-left: auto;
-
-    margin-right: auto;
-
+  margin-left: auto;
+  margin-right: auto;
 }
-
-
-
-/* Timeline chart container */
 
 #timeline {
-
-    width: 100%;
-
-    display: flex;
-
-    justify-content: center;
-
-    overflow: hidden;
-
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
 }
-
-
 
 #timeline .vega-embed {
-
-    width: 100%;
-
+  width: 100%;
 }
-
-
-
-/* Creator lollipop chart container */
 
 #creator-lollipop {
-
-    width: 100%;
-
-    overflow: hidden;
-
+  width: 100%;
+  overflow: hidden;
 }
-
-
 
 #creator-lollipop .vega-embed {
-
-    width: 100%;
-
-    max-width: 100%;
-
+  width: 100%;
+  max-width: 100%;
 }
-
-
-
-/* Subject composition chart alignment */
 
 #subject-composition {
-
-    width: 100%;
-
-    display: flex;
-
-    justify-content: center;
-
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
-
-
 
 #subject-composition .vega-embed {
-
-    margin-left: auto;
-
-    margin-right: auto;
-
+  margin-left: auto;
+  margin-right: auto;
 }
-
-
-
-/* Venue dot map container */
-
-
-/* Chart 07: Match the original map dimensions */
 
 #venue-dot-map {
-    position: relative;
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-    background: transparent;
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: transparent;
 }
-
-
-
-
-/* Map embedding layout */
 
 #venue-dot-map .vega-embed {
-
-    position: relative;
-
-    display: block;
-
-    width: 100%;
-
-    background: transparent !important;
-
+  position: relative;
+  display: block;
+  width: 100%;
+  background: transparent !important;
 }
-
-
 
 #venue-dot-map .vega-embed > div {
-
-    width: 100%;
-
-    margin: 0;
-
-    background: transparent !important;
-
+  width: 100%;
+  margin: 0;
+  background: transparent !important;
 }
-
-
-
-/* Transparent map rendering background */
 
 #venue-dot-map canvas,
 
 #venue-dot-map svg {
-
-    background: transparent !important;
-
+  background: transparent !important;
 }
-
-
-
-/* Vega-Lite dropdown filter position */
 
 #venue-dot-map .vega-bindings {
-
-    position: absolute;
-
-    top: 10px;
-
-    right: 0;
-
-    z-index: 10;
-
-    margin: 0;
-
-    background: transparent;
-
-    font-family: "DM Sans", sans-serif;
-
-    font-size: 13px;
-
-    color: #20243A;
-
+  position: absolute;
+  top: 10px;
+  right: 0;
+  z-index: 10;
+  margin: 0;
+  background: transparent;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  color: #20243A;
 }
-
-
-
-/* Dropdown label and control alignment */
 
 #venue-dot-map .vega-bind {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: flex-end;
-
-    gap: 10px;
-
-    margin: 0;
-
-    background: transparent;
-
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin: 0;
+  background: transparent;
 }
-
-
-
-/* Dropdown filter styling */
 
 #venue-dot-map select {
-
-    min-width: 145px;
-
-    padding: 6px 28px 6px 10px;
-
-    font-family: "DM Sans", sans-serif;
-
-    font-size: 13px;
-
-    color: #20243A;
-
-    background-color: #F7F3EB;
-
-    border: 1px solid #C8C4BB;
-
-    border-radius: 4px;
-
+  min-width: 145px;
+  padding: 6px 28px 6px 10px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  color: #20243A;
+  background-color: #F7F3EB;
+  border: 1px solid #C8C4BB;
+  border-radius: 4px;
 }
-
-
-
-/* Story transitions */
-
-
-
-/* Transition section spacing and alignment */
-
-.transition-section {
-
-    margin: 25px 0;
-
-    padding: 45px 30px;
-
-    background-color: #F7F3EB;
-
-    text-align: center;
-
-}
-
-
-
-/* Transition heading typography */
-
-.transition-section h2 {
-
-    max-width: 1050px;
-
-    margin: 0 auto;
-
-    font-family: "Playfair Display", Georgia, serif;
-
-    font-size: clamp(45px, 5vw, 70px);
-
-    line-height: 1.15;
-
-    color: #20243A;
-
-}
-
-
-
-/* Transition heading accent colour */
-
-.transition-section h2 span {
-
-    display: block;
-
-    color: #946414;
-
-    font-style: italic;
-
-}
-
-
-
-/* Conclusion */
-
-
-
-/* Conclusion section colour and spacing */
 
 .conclusion {
-
-    padding: 110px 8%;
-
-    text-align: center;
-
-    background-color: #EA5E43;
-
-    color: #F7F3EB;
-
+  text-align: center;
+  background-color: #EA5E43;
+  color: #F7F3EB;
 }
-
-
-
-/* Conclusion label colour */
 
 .conclusion .section-label {
-
-    color: #20243A;
-
+  color: #20243A;
 }
-
-
-
-/* Conclusion heading typography */
 
 .conclusion h2 {
-
-    max-width: 1150px;
-
-    margin: 25px auto 75px;
-
-    font-family: "Playfair Display", Georgia, serif;
-
-    font-size: clamp(50px, 6vw, 80px);
-
-    line-height: 1.15;
-
-    color: #F7F3EB;
-
+  font-family: "Playfair Display", Georgia, serif;
+  color: #F7F3EB;
 }
-
-
-
-/* Conclusion story path layout */
 
 .conclusion-path {
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 100px;
-
+  display: flex;
+  justify-content: center;
 }
-
-
 
 .conclusion-path div {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 10px;
-
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-
-
-
-/* Conclusion path labels */
 
 .conclusion-path span {
-
-    font-size: 11px;
-
-    font-weight: 600;
-
-    letter-spacing: 2px;
-
+  font-weight: 600;
+  letter-spacing: 2px;
 }
-
-
-
-/* Conclusion path headings */
 
 .conclusion-path strong {
-
-    font-family: "Playfair Display", Georgia, serif;
-
-    font-size: 22px;
-
+  font-family: "Playfair Display", Georgia, serif;
 }
-
-
-
-/* Footer */
-
-
-
-/* Footer grid layout and background */
 
 footer {
-
-    display: grid;
-
-    grid-template-columns: 1.5fr 1fr;
-
-    gap: 70px;
-
-    padding: 70px 6%;
-
-    background-color: #252A43;
-
-    color: #F7F3EB;
-
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  background-color: #252A43;
+  color: #F7F3EB;
 }
-
-
-
-/* Footer headings */
 
 footer h4 {
-
-    margin: 0 0 18px;
-
-    font-size: 12px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 3px;
-
-    color: #EAAE3E;
-
+  margin: 0 0 18px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #EAAE3E;
 }
-
-
-
-/* Footer paragraph typography */
 
 footer p {
-
-    margin: 8px 0;
-
-    font-size: 14px;
-
-    line-height: 1.6;
-
-    color: #D2D4DD;
-
+  margin: 8px 0;
+  color: #D2D4DD;
 }
-
-
-
-/* Data source link styling */
 
 .sources a {
-
-    color: #6FA8DC;
-
-    text-decoration: underline;
-
-    text-underline-offset: 3px;
-
+  color: #6FA8DC;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
-
-
 
 .sources a:visited {
-
-    color: #6FA8DC;
-
+  color: #6FA8DC;
 }
-
-
 
 .sources a:hover {
-
-    color: #9AC6EC;
-
+  color: #9AC6EC;
 }
-
-
-
-/* Responsive layout */
-
-
-
-/* Tablet layout adjustments */
 
 @media (max-width: 1000px) {
-
-
-
-    .hero {
-
-        min-height: auto;
-
-        padding: 100px 25px;
-
-    }
-
-
-
-    .section-intro {
-
-        grid-template-columns: 1fr;
-
-        gap: 15px;
-
-        min-height: auto;
-
-        padding: 80px 0;
-
-    }
-
-
-
-    .section-number {
-
-        padding: 0;
-
-        font-size: 60px;
-
-    }
-
-
-
-    /* Single-column chart layout */
-
-    .two-column-layout {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-
-    .conclusion-path {
-
-        flex-direction: column;
-
-        gap: 35px;
-
-    }
-
-
-
-    footer {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-
-    /* Responsive map dropdown position */
-
-    #venue-dot-map .vega-bindings {
-
-        position: static;
-
-        display: flex;
-
-        justify-content: flex-end;
-
-        margin-bottom: 12px;
-
-    }
-
+  .hero {
+    min-height: auto;
+  }
+  .section-intro {
+    min-height: auto;
+  }
+  .section-number {
+    padding: 0;
+    font-size: 60px;
+  }
+  .two-column-layout {
+    grid-template-columns: 1fr;
+  }
+  .conclusion-path {
+    flex-direction: column;
+    gap: 35px;
+  }
+  footer {
+    grid-template-columns: 1fr;
+  }
+  #venue-dot-map .vega-bindings {
+    position: static;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+  }
 }
 
-
-
-/* Mobile layout adjustments */
-
 @media (max-width: 600px) {
-
-
-
-    .chart-card,
+  .chart-card,
 
     .chart-card.full-width {
-
-        padding: 24px 18px;
-
-    }
-
-
-
-    .chart-heading h3 {
-
-        font-size: 25px;
-
-    }
-
-
-
-    .theme-key {
-
-        padding: 20px 18px;
-
-    }
-
-
-
-    .theme-key-items {
-
-        gap: 8px;
-
-    }
-
-
-
-    .theme-key-items button {
-
-        font-size: 12px;
-
-        padding: 8px 11px;
-
-    }
-
-
-
-    .story-path {
-
-        gap: 15px;
-
-    }
-
-
-
-    .story-path span:not(:last-child)::after {
-
-        width: 18px;
-
-        margin-left: 15px;
-
-    }
-
+    padding: 24px 18px;
+  }
+  .story-path {
+    gap: 15px;
+  }
+  .story-path span:not(:last-child)::after {
+    width: 18px;
+    margin-left: 15px;
+  }
 }
-
-
-
-/* Venue map controls */
-
-
-
-/* Map filter and legend layout */
 
 .venue-map-controls {
-
-    display: flex;
-
-    align-items: flex-end;
-
-    justify-content: space-between;
-
-    gap: 24px;
-
-    margin: 0;
-
-    padding: 0 0 8px;
-
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0;
+  padding: 0 0 8px;
 }
-
-
-
-/* Map filter label and dropdown layout */
 
 .venue-map-filter {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 6px;
-
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
-
-
 
 .venue-map-filter label {
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    color: #20243A;
-
+  font-size: 13px;
+  font-weight: 600;
+  color: #20243A;
 }
-
-
-
-/* Venue type dropdown styling */
 
 .venue-map-filter select {
-
-    min-width: 220px;
-
-    padding: 9px 12px;
-
-    border: 1px solid #C8C4BB;
-
-    border-radius: 4px;
-
-    background: #F7F3EB;
-
-    color: #20243A;
-
-    font-family: "DM Sans", Arial, sans-serif;
-
-    font-size: 13px;
-
+  min-width: 220px;
+  padding: 9px 12px;
+  border: 1px solid #C8C4BB;
+  border-radius: 4px;
+  background: #F7F3EB;
+  color: #20243A;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 13px;
 }
-
-
-
-/* Venue map legend alignment */
 
 .venue-map-legend {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: flex-end;
-
-    gap: 20px;
-
-    padding-bottom: 10px;
-
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  padding-bottom: 10px;
 }
-
-
-
-/* Venue legend item layout */
 
 .venue-legend-item {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    font-size: 13px;
-
-    color: #20243A;
-
-    white-space: nowrap;
-
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #20243A;
+  white-space: nowrap;
 }
-
-
-
-/* Venue legend circle marks */
 
 .venue-legend-dot {
-
-    width: 12px;
-
-    height: 12px;
-
-    border-radius: 50%;
-
-    flex-shrink: 0;
-
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
-
-
-
-/* Selected venue legend colour */
 
 .venue-legend-dot.selected {
-
-    background-color: #2455A4;
-
+  background-color: #2455A4;
 }
-
-
-
-/* Other venue legend colour */
 
 .venue-legend-dot.other {
-
-    background-color: #D7EF57;
-
-    border: 1px solid #53614A;
-
+  background-color: #D7EF57;
+  border: 1px solid #53614A;
 }
-
-
-
-/* Venue map top spacing */
 
 #venue-dot-map {
-
-    margin-top: 0;
-
+  margin-top: 0;
 }
-
-
-
-/* Mobile venue map controls */
 
 @media (max-width: 600px) {
-
-
-
-    .venue-map-controls {
-
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 14px;
-
-    }
-
-
-
-    .venue-map-legend {
-
-        justify-content: flex-start;
-
-        padding-bottom: 0;
-
-    }
-
+  .venue-map-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .venue-map-legend {
+    justify-content: flex-start;
+    padding-bottom: 0;
+  }
 }
-
-
-
-
-
-/* ==================================================
-
-    VISUAL BALANCE IMPROVEMENTS*
-
-    Layout only — original content and charts preserved*
-
-    ================================================== */
-
-
-
-
-
-/* 1. Balance the interpretation beneath full-width charts */
-
-
 
 .chart-note.note-columns {
-
-    display: grid;
-
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-
-    column-gap: clamp(32px, 5vw, 90px);
-
-    align-items: start;
-
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
 }
-
-
 
 .chart-note.note-columns p {
-
-    margin: 0;
-
-    min-width: 0;
-
+  margin: 0;
+  min-width: 0;
 }
-
-
-
-
-
-/* 2. Make paired chart cards equal in height */
-
-
 
 .two-column-layout {
-
-    align-items: stretch;
-
+  align-items: stretch;
 }
-
-
 
 .two-column-layout .chart-card {
-
-    display: flex;
-
-    flex-direction: column;
-
-    height: 100%;
-
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
-
-
-
-
-
-/* 3. Align paired-chart annotations near the bottom */
-
-
 
 .two-column-layout .chart-card > .chart-note {
-
-    margin-top: auto;
-
+  margin-top: auto;
 }
-
-
-
-
-
-/* 4. Balance section introductions horizontally */
-
-
 
 .section-intro {
-
-    max-width: 1100px;
-
-    grid-template-columns: 110px minmax(0, 850px);
-
-    justify-content: center;
-
-    column-gap: 40px;
-
+  grid-template-columns: 110px minmax(0, 850px);
+  column-gap: 40px;
 }
-
-
-
-
-
-/* 5. Preserve comfortable reading widths on smaller screens */
-
-
 
 @media (max-width: 1000px) {
-
-    .section-intro {
-
-        grid-template-columns: 1fr;
-
-        justify-content: stretch;
-
-        gap: 15px;
-
-    }
-
+  .section-intro {
+    grid-template-columns: 1fr;
+    justify-content: stretch;
+    gap: 15px;
+  }
 }
-
-
 
 @media (max-width: 700px) {
-
-    .chart-note.note-columns {
-
-        grid-template-columns: 1fr;
-
-        row-gap: 12px;
-
-    }
-
+  .chart-note.note-columns {
+    grid-template-columns: 1fr;
+    row-gap: 12px;
+  }
 }
-
-
-
-
-
-/* ==========================================================
-
-    COMPACT CENTRED SECTION INTRODUCTIONS (SECTIONS 01–05)*
-
-    Matches the updated section-kicker HTML structure.*
-
-    Keeps existing font families, colours and text unchanged.*
-
-    ========================================================== */
-
-
-
-.story-section {
-
-    padding-bottom: 56px;
-
-}
-
-
 
 .section-intro {
-
-    min-height: 0;
-
-    max-width: 1100px;
-
-    margin: 0 auto 34px;
-
-    padding: 64px 16px 24px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 0;
-
-    text-align: center;
-
+  max-width: 1100px;
+  margin: 0 auto 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  text-align: center;
 }
-
-
 
 .section-text {
-
-    width: 100%;
-
-    max-width: 1050px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
+  width: 100%;
+  max-width: 1050px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-
 
 .section-kicker {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    column-gap: 18px;
-
-    row-gap: 8px;
-
-    margin-bottom: 20px;
-
+  column-gap: 18px;
+  row-gap: 8px;
+  margin-bottom: 20px;
 }
-
-
 
 .section-kicker .section-number {
-
-    align-self: auto;
-
-    margin: 0;
-
-    padding: 0;
-
-    font-size: 44px;
-
-    line-height: 1;
-
+  align-self: auto;
+  margin: 0;
+  padding: 0;
+  font-size: 44px;
+  line-height: 1;
 }
-
-
 
 .section-kicker .section-label {
-
-    margin: 0;
-
+  margin: 0;
 }
-
-
 
 .section-text h2 {
-
-    max-width: 1000px;
-
-    font-size: clamp(48px, 5.2vw, 78px);
-
-    line-height: 1.08;
-
-    text-align: center;
-
+  max-width: 1000px;
+  font-size: clamp(48px, 5.2vw, 78px);
+  line-height: 1.08;
+  text-align: center;
 }
-
-
 
 .section-description {
-
-    max-width: 700px;
-
-    margin: 24px auto 0;
-
-    text-align: center;
-
+  text-align: center;
 }
-
-
 
 .section-source {
-
-    margin: 20px auto 0;
-
-    text-align: center;
-
+  text-align: center;
 }
-
-
-
-.transition-section {
-
-    margin: 0;
-
-    padding: 38px 30px;
-
-}
-
-
 
 @media (max-width: 1000px) {
-
-    .section-intro {
-
-        padding: 54px 16px 22px;
-
-        margin-bottom: 28px;
-
-    }
-
+  .section-intro {
+    margin-bottom: 28px;
+  }
 }
-
-
 
 @media (max-width: 600px) {
-
-    .story-section {
-
-        padding-bottom: 44px;
-
-    }
-
-
-
-    .section-intro {
-
-        padding: 42px 10px 20px;
-
-        margin-bottom: 24px;
-
-    }
-
-
-
-    .section-kicker {
-
-        column-gap: 12px;
-
-        margin-bottom: 16px;
-
-    }
-
-
-
-    .section-kicker .section-number {
-
-        font-size: 36px;
-
-    }
-
-
-
-    .section-text h2 {
-
-        font-size: clamp(38px, 9vw, 58px);
-
-    }
-
-
-
-    .section-description {
-
-        font-size: 16px;
-
-        margin-top: 20px;
-
-    }
-
-
-
-    .transition-section {
-
-        padding: 32px 20px;
-
-    }
-
+  .story-section {
+    padding-bottom: 44px;
+  }
+  .section-kicker {
+    column-gap: 12px;
+    margin-bottom: 16px;
+  }
+  .section-kicker .section-number {
+    font-size: 36px;
+  }
+  .section-text h2 {
+    font-size: clamp(38px, 9vw, 58px);
+  }
+  .section-description {
+    margin-top: 20px;
+  }
 }
-
-
 
 .section-kicker {
-
-    margin: 0 0 20px 0;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 10px 14px;
-
+  margin: 0 0 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
 }
-
-
 
 .section-number-inline,
 
 .section-label {
-
-    font-family: "DM Sans", sans-serif;
-
-    font-size: 18px;
-
-    font-weight: 500;
-
-    line-height: 1;
-
-    text-transform: uppercase;
-
-    color: #F05A3A;
-
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #F05A3A;
 }
-
-
 
 .section-number-inline {
-
-    letter-spacing: 0.08em;
-
+  letter-spacing: 0.08em;
 }
-
-
 
 .section-label {
-
-    letter-spacing: 0.32em;
-
+  letter-spacing: 0.32em;
 }
-
-
-
-
-
-/* FINAL FIX: SECTION NUMBER AND LABEL ALIGNMENT */
-
-
 
 .section-intro .section-kicker {
-
-    display: flex;
-
-    flex-direction: row;
-
-    align-items: center;
-
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 14px;
-
-    margin: 0 0 22px;
-
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 0 22px;
 }
-
-
 
 .section-intro .section-kicker .section-number-inline {
-
-    font-family: "DM Sans", Arial, sans-serif;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    line-height: 1.4;
-
-    letter-spacing: 2px;
-
-    color: #EA5E43;
-
-    margin: 0;
-
-    padding: 0;
-
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 2px;
+  color: #EA5E43;
+  margin: 0;
+  padding: 0;
 }
-
-
 
 .section-intro .section-kicker .section-label {
-
-    font-family: "DM Sans", Arial, sans-serif;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    line-height: 1.4;
-
-    letter-spacing: 4px;
-
-    color: #EA5E43;
-
-    margin: 0;
-
-    padding: 0;
-
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 4px;
+  color: #EA5E43;
+  margin: 0;
+  padding: 0;
 }
-
-
 
 @media (max-width: 600px) {
-
-    .section-intro .section-kicker {
-
-        gap: 10px;
-
-    }
-
-
-
-    .section-intro .section-kicker .section-number-inline,
+  .section-intro .section-kicker {
+    gap: 10px;
+  }
+  .section-intro .section-kicker .section-number-inline,
 
     .section-intro .section-kicker .section-label {
-
-        font-size: 11px;
-
-    }
-
+    font-size: 11px;
+  }
 }
-
-
-
-
-
-/* Match section numbers to their uppercase labels */
-
-
 
 .section-intro .section-kicker .section-number,
 
 .section-intro .section-kicker .section-number-inline,
 
 .section-intro .section-kicker .section-label {
-
-    font-family: "DM Sans", Arial, sans-serif;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    line-height: 1.4;
-
-    letter-spacing: 4px;
-
-    color: #EA5E43;
-
-    margin: 0;
-
-    padding: 0;
-
-    align-self: center;
-
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 4px;
+  color: #EA5E43;
+  margin: 0;
+  padding: 0;
+  align-self: center;
 }
-
-
 
 .section-intro .section-kicker {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 14px;
-
-    margin-bottom: 22px;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
 }
-
-
-
-
-
-/* Reduce whitespace between the hero and Section 01 */
-
-
 
 .hero {
-
-    min-height: 0;
-
-    padding-bottom: 30px;
-
+  padding-bottom: 30px;
 }
-
-
 
 .research-question {
-
-    margin-bottom: 0;
-
+  margin-bottom: 0;
 }
-
-
 
 #section-1 .section-intro {
-
-    padding-top: 24px;
-
+  padding-top: 24px;
 }
-
-
-
-/* Tighter spacing on smaller screens */
-
-
 
 @media (max-width: 600px) {
-
-    .hero {
-
-        padding-bottom: 20px;
-
-    }
-
-
-
-    #section-1 .section-intro {
-
-        padding-top: 16px;
-
-    }
-
+  .hero {
+    padding-bottom: 20px;
+  }
+  #section-1 .section-intro {
+    padding-top: 16px;
+  }
 }
 
-
-/* =========================================================
-   SHARED THEME KEY: STICKY ONLY THROUGH ARCHIVE SECTIONS 01–02
-   The theme-key is a direct child of .theme-sections.
-   ========================================================= */
 .theme-sections {
-    /* Keep overflow visible so sticky can use the page scroll. */
-    overflow: visible;
+  overflow: visible;
 }
 
-/* Section 01's existing introduction precedes the shared key. */
 .theme-sections > #section-1 {
-    padding-bottom: 0;
+  padding-bottom: 0;
 }
 
 .theme-sections > #section-1 .section-intro {
-    margin-bottom: 22px;
+  margin-bottom: 22px;
 }
 
 .theme-sections > .theme-key {
-    position: sticky;
-    top: 0;
-    z-index: 30;
-    width: calc(100% - 10%);
-    max-width: 1250px;
-    padding: 10px 16px 9px;
-    margin: 0 auto 25px;
-    border: 1px solid #D1CCC0;
-    border-radius: 4px;
-    background-color: #F7F3EB;
-    box-shadow: 0 3px 10px rgba(32, 36, 58, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  width: calc(100% - 10%);
+  max-width: 1250px;
+  padding: 10px 16px 9px;
+  margin: 0 auto 25px;
 }
 
 .theme-sections .theme-key-title {
-    margin-bottom: 7px;
-    font-size: 11px;
+  margin-bottom: 7px;
 }
 
 .theme-sections .theme-key-items {
-    gap: 6px 9px;
+  gap: 6px 9px;
 }
 
 .theme-sections .theme-key-items button {
-    padding: 6px 10px;
-    font-size: 12px;
+  padding: 6px 10px;
 }
 
 .theme-sections .theme-key-hint {
-    margin-top: 6px;
-    font-size: 11px;
-    line-height: 1.3;
+  margin-top: 6px;
+  line-height: 1.3;
 }
 
-/* Extra balance: paired chart notes align without changing chart data. */
 .two-column-layout > .chart-card {
-    min-width: 0;
+  min-width: 0;
 }
 
-/* Mobile: a single, horizontally scrollable row limits sticky height. */
 @media (max-width: 700px) {
-    .theme-sections > .theme-key {
-        width: calc(100% - 10%);
-        padding: 8px 10px;
-    }
-    .theme-sections .theme-key-items {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        justify-content: flex-start;
-        padding-bottom: 3px;
-        -webkit-overflow-scrolling: touch;
-    }
-    .theme-sections .theme-key-items button {
-        flex: 0 0 auto;
-        white-space: nowrap;
-    }
-    .theme-sections .theme-key-title {
-        margin-bottom: 5px;
-    }
-    .theme-sections .theme-key-hint {
-        margin-top: 4px;
-    }
+  .theme-sections > .theme-key {
+    width: calc(100% - 10%);
+    padding: 8px 10px;
+  }
+  .theme-sections .theme-key-items {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 3px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .theme-sections .theme-key-items button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+  .theme-sections .theme-key-title {
+    margin-bottom: 5px;
+  }
+  .theme-sections .theme-key-hint {
+    margin-top: 4px;
+  }
 }
-
-
-/* Spread the shared music-theme buttons evenly */
 
 .theme-key {
-    width: 100%;
-    max-width: 1250px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px 24px;
+  width: 100%;
+  max-width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 24px;
 }
 
 .theme-key-items {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 12px;
-    width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
 }
 
 .theme-key-items button {
-    width: 100%;
-    min-width: 0;
-    padding: 10px 8px;
-    white-space: nowrap;
-    font-size: 12px;
+  width: 100%;
+  min-width: 0;
+  padding: 10px 8px;
+  white-space: nowrap;
+  font-size: 12px;
 }
 
-/* Tablet: three buttons per row */
 @media (max-width: 1100px) {
-    .theme-key-items {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
+  .theme-key-items {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
-/* Mobile: two buttons per row */
 @media (max-width: 600px) {
-    .theme-key {
-        padding: 16px 12px;
-    }
-
-    .theme-key-items {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-    }
-
-    .theme-key-items button {
-        white-space: normal;
-        font-size: 11px;
-        padding: 9px 6px;
-    }
+  .theme-key {
+    padding: 16px 12px;
+  }
+  .theme-key-items {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .theme-key-items button {
+    white-space: normal;
+    font-size: 11px;
+    padding: 9px 6px;
+  }
 }
-
-
-/* Chart 07: align filter, legend and map edges */
 
 #section-3 .venue-map-controls {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-    box-sizing: border-box;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 #section-3 #venue-dot-map {
-    width: 100%;
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #section-3 .venue-map-filter {
-    align-items: flex-start;
+  align-items: flex-start;
 }
 
 #section-3 .venue-map-legend {
-    justify-content: flex-end;
+  justify-content: flex-end;
 }
 
-
-/* Chart 01 — compact data coverage indicator */
-
 .timeline-coverage {
-    margin-top: 14px;
-    padding: 15px 18px 13px;
-    background: #F7F3EB;
-    border-radius: 12px;
-    color: #20243A;
+  margin-top: 14px;
+  padding: 15px 18px 13px;
+  background: #F7F3EB;
+  border-radius: 12px;
+  color: #20243A;
 }
 
 .timeline-coverage-top {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
 }
 
 .timeline-coverage-number {
-    flex-shrink: 0;
-    font-family: "DM Sans", Arial, sans-serif;
-    font-size: 28px;
-    line-height: 1.1;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    color: #20243A;
-    white-space: nowrap;
+  flex-shrink: 0;
+  font-family: "DM Sans", Arial, sans-serif;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #20243A;
+  white-space: nowrap;
 }
 
 .timeline-coverage-number span {
-    color: #20243A;
-    font-weight: 500;
+  color: #20243A;
+  font-weight: 500;
 }
 
 .timeline-coverage-copy {
-    min-width: 0;
+  min-width: 0;
 }
 
 .timeline-coverage-copy strong {
-    display: block;
-    font-family: "DM Sans", Arial, sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1.35;
-    color: #20243A;
+  display: block;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #20243A;
 }
 
 .timeline-coverage-copy p {
-    margin: 4px 0 0;
-    font-family: "DM Sans", Arial, sans-serif;
-    font-size: 12px;
-    line-height: 1.4;
-    color: #59645F;
+  margin: 4px 0 0;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #59645F;
 }
 
 .timeline-coverage-track {
-    width: 100%;
-    height: 8px;
-    overflow: hidden;
-    border-radius: 999px;
-    background: #DFDBD2;
+  width: 100%;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #DFDBD2;
 }
 
 .timeline-coverage-fill {
-    width: 28.7356%;
-    height: 100%;
-    border-radius: inherit;
-    background: #EA5E43;
+  width: 28.7356%;
+  height: 100%;
+  border-radius: inherit;
+  background: #EA5E43;
 }
 
 .timeline-coverage-note {
-    margin: 10px 0 0;
-    font-family: "DM Sans", Arial, sans-serif;
-    font-size: 12px;
-    line-height: 1.4;
-    color: #59645F;
+  margin: 10px 0 0;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #59645F;
 }
 
 @media (max-width: 600px) {
-    .timeline-coverage {
-        padding: 13px 15px;
-    }
+  .timeline-coverage {
+    padding: 13px 15px;
+  }
+  .timeline-coverage-top {
+    gap: 12px;
+  }
+  .timeline-coverage-number {
+    font-size: 26px;
+  }
+  .timeline-coverage-copy strong {
+    font-size: 13px;
+  }
+  .timeline-coverage-copy p,
 
-    .timeline-coverage-top {
-        gap: 12px;
-    }
-
-    .timeline-coverage-number {
-        font-size: 26px;
-    }
-
-    .timeline-coverage-copy strong {
-        font-size: 13px;
-    }
-
-    .timeline-coverage-copy p,
     .timeline-coverage-note {
-        font-size: 11px;
-    }
-}
-
-
-/* Reduce excessive vertical whitespace */
-
-.story-section {
-    padding-bottom: 36px;
-}
-
-.section-intro {
-    margin-bottom: 24px;
-    padding: 44px 16px 18px;
-}
-
-.transition-section {
-    padding: 28px 30px;
-}
-
-.chart-card {
-    padding: 28px 30px;
-}
-
-.chart-card.full-width {
-    padding: 28px 30px;
+    font-size: 11px;
+  }
 }
 
 @media (max-width: 768px) {
-    .section-intro {
-        padding: 36px 12px 16px;
-    }
+  .section-intro {
+    padding: 36px 12px 16px;
+  }
+  .chart-card,
 
-    .chart-card,
     .chart-card.full-width {
-        padding: 22px 18px;
-    }
+    padding: 22px 18px;
+  }
 }
 
-
-/* =========================================
-   EDITORIAL VISUAL HIERARCHY
-   Hero > Section > Chart > Transition
-   ========================================= */
-
-/* Main section headings: primary focus */
 .section-intro .section-text h2 {
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(48px, 4.5vw, 64px);
-    font-weight: 600;
-    line-height: 1.12;
-    color: #20243A;
-    text-align: center;
+  font-family: "Playfair Display", Georgia, serif;
+  color: #20243A;
+  text-align: center;
 }
 
-/* Transitions: supporting narrative, not headings */
 .transition-section {
-    margin: 0;
-    padding: 24px 24px 8px;
-    background-color: #F7F3EB;
-    text-align: center;
+  background-color: #F7F3EB;
 }
 
-/* Both lines share the same smaller scale */
 .transition-section h2 {
-    max-width: 850px;
-    margin: 0 auto;
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(24px, 2.2vw, 30px);
-    font-weight: 600;
-    line-height: 1.4;
-    color: #20243A;
+  font-family: "Playfair Display", Georgia, serif;
+  color: #20243A;
 }
 
-/* Second line keeps the existing gold emphasis */
 .transition-section h2 span {
-    display: block;
-    color: #946414;
-    font-style: italic;
+  display: block;
 }
 
-/* Bring the next section closer to the transition */
-.transition-section + .story-section .section-intro {
-    padding-top: 30px;
-}
-
-/* Preserve the hierarchy on tablets and phones */
 @media (max-width: 768px) {
-    .section-intro .section-text h2 {
-        font-size: clamp(36px, 7vw, 48px);
-    }
-
-    .transition-section {
-        padding: 20px 18px 6px;
-    }
-
-    .transition-section h2 {
-        font-size: clamp(21px, 4.5vw, 26px);
-    }
-
-    .transition-section + .story-section .section-intro {
-        padding-top: 24px;
-    }
+  .section-intro .section-text h2 {
+    font-size: clamp(36px, 7vw, 48px);
+  }
+  .transition-section h2 {
+    font-size: clamp(21px, 4.5vw, 26px);
+  }
 }
 
-
-/* =========================================
-   TRANSITIONS: CLOSER TO PREVIOUS CHART
-   ========================================= */
-
-/* Reduce the gap after Chart 06 and Chart 09 */
 #section-2,
+
 #section-3 {
-    padding-bottom: 12px;
+  padding-bottom: 12px;
 }
 
-/* Transition belongs to the preceding section */
 .transition-section {
-    margin: 0;
-    padding: 14px 24px 34px;
-    text-align: center;
+  text-align: center;
 }
 
-/* Keep the new, smaller transition typography */
 .transition-section h2 {
-    max-width: 850px;
-    margin: 0 auto;
-    font-size: clamp(24px, 2.2vw, 30px);
-    line-height: 1.4;
+  margin: 0 auto;
 }
 
-/* Subtle divider BELOW the transition */
 .transition-section::after {
-    content: "";
-    display: block;
-    width: 100%;
-    max-width: 850px;
-    height: 1px;
-    margin: 30px auto 0;
-    background-color: #D1CCC0;
+  content: "";
+  display: block;
+  width: 100%;
+  max-width: 850px;
+  height: 1px;
+  margin: 30px auto 0;
+  background-color: #D1CCC0;
 }
 
-/* Give the new section a little breathing room */
-.transition-section + .story-section .section-intro {
-    padding-top: 34px;
-}
-
-/* Mobile adjustments */
 @media (max-width: 768px) {
-    .transition-section {
-        padding: 12px 18px 26px;
-    }
-
-    .transition-section::after {
-        margin-top: 24px;
-    }
-
-    .transition-section + .story-section .section-intro {
-        padding-top: 26px;
-    }
+  .transition-section {
+    padding: 12px 18px 26px;
+  }
+  .transition-section::after {
+    margin-top: 24px;
+  }
 }
 
-/* Bring Chart 06 and its transition closer together */
-
-/* Remove the unused space below Chart 06 */
-#section-2 > .chart-card.full-width {
-    margin-bottom: 0;
-}
-
-/* Reduce spacing after the archive section */
-#section-2 {
-    padding-bottom: 0;
-}
-
-/* Keep the transition close to Chart 06 */
 #section-2 + .transition-section {
-    padding-top: 18px;
-    margin-top: 0;
+  padding-top: 18px;
+  margin-top: 0;
 }
 
-
-/* Final spacing adjustment for both transitions */
-
-/* Slightly more space above the transition text */
 .transition-section {
-    padding-top: 24px;
+  padding-top: 24px;
 }
 
-/* Reduce the gap between divider and next section */
-.transition-section + .story-section .section-intro {
-    padding-top: 14px;
-}
-
-/* Mobile spacing */
 @media (max-width: 768px) {
-    .transition-section {
-        padding-top: 20px;
-    }
-
-    .transition-section + .story-section .section-intro {
-        padding-top: 12px;
-    }
-}
-
-
-/* =========================================
-   HERO SIZE AND SPACING REFINEMENT
-   ========================================= */
-
-.hero {
-    padding: 70px 30px 42px;
-}
-
-.hero h1 {
-    max-width: 1050px;
-    font-size: clamp(58px, 6.5vw, 96px);
-    line-height: 1.02;
-}
-
-.eyebrow {
-    font-size: 12px;
-    margin-bottom: 20px;
+  .transition-section {
+    padding-top: 20px;
+  }
+  .transition-section + .story-section .section-intro {
+    padding-top: 12px;
+  }
 }
 
 .subtitle {
-    max-width: 650px;
-    margin-top: 32px;
-    font-size: 18px;
-    line-height: 1.55;
-}
-
-.story-path {
-    margin-top: 32px;
-}
-
-.research-question {
-    max-width: 650px;
-    margin-top: 55px;
-    padding-top: 24px;
-    font-size: 21px;
-    line-height: 1.45;
-}
-
-/* Mobile adjustments */
-@media (max-width: 600px) {
-    .hero {
-        padding: 65px 18px 32px;
-    }
-
-    .hero h1 {
-        font-size: clamp(43px, 9vw, 60px);
-    }
-
-    .subtitle {
-        font-size: 16px;
-        margin-top: 26px;
-    }
-
-    .research-question {
-        margin-top: 40px;
-        font-size: 19px;
-    }
-}
-
-
-/* =========================================
-   SITE-WIDE SIZING AND VISUAL HIERARCHY
-   Echoes of Australian Music
-
-   Changes typography, spacing and containers.
-   Preserves colours, chart data and interactions.
-   ========================================= */
-
-
-/* 1. HERO — prominent without overwhelming */
-
-.hero {
-    min-height: 0;
-    padding: 64px 28px 30px;
-}
-
-.hero h1 {
-    max-width: 1050px;
-    font-size: clamp(60px, 6.5vw, 96px);
-    line-height: 1.04;
-    font-weight: 600;
+  margin-top: 32px;
 }
 
 .eyebrow {
-    margin-bottom: 20px;
-    font-size: 12px;
-    line-height: 1.5;
+  margin-bottom: 20px;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .subtitle {
-    max-width: 680px;
-    margin: 30px auto 0;
-    font-size: 18px;
-    line-height: 1.6;
+  max-width: 680px;
+  margin: 30px auto 0;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 .story-path {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .story-path span {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .research-question {
-    max-width: 650px;
-    margin-top: 52px;
-    padding-top: 22px;
-    font-size: 21px;
-    line-height: 1.45;
+  max-width: 650px;
+  margin-top: 52px;
+  padding-top: 22px;
+  font-size: 21px;
+  line-height: 1.45;
 }
 
-
-/* 2. SECTION INTRODUCTIONS — clear primary headings */
-
 .section-intro {
-    min-height: 0;
-    margin-bottom: 22px;
-    padding: 40px 16px 18px;
+  min-height: 0;
+  margin-bottom: 22px;
+  padding: 40px 16px 18px;
 }
 
 .section-intro .section-kicker {
-    margin-bottom: 16px;
-}
-
-.section-intro .section-kicker .section-number,
-.section-intro .section-kicker .section-number-inline,
-.section-intro .section-kicker .section-label {
-    font-size: 12px;
-    letter-spacing: 3px;
-    line-height: 1.5;
+  margin-bottom: 16px;
 }
 
 .section-intro .section-text h2 {
-    max-width: 960px;
-    font-size: clamp(40px, 4.2vw, 54px);
-    line-height: 1.13;
-    font-weight: 600;
+  max-width: 960px;
+  font-size: clamp(40px, 4.2vw, 54px);
+  line-height: 1.13;
+  font-weight: 600;
 }
 
 .section-description {
-    max-width: 690px;
-    margin: 18px auto 0;
-    font-size: 17px;
-    line-height: 1.6;
+  max-width: 690px;
+  margin: 18px auto 0;
 }
 
 .section-source {
-    margin: 16px auto 0;
-    font-size: 12px;
-    line-height: 1.5;
-    letter-spacing: 1.6px;
-}
-
-
-/* 3. CHART CARDS — tighter and better balanced */
-
-.chart-card {
-    padding: 26px 28px;
+  margin: 16px auto 0;
+  line-height: 1.5;
 }
 
 .chart-card.full-width {
-    padding: 26px 28px;
-    margin-bottom: 28px;
+  padding: 26px 28px;
+  margin-bottom: 28px;
 }
 
 .two-column-layout {
-    gap: 22px;
-    margin-bottom: 28px;
+  gap: 22px;
+  margin-bottom: 28px;
 }
 
-
-/* 4. CHART HEADINGS — subordinate to section titles */
-
 .chart-heading {
-    gap: 14px;
-    margin-bottom: 20px;
-    align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+  align-items: flex-start;
 }
 
 .chart-heading h3 {
-    max-width: 100%;
-    font-size: clamp(23px, 2vw, 27px);
-    line-height: 1.25;
-    font-weight: 600;
+  max-width: 100%;
+  font-size: clamp(23px, 2vw, 27px);
+  line-height: 1.25;
+  font-weight: 600;
 }
 
 .chart-number {
-    padding-top: 5px;
-    font-size: 13px;
-    flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 .chart-description {
-    margin-bottom: 18px;
-    font-size: 16px;
-    line-height: 1.6;
+  margin-bottom: 18px;
 }
 
-
-/* 5. CHART NOTES — previously too small */
-
 .chart-note {
-    padding-top: 14px;
-    font-size: 15px;
-    line-height: 1.65;
-    color: #59645F;
+  padding-top: 14px;
+  color: #59645F;
 }
 
 .chart-note.note-columns {
-    column-gap: 36px;
+  column-gap: 36px;
 }
 
 .chart-note.note-columns p {
-    font-size: inherit;
-    line-height: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
-
-/* 6. CHART 01 COVERAGE — balanced with timeline */
-
 .timeline-coverage-number {
-    font-size: 27px;
+  font-size: 27px;
 }
 
 .timeline-coverage-copy strong {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .timeline-coverage-copy p,
+
 .timeline-coverage-note {
-    font-size: 13px;
-    line-height: 1.5;
+  font-size: 13px;
+  line-height: 1.5;
 }
-
-
-/* 7. SHARED LEGEND — slightly larger, still compact */
-
-.theme-sections .theme-key-title {
-    font-size: 12px;
-}
-
-.theme-sections .theme-key-items button {
-    font-size: 13px;
-}
-
-.theme-sections .theme-key-hint {
-    font-size: 12px;
-}
-
-
-/* 8. TRANSITIONS — narrative bridge, not another hero */
 
 .transition-section {
-    margin: 0;
-    padding: 24px 24px 30px;
+  margin: 0;
+  padding: 24px 24px 30px;
 }
 
 .transition-section h2 {
-    max-width: 850px;
-    font-size: clamp(22px, 2vw, 27px);
-    line-height: 1.4;
-    font-weight: 600;
+  max-width: 850px;
+  font-size: clamp(22px, 2vw, 27px);
+  line-height: 1.4;
+  font-weight: 600;
 }
 
-/* Keep the existing dark gold italic second line */
 .transition-section h2 span {
-    color: #946414;
-    font-style: italic;
+  color: #946414;
+  font-style: italic;
 }
 
-/* Keep the subtle divider already introduced */
 .transition-section::after {
-    margin-top: 24px;
+  margin-top: 24px;
 }
 
-/* Reduce gap before the next section heading */
 .transition-section + .story-section .section-intro {
-    padding-top: 14px;
+  padding-top: 14px;
 }
-
-
-/* 9. GENERAL SECTION SPACING */
 
 .story-section {
-    padding-bottom: 32px;
+  padding-bottom: 32px;
 }
 
-/* Keep Chart 06 close to its transition */
 #section-2 {
-    padding-bottom: 0;
+  padding-bottom: 0;
 }
 
 #section-2 > .chart-card.full-width {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
-
-/* 10. CONCLUSION — strong, but not oversized */
-
 .conclusion {
-    padding: 76px 8%;
+  padding: 76px 8%;
 }
 
 .conclusion h2 {
-    max-width: 980px;
-    margin: 20px auto 46px;
-    font-size: clamp(38px, 4.5vw, 58px);
-    line-height: 1.18;
+  max-width: 980px;
+  margin: 20px auto 46px;
+  font-size: clamp(38px, 4.5vw, 58px);
+  line-height: 1.18;
 }
 
 .conclusion-path {
-    gap: 70px;
+  gap: 70px;
 }
 
 .conclusion-path strong {
-    font-size: 19px;
+  font-size: 19px;
 }
 
 .conclusion-path span {
-    font-size: 12px;
+  font-size: 12px;
 }
 
-
-/* 11. FOOTER — improve readability */
-
 footer {
-    gap: 48px;
-    padding: 48px 6%;
+  gap: 48px;
+  padding: 48px 6%;
 }
 
 footer h4 {
-    font-size: 13px;
+  font-size: 13px;
 }
 
 footer p {
-    font-size: 14px;
-    line-height: 1.65;
+  font-size: 14px;
+  line-height: 1.65;
 }
-
-
-/* =========================================
-   TABLET
-   ========================================= */
 
 @media (max-width: 1000px) {
-
-    .hero {
-        padding: 64px 24px 30px;
-    }
-
-    .section-intro {
-        padding: 36px 16px 18px;
-    }
-
-    .section-intro .section-text h2 {
-        font-size: clamp(38px, 5vw, 48px);
-    }
-
-    .chart-heading h3 {
-        font-size: 25px;
-    }
-
-    .transition-section h2 {
-        font-size: 25px;
-    }
-
-    .chart-note {
-        font-size: 14px;
-    }
+  .hero {
+    padding: 64px 24px 30px;
+  }
+  .section-intro {
+    padding: 36px 16px 18px;
+  }
+  .section-intro .section-text h2 {
+    font-size: clamp(38px, 5vw, 48px);
+  }
+  .chart-heading h3 {
+    font-size: 25px;
+  }
+  .transition-section h2 {
+    font-size: 25px;
+  }
+  .chart-note {
+    font-size: 14px;
+  }
 }
-
-
-/* =========================================
-   MOBILE
-   ========================================= */
 
 @media (max-width: 600px) {
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+  .subtitle {
+    margin-top: 24px;
+    font-size: 16px;
+  }
+  .research-question {
+    margin-top: 38px;
+    font-size: 18px;
+  }
+  .section-intro {
+    padding: 30px 12px 16px;
+    margin-bottom: 18px;
+  }
+  .section-intro .section-text h2 {
+    font-size: clamp(32px, 7.5vw, 42px);
+  }
+  .section-source {
+    letter-spacing: 1px;
+  }
+  .chart-card,
 
-    .hero {
-        padding: 52px 18px 25px;
-    }
-
-    .hero h1 {
-        font-size: clamp(40px, 9vw, 58px);
-        line-height: 1.08;
-    }
-
-    .eyebrow {
-        font-size: 10px;
-        letter-spacing: 2px;
-    }
-
-    .subtitle {
-        margin-top: 24px;
-        font-size: 16px;
-    }
-
-    .research-question {
-        margin-top: 38px;
-        font-size: 18px;
-    }
-
-    .section-intro {
-        padding: 30px 12px 16px;
-        margin-bottom: 18px;
-    }
-
-    .section-intro .section-text h2 {
-        font-size: clamp(32px, 7.5vw, 42px);
-    }
-
-    .section-description {
-        font-size: 16px;
-    }
-
-    .section-source {
-        font-size: 11px;
-        letter-spacing: 1px;
-    }
-
-    .chart-card,
     .chart-card.full-width {
-        padding: 20px 16px;
-    }
-
-    .chart-heading {
-        gap: 10px;
-        margin-bottom: 16px;
-    }
-
-    .chart-heading h3 {
-        font-size: 22px;
-    }
-
-    .chart-number {
-        font-size: 12px;
-    }
-
-    .chart-description {
-        font-size: 14px;
-    }
-
-    .chart-note {
-        font-size: 14px;
-        line-height: 1.6;
-    }
-
-    .chart-note.note-columns {
-        row-gap: 12px;
-    }
-
-    .transition-section {
-        padding: 20px 18px 24px;
-    }
-
-    .transition-section h2 {
-        font-size: 21px;
-    }
-
-    .transition-section + .story-section .section-intro {
-        padding-top: 12px;
-    }
-
-    .conclusion {
-        padding: 54px 20px;
-    }
-
-    .conclusion h2 {
-        font-size: clamp(32px, 7vw, 42px);
-        margin-bottom: 30px;
-    }
-
-    .conclusion-path {
-        gap: 26px;
-    }
-
-    .conclusion-path strong {
-        font-size: 18px;
-    }
-
-    footer {
-        padding: 36px 22px;
-        gap: 28px;
-    }
+    padding: 20px 16px;
+  }
+  .chart-heading {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .chart-heading h3 {
+    font-size: 22px;
+  }
+  .chart-description {
+    font-size: 14px;
+  }
+  .chart-note {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .chart-note.note-columns {
+    row-gap: 12px;
+  }
+  .transition-section {
+    padding: 20px 18px 24px;
+  }
+  .transition-section h2 {
+    font-size: 21px;
+  }
+  .transition-section + .story-section .section-intro {
+    padding-top: 12px;
+  }
+  .conclusion {
+    padding: 54px 20px;
+  }
+  .conclusion h2 {
+    font-size: clamp(32px, 7vw, 42px);
+    margin-bottom: 30px;
+  }
+  .conclusion-path {
+    gap: 26px;
+  }
+  .conclusion-path strong {
+    font-size: 18px;
+  }
+  footer {
+    padding: 36px 22px;
+    gap: 28px;
+  }
 }
-
-/* =========================================
-   HERO RESEARCH QUESTION
-   Editorial label instead of divider
-   ========================================= */
 
 .research-question-block {
-    max-width: 680px;
-    margin: 34px auto 0;
-    text-align: center;
+  max-width: 680px;
+  margin: 34px auto 0;
+  text-align: center;
 }
 
-/* Small coral editorial label */
 .research-question-label {
-    margin: 0 0 12px;
-
-    font-family: "DM Sans", Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2.5px;
-    line-height: 1.5;
-
-    color: #EA5E43;
+  margin: 0 0 12px;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  line-height: 1.5;
+  color: #EA5E43;
 }
 
-/* Research question */
 .research-question-block .research-question {
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-    border: none;
-
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 1.5;
-
-    color: #20243A;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #20243A;
 }
 
-/* Mobile adjustments */
 @media (max-width: 600px) {
-    .research-question-block {
-        max-width: 100%;
-        margin-top: 26px;
-    }
-
-    .research-question-label {
-        font-size: 10px;
-        letter-spacing: 2px;
-    }
-
-    .research-question-block .research-question {
-        font-size: 17px;
-        line-height: 1.5;
-    }
+  .research-question-block {
+    max-width: 100%;
+    margin-top: 26px;
+  }
+  .research-question-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+  .research-question-block .research-question {
+    font-size: 17px;
+    line-height: 1.5;
+  }
 }
 
-/* =========================================
-   FINAL HERO STRUCTURE
-   Clear hierarchy and geographic context
-   ========================================= */
-
-/* Main hero layout */
 .hero {
-    min-height: 0;
-    padding: 64px 28px 44px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  min-height: 0;
+  padding: 64px 28px 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-/* Small editorial eyebrow */
 .hero .eyebrow {
-    margin: 0 0 20px;
-    font-family: "DM Sans", Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2.5px;
-    line-height: 1.5;
-    color: #C4412A;
+  margin: 0 0 20px;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #C4412A;
 }
 
-/* Main title */
 .hero h1 {
-    max-width: 1050px;
-    margin: 0;
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(60px, 6.5vw, 96px);
-    font-weight: 600;
-    line-height: 1.04;
-    color: #20243A;
+  max-width: 1050px;
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(60px, 6.5vw, 96px);
+  font-weight: 600;
+  line-height: 1.04;
+  color: #20243A;
 }
 
-/* Coral italic title */
 .hero h1 span {
-    display: block;
-    color: #EA5E43;
-    font-style: italic;
+  display: block;
+  color: #EA5E43;
+  font-style: italic;
 }
 
-/* Introductory subtitle */
 .hero .subtitle {
-    max-width: 700px;
-    margin: 30px auto 0;
-    font-family: "DM Sans", Arial, sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.6;
-    color: #59645F;
+  max-width: 700px;
+  margin: 30px auto 0;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #59645F;
 }
 
-/* Three narrative movements */
 .hero .story-path {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: clamp(28px, 5vw, 72px);
-    margin-top: 36px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(28px, 5vw, 72px);
+  margin-top: 36px;
 }
 
-/* Individual movement */
 .story-path-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    min-width: 145px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 145px;
 }
 
-/* Movement labels */
 .hero .story-path .story-path-label {
-    position: static;
-    font-family: "DM Sans", Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    line-height: 1.4;
-    color: #20243A;
+  position: static;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  line-height: 1.4;
+  color: #20243A;
 }
 
-/* Remove old separator lines */
 .hero .story-path span::after {
-    content: none !important;
-    display: none !important;
+  content: none !important;
+  display: none !important;
 }
 
-/* Geographic descriptions */
 .hero .story-path .story-path-description {
-    font-family: "DM Sans", Arial, sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 0;
-    line-height: 1.45;
-    color: #59645F;
-    white-space: normal;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.45;
+  color: #59645F;
+  white-space: normal;
 }
 
-/* Central research question */
 .hero .research-question {
-    max-width: 660px;
-    margin: 38px auto 0;
-    padding: 0;
-    border: none;
-
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: 21px;
-    font-weight: 600;
-    line-height: 1.5;
-    color: #20243A;
+  max-width: 660px;
+  margin: 38px auto 0;
+  padding: 0;
+  border: none;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #20243A;
 }
 
-/* Quiet dataset teaser */
 .hero-data-teaser {
-    margin: 20px auto 0;
-    font-family: "DM Sans", Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1.6;
-    letter-spacing: 0.2px;
-    color: #59645F;
+  margin: 20px auto 0;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+  color: #59645F;
 }
-
-
-/* =========================================
-   TABLET
-   ========================================= */
 
 @media (max-width: 1000px) {
-
-    .hero .story-path {
-        gap: 24px;
-    }
-
-    .story-path-item {
-        min-width: 120px;
-    }
+  .hero .story-path {
+    gap: 24px;
+  }
+  .story-path-item {
+    min-width: 120px;
+  }
 }
-
-
-/* =========================================
-   MOBILE
-   ========================================= */
 
 @media (max-width: 600px) {
-
-    .hero {
-        padding: 52px 18px 32px;
-    }
-
-    .hero .eyebrow {
-        font-size: 10px;
-        letter-spacing: 1.6px;
-    }
-
-    .hero h1 {
-        font-size: clamp(40px, 9vw, 58px);
-        line-height: 1.08;
-    }
-
-    .hero .subtitle {
-        margin-top: 24px;
-        font-size: 16px;
-    }
-
-    .hero .subtitle br {
-        display: none;
-    }
-
-    .hero .story-path {
-        width: 100%;
-        gap: 10px;
-        margin-top: 30px;
-    }
-
-    .story-path-item {
-        flex: 1;
-        min-width: 0;
-        gap: 6px;
-    }
-
-    .hero .story-path .story-path-label {
-        font-size: 10px;
-        letter-spacing: 1.5px;
-    }
-
-    .hero .story-path .story-path-description {
-        font-size: 11px;
-        line-height: 1.4;
-    }
-
-    .hero .research-question {
-        margin-top: 30px;
-        font-size: 18px;
-    }
-
-    .hero-data-teaser {
-        max-width: 320px;
-        margin-top: 18px;
-        font-size: 11px;
-        line-height: 1.7;
-    }
-}
-
-
-/* =========================================
-   SUPPORTING TEXT READABILITY
-   Increase smaller text without changing headings
-   ========================================= */
-
-/* Orange section numbers and labels */
-.section-intro .section-kicker .section-number,
-.section-intro .section-kicker .section-number-inline,
-.section-intro .section-kicker .section-label {
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 2.5px;
-    line-height: 1.5;
-}
-
-/* Orange numbers beside chart headings */
-.chart-number {
-    font-size: 15px;
-    font-weight: 600;
-    padding-top: 5px;
-}
-
-/* Small introductory label above hero title */
-.hero .eyebrow {
-    font-size: 13px;
-    letter-spacing: 2.5px;
-}
-
-/* Supporting descriptions */
-.section-description {
+  .hero {
+    padding: 52px 18px 32px;
+  }
+  .hero h1 {
+    font-size: clamp(40px, 9vw, 58px);
+    line-height: 1.08;
+  }
+  .hero .subtitle {
+    margin-top: 24px;
+    font-size: 16px;
+  }
+  .hero .subtitle br {
+    display: none;
+  }
+  .hero .story-path {
+    width: 100%;
+    gap: 10px;
+    margin-top: 30px;
+  }
+  .story-path-item {
+    flex: 1;
+    min-width: 0;
+    gap: 6px;
+  }
+  .hero .story-path .story-path-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+  .hero .story-path .story-path-description {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+  .hero .research-question {
+    margin-top: 30px;
     font-size: 18px;
-    line-height: 1.6;
+  }
+  .hero-data-teaser {
+    max-width: 320px;
+    margin-top: 18px;
+    font-size: 11px;
+    line-height: 1.7;
+  }
+}
+
+.section-intro .section-kicker .section-number,
+
+.section-intro .section-kicker .section-number-inline,
+
+.section-intro .section-kicker .section-label {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  line-height: 1.5;
+}
+
+.chart-number {
+  font-size: 15px;
+  font-weight: 600;
+  padding-top: 5px;
+}
+
+.hero .eyebrow {
+  font-size: 13px;
+  letter-spacing: 2.5px;
+}
+
+.section-description {
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 .chart-description {
-    font-size: 16px;
-    line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-/* Notes below visualisations */
 .chart-note {
-    font-size: 15px;
-    line-height: 1.65;
+  font-size: 15px;
+  line-height: 1.65;
 }
 
-/* Dataset labels below section introductions */
 .section-source {
-    font-size: 13px;
-    letter-spacing: 1.5px;
+  font-size: 13px;
+  letter-spacing: 1.5px;
 }
 
-/* Shared interactive theme legend */
 .theme-sections .theme-key-title {
-    font-size: 13px;
+  font-size: 13px;
 }
 
 .theme-sections .theme-key-items button {
-    font-size: 13px;
+  font-size: 13px;
 }
 
 .theme-sections .theme-key-hint {
-    font-size: 13px;
+  font-size: 13px;
 }
 
-/* Mobile: maintain the same hierarchy */
 @media (max-width: 600px) {
-    .section-intro .section-kicker .section-number,
+  .section-intro .section-kicker .section-number,
+
     .section-intro .section-kicker .section-number-inline,
+
     .section-intro .section-kicker .section-label {
-        font-size: 12px;
-        letter-spacing: 1.5px;
-    }
+    font-size: 12px;
+    letter-spacing: 1.5px;
+  }
+  .chart-number {
+    font-size: 13px;
+  }
+  .hero .eyebrow {
+    font-size: 11px;
+    letter-spacing: 1.6px;
+  }
+  .section-description {
+    font-size: 16px;
+  }
+  .chart-description,
 
-    .chart-number {
-        font-size: 13px;
-    }
-
-    .hero .eyebrow {
-        font-size: 11px;
-        letter-spacing: 1.6px;
-    }
-
-    .section-description {
-        font-size: 16px;
-    }
-
-    .chart-description,
     .chart-note {
-        font-size: 14px;
-    }
-
-    .section-source {
-        font-size: 11px;
-    }
-}
-
-/* =========================================
-   CHARTS 02–03: PAIRED CARD ALIGNMENT
-   ========================================= */
-
-.creator-pair {
-    align-items: stretch;
+    font-size: 14px;
+  }
+  .section-source {
+    font-size: 11px;
+  }
 }
 
 .creator-pair > .chart-card {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    height: 100%;
+  min-width: 0;
 }
 
-/* Align each note's upper divider */
 .creator-pair > .chart-card > .chart-note {
-    margin-top: auto;
-    min-height: 110px;
-    padding-top: 16px;
-    font-size: 15px;
-    line-height: 1.55;
-    color: #59645F;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #59645F;
 }
 
-/* Historical source stays visually secondary */
 .creator-pair .chart-context-source {
-    display: block;
-    margin-top: 6px;
-    font-size: 12px;
-    line-height: 1.45;
-    font-weight: 400;
-    color: #6F7180;
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.45;
+  font-weight: 400;
+  color: #6F7180;
 }
 
 .creator-pair .chart-context-source a {
-    color: #59645F;
-    text-decoration: underline;
-    text-underline-offset: 3px;
+  color: #59645F;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 @media (max-width: 1000px) {
-    .creator-pair > .chart-card > .chart-note {
-        min-height: 0;
-    }
+  .creator-pair > .chart-card > .chart-note {
+    min-height: 0;
+  }
 }
 
-
-/* =========================================
-   SHARED THEME LEGEND — BORDERLESS
-   ========================================= */
-
 .theme-sections > .theme-key {
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
-    background-color: #F7F3EB;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  background-color: #F7F3EB;
+}
+
+.two-col-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.chart-card {
+  border: 1px solid #d8d1c3;
+  background: #f7f3eb;
+  padding: 1.4rem 1.4rem 1rem 1.4rem;
+  min-height: unset;
+  height: auto;
+}
+
+.chart-card-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chart-vis {
+  margin-bottom: 0.5rem;
+}
+
+.chart-divider {
+  margin: 0.75rem 0 0.9rem 0;
+}
+
+.chart-note {
+  margin-top: 0;
+}
+
+.creator-pair {
+  align-items: stretch;
+}
+
+.creator-pair > .chart-card {
+  min-height: 0;
+  height: auto;
+  padding-bottom: 18px;
+}
+
+.creator-pair > .chart-card > .chart-note {
+  min-height: 0;
+  margin-top: auto;
+  padding-top: 14px;
+  padding-bottom: 0;
+}
+
+.creator-pair .chart-vis {
+  min-height: 0;
+  margin-bottom: 0;
+}
+
+.creator-pair > .chart-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.heatmap-treemap-pair {
+  align-items: stretch;
+}
+
+.heatmap-treemap-pair > .chart-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: auto;
+}
+
+.heatmap-treemap-pair > .chart-card > .chart-vis {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.heatmap-treemap-pair > .chart-card > .chart-note {
+  margin-top: auto;
+  min-height: 115px;
+  padding-top: 18px;
+  padding-bottom: 0;
+}
+
+#period-theme {
+  margin-top: 0;
+}
+
+#section-2 > .chart-card.full-width > .chart-heading {
+  margin-bottom: 4px;
+}
+
+#section-3 .venue-map-filter label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#section-3 .venue-map-filter select {
+  font-size: 14px;
+}
+
+#section-3 .venue-legend-item {
+  font-size: 14px;
+}
+
+#section-3 .two-column-layout > .chart-card {
+  display: flex;
+  flex-direction: column;
+}
+
+#section-3 .two-column-layout > .chart-card > .chart-heading {
+  min-height: 60px;
+  margin-bottom: 16px;
+}
+
+#section-3 .two-column-layout > .chart-card > .chart-note {
+  margin-top: auto;
+}
+
+#section-3 .two-column-layout .chart-card:first-child .chart-heading {
+  min-height: 0;
+  margin-bottom: 8px;
+}
+
+#section-4 .chart-card,
+
+#section-5 .chart-card {
+  min-width: 0;
+}
+
+#attendance-map,
+
+#age-gender,
+
+#frequency-waffle {
+  width: 100%;
+  min-width: 0;
+}
+
+#section-4 .vega-embed,
+
+#section-5 .vega-embed {
+  max-width: 100%;
+}
+
+#attendance-map,
+
+#age-gender,
+
+#frequency-waffle {
+  display: flex;
+  justify-content: center;
 }

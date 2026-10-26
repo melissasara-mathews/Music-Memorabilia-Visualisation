@@ -1,4 +1,3 @@
-
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "background": "transparent",
@@ -19,8 +18,8 @@
 
   "hconcat": [
     {
-      "width": 500,
-      "height": 500,
+      "width": 420,
+      "height": 420,
 
       "data": {
         "url": "data/clean/abs_frequency.csv",
@@ -34,7 +33,7 @@
 
       "transform": [
         {
-          "calculate": "datum.frequency == 'Once' ? 'Once' : datum.frequency == 'Twice' ? 'Twice' : datum.frequency == '3 times' || datum.frequency == '4 times' || datum.frequency == '5 times' ? '3–5 times' : datum.frequency == '6-10 times' ? '6–10 times' : '11+ times'",
+          "calculate": "datum.frequency == 'Once' ? 'Once' : datum.frequency == 'Twice' ? 'Twice' : datum.frequency == '3 times' || datum.frequency == '4 times' || datum.frequency == '5 times' ? '3–5 times' : datum.frequency == '6-10 times' ? '6–10 times' : '11 or more times'",
           "as": "group"
         },
         {
@@ -52,7 +51,7 @@
           "as": "order"
         },
         {
-          "calculate": "datum.group == 'Once' ? '#B2A084' : datum.group == 'Twice' ? '#E3B145' : datum.group == '3–5 times' ? '#E66043' : datum.group == '6–10 times' ? '#6A5DB0' : '#2B314D'",
+          "calculate": "datum.order == 1 ? '#C98E80' : datum.order == 2 ? '#B87364' : datum.order == 3 ? '#A35649' : datum.order == 4 ? '#893D33' : '#69291F'",
           "as": "color"
         },
         {
@@ -101,10 +100,10 @@
 
       "mark": {
         "type": "square",
-        "size": 1850,
+        "size": 1250,
         "filled": true,
         "stroke": "#F7F3EB",
-        "strokeWidth": 2
+        "strokeWidth": 1
       },
 
       "encoding": {
@@ -141,7 +140,7 @@
           {
             "field": "pct",
             "type": "quantitative",
-            "title": "Percentage",
+            "title": "Percentage of attendees",
             "format": ".1f"
           }
         ]
@@ -150,7 +149,7 @@
 
     {
       "width": 300,
-      "height": 500,
+      "height": 420,
 
       "data": {
         "url": "data/clean/abs_frequency.csv",
@@ -164,7 +163,7 @@
 
       "transform": [
         {
-          "calculate": "datum.frequency == 'Once' ? 'Once' : datum.frequency == 'Twice' ? 'Twice' : datum.frequency == '3 times' || datum.frequency == '4 times' || datum.frequency == '5 times' ? '3–5 times' : datum.frequency == '6-10 times' ? '6–10 times' : '11+ times'",
+          "calculate": "datum.frequency == 'Once' ? 'Once' : datum.frequency == 'Twice' ? 'Twice' : datum.frequency == '3 times' || datum.frequency == '4 times' || datum.frequency == '5 times' ? '3–5 times' : datum.frequency == '6-10 times' ? '6–10 times' : '11 or more times'",
           "as": "group"
         },
         {
@@ -182,11 +181,11 @@
           "as": "order"
         },
         {
-          "calculate": "datum.group == 'Once' ? '#B2A084' : datum.group == 'Twice' ? '#E3B145' : datum.group == '3–5 times' ? '#E66043' : datum.group == '6–10 times' ? '#6A5DB0' : '#2B314D'",
+          "calculate": "datum.order == 1 ? '#C98E80' : datum.order == 2 ? '#B87364' : datum.order == 3 ? '#A35649' : datum.order == 4 ? '#893D33' : '#69291F'",
           "as": "color"
         },
         {
-          "calculate": "6 - datum.order",
+          "calculate": "50 + (datum.order - 1) * 52",
           "as": "ypos"
         },
         {
@@ -197,11 +196,36 @@
 
       "layer": [
         {
+          "data": {
+            "values": [{}]
+          },
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "middle",
+            "font": "DM Sans",
+            "fontSize": 14,
+            "fontWeight": "normal",
+            "color": "#59645F"
+          },
+          "encoding": {
+            "x": {
+              "value": 12
+            },
+            "y": {
+              "value": 14
+            },
+            "text": {
+              "value": "Each square ≈ 1% of attendees"
+            }
+          }
+        },
+        {
           "mark": {
             "type": "point",
             "shape": "square",
             "filled": true,
-            "size": 130
+            "size": 180
           },
           "encoding": {
             "x": {
@@ -210,9 +234,7 @@
             "y": {
               "field": "ypos",
               "type": "quantitative",
-              "scale": {
-                "domain": [0.5, 5.5]
-              }
+              "scale": null
             },
             "color": {
               "field": "color",
@@ -228,19 +250,18 @@
             "align": "left",
             "baseline": "middle",
             "font": "DM Sans",
-            "fontSize": 16,
+            "fontSize": 15,
+            "fontWeight": "normal",
             "color": "#20243A"
           },
           "encoding": {
             "x": {
-              "value": 44
+              "value": 40
             },
             "y": {
               "field": "ypos",
               "type": "quantitative",
-              "scale": {
-                "domain": [0.5, 5.5]
-              }
+              "scale": null
             },
             "text": {
               "field": "group",
@@ -253,25 +274,119 @@
             "type": "text",
             "align": "right",
             "baseline": "middle",
-            "font": "Playfair Display",
-            "fontSize": 22,
-            "fontWeight": 600,
+            "font": "DM Sans",
+            "fontSize": 18,
+            "fontWeight": "normal",
             "color": "#20243A"
           },
           "encoding": {
             "x": {
-              "value": 282
+              "value": 284
             },
             "y": {
               "field": "ypos",
               "type": "quantitative",
-              "scale": {
-                "domain": [0.5, 5.5]
-              }
+              "scale": null
             },
             "text": {
               "field": "pct_label",
               "type": "nominal"
+            }
+          }
+        },
+        {
+          "data": {
+            "values": [{}]
+          },
+          "mark": {
+            "type": "rule",
+            "color": "#C8C3B6",
+            "strokeWidth": 1
+          },
+          "encoding": {
+            "x": {
+              "value": 12
+            },
+            "x2": {
+              "value": 284
+            },
+            "y": {
+              "value": 318
+            }
+          }
+        },
+        {
+          "data": {
+            "values": [{}]
+          },
+          "mark": {
+            "type": "text",
+            "font": "DM Sans",
+            "fontSize": 16,
+            "fontWeight": "normal",
+            "color": "#20243A",
+            "align": "left",
+            "baseline": "middle"
+          },
+          "encoding": {
+            "x": {
+              "value": 12
+            },
+            "y": {
+              "value": 348
+            },
+            "text": {
+              "value": "64.9% attended once or twice"
+            }
+          }
+        },
+        {
+          "data": {
+            "values": [{}]
+          },
+          "mark": {
+            "type": "text",
+            "font": "DM Sans",
+            "fontSize": 16,
+            "fontWeight": "normal",
+            "color": "#20243A",
+            "align": "left",
+            "baseline": "middle"
+          },
+          "encoding": {
+            "x": {
+              "value": 12
+            },
+            "y": {
+              "value": 380
+            },
+            "text": {
+              "value": "13.1% attended six or more times"
+            }
+          }
+        },
+        {
+          "data": {
+            "values": [{}]
+          },
+          "mark": {
+            "type": "text",
+            "font": "DM Sans",
+            "fontSize": 12,
+            "fontWeight": "normal",
+            "color": "#59645F",
+            "align": "left",
+            "baseline": "middle"
+          },
+          "encoding": {
+            "x": {
+              "value": 12
+            },
+            "y": {
+              "value": 410
+            },
+            "text": {
+              "value": "Survey estimates in rounded percentages"
             }
           }
         }

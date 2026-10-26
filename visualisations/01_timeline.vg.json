@@ -34,10 +34,14 @@
           1960
         ],
         "format": "d",
-        "labelFontSize": 12,
+        "labelFont": "DM Sans",
+        "labelFontSize": 13,
+        "labelFontWeight": "normal",
         "labelColor": "#6F7180",
         "labelPadding": 9,
-        "titleFontSize": 12,
+        "titleFont": "DM Sans",
+        "titleFontSize": 14,
+        "titleFontWeight": "normal",
         "titleColor": "#293348",
         "titlePadding": 14,
         "domainColor": "#C8C3B6",
@@ -51,15 +55,15 @@
     {
       "data": {
         "values": [
-          {"year": 1880},
-          {"year": 1890},
-          {"year": 1900},
-          {"year": 1910},
-          {"year": 1920},
-          {"year": 1930},
-          {"year": 1940},
-          {"year": 1950},
-          {"year": 1960}
+          { "year": 1880 },
+          { "year": 1890 },
+          { "year": 1900 },
+          { "year": 1910 },
+          { "year": 1920 },
+          { "year": 1930 },
+          { "year": 1940 },
+          { "year": 1950 },
+          { "year": 1960 }
         ]
       },
       "mark": {
@@ -167,9 +171,9 @@
       },
       "mark": {
         "type": "text",
-        "font": "Arial",
-        "fontSize": 12,
-        "fontWeight": "bold",
+        "font": "DM Sans",
+        "fontSize": 14,
+        "fontWeight": "normal",
         "color": "#4A5263",
         "align": "center",
         "baseline": "middle"
@@ -196,9 +200,9 @@
       },
       "mark": {
         "type": "text",
-        "font": "Arial",
-        "fontSize": 12,
-        "fontWeight": "bold",
+        "font": "DM Sans",
+        "fontSize": 14,
+        "fontWeight": "normal",
         "color": "#445487",
         "align": "center",
         "baseline": "middle"
@@ -225,13 +229,14 @@
       },
       "mark": {
         "type": "text",
-        "font": "Arial",
-        "fontSize": 11,
+        "font": "DM Sans",
+        "fontSize": 13,
+        "fontWeight": "normal",
         "color": "#59645F",
         "align": "center",
         "baseline": "middle",
         "lineBreak": "\n",
-        "lineHeight": 14
+        "lineHeight": 17
       },
       "encoding": {
         "y": {
@@ -369,8 +374,8 @@
       "stroke": null
     },
     "axis": {
-      "labelFont": "Arial",
-      "titleFont": "Arial"
+      "labelFont": "DM Sans",
+      "titleFont": "DM Sans"
     }
   },
 

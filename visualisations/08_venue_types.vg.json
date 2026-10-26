@@ -1,10 +1,10 @@
 
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-
   "width": 290,
-  "height": 410,
-
+  "height": {
+    "step": 27
+  },
   "background": "#F7F3EB",
 
   "data": {
@@ -16,7 +16,7 @@
 
   "transform": [
     {
-      "filter": "datum.space_type != 'Unknown'"
+      "filter": "isValid(datum.space_type) && datum.space_type != 'Unknown' && datum.space_type != ''"
     },
     {
       "aggregate": [
@@ -28,6 +28,28 @@
       "groupby": [
         "space_type"
       ]
+    },
+    {
+      "calculate": "datum.space_type == 'Amusement/Theme Venue' ? 'Amusement or theme venue' : datum.space_type == 'Public University/College' ? 'University or college' : datum.space_type == 'Multi-Use' ? 'Multi-use' : datum.space_type",
+      "as": "type_label"
+    },
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "venue_rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "venue_count",
+          "order": "descending"
+        },
+        {
+          "field": "type_label",
+          "order": "ascending"
+        }
+      ]
     }
   ],
 
@@ -35,26 +57,26 @@
     {
       "mark": {
         "type": "bar",
-        "color": "#B87555",
         "cornerRadiusEnd": 3
       },
 
       "encoding": {
         "y": {
-          "field": "space_type",
+          "field": "type_label",
           "type": "nominal",
           "sort": {
-            "field": "venue_count",
-            "order": "descending"
+            "field": "venue_rank",
+            "op": "min",
+            "order": "ascending"
           },
           "title": null,
-
           "axis": {
-            "labelFont": "Arial",
-            "labelFontSize": 12,
+            "labelFont": "DM Sans",
+            "labelFontSize": 14,
+            "labelFontWeight": "normal",
             "labelColor": "#20243A",
-            "labelPadding": 8,
-            "labelLimit": 180,
+            "labelPadding": 9,
+            "labelLimit": 210,
             "ticks": false,
             "domain": false
           }
@@ -63,28 +85,29 @@
         "x": {
           "field": "venue_count",
           "type": "quantitative",
-          "title": "Number of venues",
-
+          "title": null,
+          "scale": {
+            "zero": true
+          },
           "axis": {
-            "titleFont": "Arial",
-            "titleFontSize": 12,
-            "titleFontWeight": "normal",
-            "titleColor": "#6B6F7F",
-
-            "labelFont": "Arial",
-            "labelFontSize": 11,
-            "labelColor": "#6B6F7F",
-
-            "grid": false,
+            "labels": false,
             "ticks": false,
             "domain": false,
-            "tickMinStep": 10
+            "grid": false
           }
+        },
+
+        "color": {
+          "condition": {
+            "test": "datum.space_type == 'Bar'",
+            "value": "#2455A4"
+          },
+          "value": "#C9C0B0"
         },
 
         "tooltip": [
           {
-            "field": "space_type",
+            "field": "type_label",
             "type": "nominal",
             "title": "Venue type"
           },
@@ -99,24 +122,31 @@
     },
 
     {
+      "transform": [
+        {
+          "filter": "datum.space_type != 'Bar'"
+        }
+      ],
+
       "mark": {
         "type": "text",
         "align": "left",
         "baseline": "middle",
-        "dx": 6,
-        "font": "Arial",
-        "fontSize": 12,
-        "fontWeight": "bold",
+        "dx": 7,
+        "font": "DM Sans",
+        "fontSize": 14,
+        "fontWeight": "normal",
         "color": "#20243A"
       },
 
       "encoding": {
         "y": {
-          "field": "space_type",
+          "field": "type_label",
           "type": "nominal",
           "sort": {
-            "field": "venue_count",
-            "order": "descending"
+            "field": "venue_rank",
+            "op": "min",
+            "order": "ascending"
           }
         },
 
@@ -129,6 +159,90 @@
           "field": "venue_count",
           "type": "quantitative",
           "format": ",d"
+        }
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.space_type == 'Bar'"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 7,
+        "font": "DM Sans",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "color": "#20243A"
+      },
+
+      "encoding": {
+        "y": {
+          "field": "type_label",
+          "type": "nominal",
+          "sort": {
+            "field": "venue_rank",
+            "op": "min",
+            "order": "ascending"
+          }
+        },
+
+        "x": {
+          "field": "venue_count",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "venue_count",
+          "type": "quantitative",
+          "format": ",d"
+        }
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.space_type == 'Library'"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "dx": 0,
+        "dy": -5,
+        "font": "DM Sans",
+        "fontSize": 13,
+        "fontWeight": "normal",
+        "lineBreak": "\n",
+        "lineHeight": 18,
+        "color": "#20243A"
+      },
+
+      "encoding": {
+        "x": {
+          "value": 115
+        },
+
+        "y": {
+          "field": "type_label",
+          "type": "nominal",
+          "sort": {
+            "field": "venue_rank",
+            "op": "min",
+            "order": "ascending"
+          }
+        },
+
+        "text": {
+          "value": "Beyond traditional venues\nLibraries, churches and museums\naccount for 7 venues."
         }
       }
     }
