@@ -1,71 +1,71 @@
 
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": "container",
-  "height": 260,
-  "background": "#F7F3EB",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "height": 260,
+    "background": "#F7F3EB",
 
-  "data": {
+    "data": {
     "url": "data/clean/music_qld_clean.csv"
-  },
+    },
 
-  "transform": [
+    "transform": [
     {
-      "filter": "datum.creator_clean != null && datum.creator_clean != 'Unknown'"
+        "filter": "datum.creator_clean != null && datum.creator_clean != 'Unknown'"
     },
     {
-      "calculate": "trim(replace(trim(datum.creator_clean), /\\.$/, ''))",
-      "as": "creator_key"
+        "calculate": "trim(replace(trim(datum.creator_clean), /\\.$/, ''))",
+        "as": "creator_key"
     },
     {
-      "calculate": "split(datum.creator_key, ',')[0]",
-      "as": "creator_short"
+        "calculate": "split(datum.creator_key, ',')[0]",
+        "as": "creator_short"
     },
     {
-      "aggregate": [
+        "aggregate": [
         {
-          "op": "count",
-          "as": "record_count"
+            "op": "count",
+            "as": "record_count"
         }
-      ],
-      "groupby": [
+        ],
+        "groupby": [
         "creator_key",
         "creator_short"
-      ]
+        ]
     },
     {
-      "window": [
+        "window": [
         {
-          "op": "row_number",
-          "as": "rank"
+            "op": "row_number",
+            "as": "rank"
         }
-      ],
-      "sort": [
+        ],
+        "sort": [
         {
-          "field": "record_count",
-          "order": "descending"
+            "field": "record_count",
+            "order": "descending"
         },
         {
-          "field": "creator_key",
-          "order": "ascending"
+            "field": "creator_key",
+            "order": "ascending"
         }
-      ]
+        ]
     },
     {
-      "filter": "datum.rank <= 8"
+        "filter": "datum.rank <= 8"
     }
-  ],
+    ],
 
-  "encoding": {
+    "encoding": {
     "y": {
-      "field": "creator_short",
-      "type": "nominal",
-      "sort": {
+        "field": "creator_short",
+        "type": "nominal",
+        "sort": {
         "field": "rank",
         "op": "min",
         "order": "ascending"
-      },
-      "axis": {
+        },
+        "axis": {
         "title": null,
         "labelFont": "DM Sans",
         "labelFontSize": 14,
@@ -75,19 +75,19 @@
         "labelLimit": 170,
         "ticks": false,
         "domain": false
-      }
+        }
     },
 
     "x": {
-      "field": "record_count",
-      "type": "quantitative",
-      "title": "Number of preserved records",
-      "scale": {
+        "field": "record_count",
+        "type": "quantitative",
+        "title": "Number of preserved records",
+        "scale": {
         "domain": [0, 5.6],
         "nice": false,
         "zero": true
-      },
-      "axis": {
+        },
+        "axis": {
         "values": [0, 1, 2, 3, 4, 5],
         "format": "d",
         "labelFont": "DM Sans",
@@ -105,26 +105,26 @@
         "domainWidth": 1.2,
         "tickColor": "#C8C3B6",
         "tickSize": 6
-      }
+        }
     }
-  },
+    },
 
-  "layer": [
+    "layer": [
     {
-      "mark": {
+        "mark": {
         "type": "bar",
         "size": 2.5,
         "opacity": 1
-      },
-      "encoding": {
+        },
+        "encoding": {
         "color": {
-          "condition": {
+            "condition": {
             "test": "datum.creator_short === 'Egan-Mulry'",
             "value": "#7A5238"
-          },
-          "value": "#B79A84"
+            },
+            "value": "#B79A84"
         }
-      }
+        }
     },
     {
     "transform": [{ "filter": "datum.creator_short === 'Egan-Mulry'" }],
@@ -167,38 +167,38 @@
     }
     },
     {
-      "mark": {
+        "mark": {
         "type": "circle",
         "filled": true,
         "size": 240,
         "opacity": 1
-      },
-      "encoding": {
+        },
+        "encoding": {
         "color": {
-          "condition": {
+            "condition": {
             "test": "datum.creator_short === 'Egan-Mulry'",
             "value": "#7A5238"
-          },
-          "value": "#B79A84"
+            },
+            "value": "#B79A84"
         },
         "tooltip": [
-          {
+            {
             "field": "creator_key",
             "type": "nominal",
             "title": "Creator"
-          },
-          {
+            },
+            {
             "field": "record_count",
             "type": "quantitative",
             "title": "Preserved records",
             "format": "d"
-          }
+            }
         ]
-      }
+        }
     },
 
     {
-      "mark": {
+        "mark": {
         "type": "text",
         "align": "left",
         "baseline": "middle",
@@ -207,27 +207,27 @@
         "fontSize": 14,
         "fontWeight": "normal",
         "color": "#20243A"
-      },
-      "encoding": {
+        },
+        "encoding": {
         "text": {
-          "field": "record_count",
-          "type": "quantitative",
-          "format": "d"
+            "field": "record_count",
+            "type": "quantitative",
+            "format": "d"
         }
-      }
+        }
     }
-  ],
+    ],
 
-  "padding": {
+    "padding": {
     "left": 10,
     "right": 18,
     "top": 8,
     "bottom": 8
-  },
+    },
 
-  "config": {
+    "config": {
     "view": {
-      "stroke": null
+        "stroke": null
     }
-  }
+    }
 }

@@ -140,7 +140,7 @@
           "scale": {
             "domain": ["Male", "Female"],       
             "range": ["#69BBA4", "#A06583"]
- 
+
           },
           "legend": {
             "orient": "top",
