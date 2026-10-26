@@ -2399,3 +2399,1112 @@ footer p {
         font-size: 11px;
     }
 }
+
+
+/* Reduce excessive vertical whitespace */
+
+.story-section {
+    padding-bottom: 36px;
+}
+
+.section-intro {
+    margin-bottom: 24px;
+    padding: 44px 16px 18px;
+}
+
+.transition-section {
+    padding: 28px 30px;
+}
+
+.chart-card {
+    padding: 28px 30px;
+}
+
+.chart-card.full-width {
+    padding: 28px 30px;
+}
+
+@media (max-width: 768px) {
+    .section-intro {
+        padding: 36px 12px 16px;
+    }
+
+    .chart-card,
+    .chart-card.full-width {
+        padding: 22px 18px;
+    }
+}
+
+
+/* =========================================
+   EDITORIAL VISUAL HIERARCHY
+   Hero > Section > Chart > Transition
+   ========================================= */
+
+/* Main section headings: primary focus */
+.section-intro .section-text h2 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(48px, 4.5vw, 64px);
+    font-weight: 600;
+    line-height: 1.12;
+    color: #20243A;
+    text-align: center;
+}
+
+/* Transitions: supporting narrative, not headings */
+.transition-section {
+    margin: 0;
+    padding: 24px 24px 8px;
+    background-color: #F7F3EB;
+    text-align: center;
+}
+
+/* Both lines share the same smaller scale */
+.transition-section h2 {
+    max-width: 850px;
+    margin: 0 auto;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(24px, 2.2vw, 30px);
+    font-weight: 600;
+    line-height: 1.4;
+    color: #20243A;
+}
+
+/* Second line keeps the existing gold emphasis */
+.transition-section h2 span {
+    display: block;
+    color: #946414;
+    font-style: italic;
+}
+
+/* Bring the next section closer to the transition */
+.transition-section + .story-section .section-intro {
+    padding-top: 30px;
+}
+
+/* Preserve the hierarchy on tablets and phones */
+@media (max-width: 768px) {
+    .section-intro .section-text h2 {
+        font-size: clamp(36px, 7vw, 48px);
+    }
+
+    .transition-section {
+        padding: 20px 18px 6px;
+    }
+
+    .transition-section h2 {
+        font-size: clamp(21px, 4.5vw, 26px);
+    }
+
+    .transition-section + .story-section .section-intro {
+        padding-top: 24px;
+    }
+}
+
+
+/* =========================================
+   TRANSITIONS: CLOSER TO PREVIOUS CHART
+   ========================================= */
+
+/* Reduce the gap after Chart 06 and Chart 09 */
+#section-2,
+#section-3 {
+    padding-bottom: 12px;
+}
+
+/* Transition belongs to the preceding section */
+.transition-section {
+    margin: 0;
+    padding: 14px 24px 34px;
+    text-align: center;
+}
+
+/* Keep the new, smaller transition typography */
+.transition-section h2 {
+    max-width: 850px;
+    margin: 0 auto;
+    font-size: clamp(24px, 2.2vw, 30px);
+    line-height: 1.4;
+}
+
+/* Subtle divider BELOW the transition */
+.transition-section::after {
+    content: "";
+    display: block;
+    width: 100%;
+    max-width: 850px;
+    height: 1px;
+    margin: 30px auto 0;
+    background-color: #D1CCC0;
+}
+
+/* Give the new section a little breathing room */
+.transition-section + .story-section .section-intro {
+    padding-top: 34px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .transition-section {
+        padding: 12px 18px 26px;
+    }
+
+    .transition-section::after {
+        margin-top: 24px;
+    }
+
+    .transition-section + .story-section .section-intro {
+        padding-top: 26px;
+    }
+}
+
+/* Bring Chart 06 and its transition closer together */
+
+/* Remove the unused space below Chart 06 */
+#section-2 > .chart-card.full-width {
+    margin-bottom: 0;
+}
+
+/* Reduce spacing after the archive section */
+#section-2 {
+    padding-bottom: 0;
+}
+
+/* Keep the transition close to Chart 06 */
+#section-2 + .transition-section {
+    padding-top: 18px;
+    margin-top: 0;
+}
+
+
+/* Final spacing adjustment for both transitions */
+
+/* Slightly more space above the transition text */
+.transition-section {
+    padding-top: 24px;
+}
+
+/* Reduce the gap between divider and next section */
+.transition-section + .story-section .section-intro {
+    padding-top: 14px;
+}
+
+/* Mobile spacing */
+@media (max-width: 768px) {
+    .transition-section {
+        padding-top: 20px;
+    }
+
+    .transition-section + .story-section .section-intro {
+        padding-top: 12px;
+    }
+}
+
+
+/* =========================================
+   HERO SIZE AND SPACING REFINEMENT
+   ========================================= */
+
+.hero {
+    padding: 70px 30px 42px;
+}
+
+.hero h1 {
+    max-width: 1050px;
+    font-size: clamp(58px, 6.5vw, 96px);
+    line-height: 1.02;
+}
+
+.eyebrow {
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    max-width: 650px;
+    margin-top: 32px;
+    font-size: 18px;
+    line-height: 1.55;
+}
+
+.story-path {
+    margin-top: 32px;
+}
+
+.research-question {
+    max-width: 650px;
+    margin-top: 55px;
+    padding-top: 24px;
+    font-size: 21px;
+    line-height: 1.45;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    .hero {
+        padding: 65px 18px 32px;
+    }
+
+    .hero h1 {
+        font-size: clamp(43px, 9vw, 60px);
+    }
+
+    .subtitle {
+        font-size: 16px;
+        margin-top: 26px;
+    }
+
+    .research-question {
+        margin-top: 40px;
+        font-size: 19px;
+    }
+}
+
+
+/* =========================================
+   SITE-WIDE SIZING AND VISUAL HIERARCHY
+   Echoes of Australian Music
+
+   Changes typography, spacing and containers.
+   Preserves colours, chart data and interactions.
+   ========================================= */
+
+
+/* 1. HERO — prominent without overwhelming */
+
+.hero {
+    min-height: 0;
+    padding: 64px 28px 30px;
+}
+
+.hero h1 {
+    max-width: 1050px;
+    font-size: clamp(60px, 6.5vw, 96px);
+    line-height: 1.04;
+    font-weight: 600;
+}
+
+.eyebrow {
+    margin-bottom: 20px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.subtitle {
+    max-width: 680px;
+    margin: 30px auto 0;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.story-path {
+    margin-top: 30px;
+}
+
+.story-path span {
+    font-size: 12px;
+}
+
+.research-question {
+    max-width: 650px;
+    margin-top: 52px;
+    padding-top: 22px;
+    font-size: 21px;
+    line-height: 1.45;
+}
+
+
+/* 2. SECTION INTRODUCTIONS — clear primary headings */
+
+.section-intro {
+    min-height: 0;
+    margin-bottom: 22px;
+    padding: 40px 16px 18px;
+}
+
+.section-intro .section-kicker {
+    margin-bottom: 16px;
+}
+
+.section-intro .section-kicker .section-number,
+.section-intro .section-kicker .section-number-inline,
+.section-intro .section-kicker .section-label {
+    font-size: 12px;
+    letter-spacing: 3px;
+    line-height: 1.5;
+}
+
+.section-intro .section-text h2 {
+    max-width: 960px;
+    font-size: clamp(40px, 4.2vw, 54px);
+    line-height: 1.13;
+    font-weight: 600;
+}
+
+.section-description {
+    max-width: 690px;
+    margin: 18px auto 0;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.section-source {
+    margin: 16px auto 0;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 1.6px;
+}
+
+
+/* 3. CHART CARDS — tighter and better balanced */
+
+.chart-card {
+    padding: 26px 28px;
+}
+
+.chart-card.full-width {
+    padding: 26px 28px;
+    margin-bottom: 28px;
+}
+
+.two-column-layout {
+    gap: 22px;
+    margin-bottom: 28px;
+}
+
+
+/* 4. CHART HEADINGS — subordinate to section titles */
+
+.chart-heading {
+    gap: 14px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.chart-heading h3 {
+    max-width: 100%;
+    font-size: clamp(23px, 2vw, 27px);
+    line-height: 1.25;
+    font-weight: 600;
+}
+
+.chart-number {
+    padding-top: 5px;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.chart-description {
+    margin-bottom: 18px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+/* 5. CHART NOTES — previously too small */
+
+.chart-note {
+    padding-top: 14px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: #59645F;
+}
+
+.chart-note.note-columns {
+    column-gap: 36px;
+}
+
+.chart-note.note-columns p {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+
+/* 6. CHART 01 COVERAGE — balanced with timeline */
+
+.timeline-coverage-number {
+    font-size: 27px;
+}
+
+.timeline-coverage-copy strong {
+    font-size: 15px;
+}
+
+.timeline-coverage-copy p,
+.timeline-coverage-note {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* 7. SHARED LEGEND — slightly larger, still compact */
+
+.theme-sections .theme-key-title {
+    font-size: 12px;
+}
+
+.theme-sections .theme-key-items button {
+    font-size: 13px;
+}
+
+.theme-sections .theme-key-hint {
+    font-size: 12px;
+}
+
+
+/* 8. TRANSITIONS — narrative bridge, not another hero */
+
+.transition-section {
+    margin: 0;
+    padding: 24px 24px 30px;
+}
+
+.transition-section h2 {
+    max-width: 850px;
+    font-size: clamp(22px, 2vw, 27px);
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+/* Keep the existing dark gold italic second line */
+.transition-section h2 span {
+    color: #946414;
+    font-style: italic;
+}
+
+/* Keep the subtle divider already introduced */
+.transition-section::after {
+    margin-top: 24px;
+}
+
+/* Reduce gap before the next section heading */
+.transition-section + .story-section .section-intro {
+    padding-top: 14px;
+}
+
+
+/* 9. GENERAL SECTION SPACING */
+
+.story-section {
+    padding-bottom: 32px;
+}
+
+/* Keep Chart 06 close to its transition */
+#section-2 {
+    padding-bottom: 0;
+}
+
+#section-2 > .chart-card.full-width {
+    margin-bottom: 0;
+}
+
+
+/* 10. CONCLUSION — strong, but not oversized */
+
+.conclusion {
+    padding: 76px 8%;
+}
+
+.conclusion h2 {
+    max-width: 980px;
+    margin: 20px auto 46px;
+    font-size: clamp(38px, 4.5vw, 58px);
+    line-height: 1.18;
+}
+
+.conclusion-path {
+    gap: 70px;
+}
+
+.conclusion-path strong {
+    font-size: 19px;
+}
+
+.conclusion-path span {
+    font-size: 12px;
+}
+
+
+/* 11. FOOTER — improve readability */
+
+footer {
+    gap: 48px;
+    padding: 48px 6%;
+}
+
+footer h4 {
+    font-size: 13px;
+}
+
+footer p {
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 1000px) {
+
+    .hero {
+        padding: 64px 24px 30px;
+    }
+
+    .section-intro {
+        padding: 36px 16px 18px;
+    }
+
+    .section-intro .section-text h2 {
+        font-size: clamp(38px, 5vw, 48px);
+    }
+
+    .chart-heading h3 {
+        font-size: 25px;
+    }
+
+    .transition-section h2 {
+        font-size: 25px;
+    }
+
+    .chart-note {
+        font-size: 14px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .hero {
+        padding: 52px 18px 25px;
+    }
+
+    .hero h1 {
+        font-size: clamp(40px, 9vw, 58px);
+        line-height: 1.08;
+    }
+
+    .eyebrow {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .subtitle {
+        margin-top: 24px;
+        font-size: 16px;
+    }
+
+    .research-question {
+        margin-top: 38px;
+        font-size: 18px;
+    }
+
+    .section-intro {
+        padding: 30px 12px 16px;
+        margin-bottom: 18px;
+    }
+
+    .section-intro .section-text h2 {
+        font-size: clamp(32px, 7.5vw, 42px);
+    }
+
+    .section-description {
+        font-size: 16px;
+    }
+
+    .section-source {
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+
+    .chart-card,
+    .chart-card.full-width {
+        padding: 20px 16px;
+    }
+
+    .chart-heading {
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+
+    .chart-heading h3 {
+        font-size: 22px;
+    }
+
+    .chart-number {
+        font-size: 12px;
+    }
+
+    .chart-description {
+        font-size: 14px;
+    }
+
+    .chart-note {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .chart-note.note-columns {
+        row-gap: 12px;
+    }
+
+    .transition-section {
+        padding: 20px 18px 24px;
+    }
+
+    .transition-section h2 {
+        font-size: 21px;
+    }
+
+    .transition-section + .story-section .section-intro {
+        padding-top: 12px;
+    }
+
+    .conclusion {
+        padding: 54px 20px;
+    }
+
+    .conclusion h2 {
+        font-size: clamp(32px, 7vw, 42px);
+        margin-bottom: 30px;
+    }
+
+    .conclusion-path {
+        gap: 26px;
+    }
+
+    .conclusion-path strong {
+        font-size: 18px;
+    }
+
+    footer {
+        padding: 36px 22px;
+        gap: 28px;
+    }
+}
+
+/* =========================================
+   HERO RESEARCH QUESTION
+   Editorial label instead of divider
+   ========================================= */
+
+.research-question-block {
+    max-width: 680px;
+    margin: 34px auto 0;
+    text-align: center;
+}
+
+/* Small coral editorial label */
+.research-question-label {
+    margin: 0 0 12px;
+
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    line-height: 1.5;
+
+    color: #EA5E43;
+}
+
+/* Research question */
+.research-question-block .research-question {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.5;
+
+    color: #20243A;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    .research-question-block {
+        max-width: 100%;
+        margin-top: 26px;
+    }
+
+    .research-question-label {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .research-question-block .research-question {
+        font-size: 17px;
+        line-height: 1.5;
+    }
+}
+
+/* =========================================
+   FINAL HERO STRUCTURE
+   Clear hierarchy and geographic context
+   ========================================= */
+
+/* Main hero layout */
+.hero {
+    min-height: 0;
+    padding: 64px 28px 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Small editorial eyebrow */
+.hero .eyebrow {
+    margin: 0 0 20px;
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    line-height: 1.5;
+    color: #C4412A;
+}
+
+/* Main title */
+.hero h1 {
+    max-width: 1050px;
+    margin: 0;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(60px, 6.5vw, 96px);
+    font-weight: 600;
+    line-height: 1.04;
+    color: #20243A;
+}
+
+/* Coral italic title */
+.hero h1 span {
+    display: block;
+    color: #EA5E43;
+    font-style: italic;
+}
+
+/* Introductory subtitle */
+.hero .subtitle {
+    max-width: 700px;
+    margin: 30px auto 0;
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #59645F;
+}
+
+/* Three narrative movements */
+.hero .story-path {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: clamp(28px, 5vw, 72px);
+    margin-top: 36px;
+}
+
+/* Individual movement */
+.story-path-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 145px;
+}
+
+/* Movement labels */
+.hero .story-path .story-path-label {
+    position: static;
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    line-height: 1.4;
+    color: #20243A;
+}
+
+/* Remove old separator lines */
+.hero .story-path span::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Geographic descriptions */
+.hero .story-path .story-path-description {
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.45;
+    color: #59645F;
+    white-space: normal;
+}
+
+/* Central research question */
+.hero .research-question {
+    max-width: 660px;
+    margin: 38px auto 0;
+    padding: 0;
+    border: none;
+
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #20243A;
+}
+
+/* Quiet dataset teaser */
+.hero-data-teaser {
+    margin: 20px auto 0;
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.2px;
+    color: #59645F;
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 1000px) {
+
+    .hero .story-path {
+        gap: 24px;
+    }
+
+    .story-path-item {
+        min-width: 120px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .hero {
+        padding: 52px 18px 32px;
+    }
+
+    .hero .eyebrow {
+        font-size: 10px;
+        letter-spacing: 1.6px;
+    }
+
+    .hero h1 {
+        font-size: clamp(40px, 9vw, 58px);
+        line-height: 1.08;
+    }
+
+    .hero .subtitle {
+        margin-top: 24px;
+        font-size: 16px;
+    }
+
+    .hero .subtitle br {
+        display: none;
+    }
+
+    .hero .story-path {
+        width: 100%;
+        gap: 10px;
+        margin-top: 30px;
+    }
+
+    .story-path-item {
+        flex: 1;
+        min-width: 0;
+        gap: 6px;
+    }
+
+    .hero .story-path .story-path-label {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+    .hero .story-path .story-path-description {
+        font-size: 11px;
+        line-height: 1.4;
+    }
+
+    .hero .research-question {
+        margin-top: 30px;
+        font-size: 18px;
+    }
+
+    .hero-data-teaser {
+        max-width: 320px;
+        margin-top: 18px;
+        font-size: 11px;
+        line-height: 1.7;
+    }
+}
+
+
+/* =========================================
+   SUPPORTING TEXT READABILITY
+   Increase smaller text without changing headings
+   ========================================= */
+
+/* Orange section numbers and labels */
+.section-intro .section-kicker .section-number,
+.section-intro .section-kicker .section-number-inline,
+.section-intro .section-kicker .section-label {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    line-height: 1.5;
+}
+
+/* Orange numbers beside chart headings */
+.chart-number {
+    font-size: 15px;
+    font-weight: 600;
+    padding-top: 5px;
+}
+
+/* Small introductory label above hero title */
+.hero .eyebrow {
+    font-size: 13px;
+    letter-spacing: 2.5px;
+}
+
+/* Supporting descriptions */
+.section-description {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.chart-description {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Notes below visualisations */
+.chart-note {
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+/* Dataset labels below section introductions */
+.section-source {
+    font-size: 13px;
+    letter-spacing: 1.5px;
+}
+
+/* Shared interactive theme legend */
+.theme-sections .theme-key-title {
+    font-size: 13px;
+}
+
+.theme-sections .theme-key-items button {
+    font-size: 13px;
+}
+
+.theme-sections .theme-key-hint {
+    font-size: 13px;
+}
+
+/* Mobile: maintain the same hierarchy */
+@media (max-width: 600px) {
+    .section-intro .section-kicker .section-number,
+    .section-intro .section-kicker .section-number-inline,
+    .section-intro .section-kicker .section-label {
+        font-size: 12px;
+        letter-spacing: 1.5px;
+    }
+
+    .chart-number {
+        font-size: 13px;
+    }
+
+    .hero .eyebrow {
+        font-size: 11px;
+        letter-spacing: 1.6px;
+    }
+
+    .section-description {
+        font-size: 16px;
+    }
+
+    .chart-description,
+    .chart-note {
+        font-size: 14px;
+    }
+
+    .section-source {
+        font-size: 11px;
+    }
+}
+
+/* =========================================
+   CHARTS 02–03: PAIRED CARD ALIGNMENT
+   ========================================= */
+
+.creator-pair {
+    align-items: stretch;
+}
+
+.creator-pair > .chart-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+}
+
+/* Align each note's upper divider */
+.creator-pair > .chart-card > .chart-note {
+    margin-top: auto;
+    min-height: 110px;
+    padding-top: 16px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: #59645F;
+}
+
+/* Historical source stays visually secondary */
+.creator-pair .chart-context-source {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 1.45;
+    font-weight: 400;
+    color: #6F7180;
+}
+
+.creator-pair .chart-context-source a {
+    color: #59645F;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+@media (max-width: 1000px) {
+    .creator-pair > .chart-card > .chart-note {
+        min-height: 0;
+    }
+}
+
+
+/* =========================================
+   SHARED THEME LEGEND — BORDERLESS
+   ========================================= */
+
+.theme-sections > .theme-key {
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    background-color: #F7F3EB;
+}
