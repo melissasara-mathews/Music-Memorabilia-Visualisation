@@ -2,121 +2,368 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 320,
+  "height": 180,
   "background": "#F7F3EB",
-  "data": {
-    "url": "data/clean/music_qld_clean.csv"
-  },
+
   "params": [
     {
       "name": "selectedThemes",
       "value": []
     }
   ],
-  "transform": [
-    {
-      "filter": "isValid(datum.year) && datum.year >= 1880 && datum.year <= 1960"
-    },
-    {
-      "filter": "length(selectedThemes) === 0 || indexof(selectedThemes, datum.theme) >= 0"
-    }
-  ],
-  "mark": {
-    "type": "circle",
-    "size": 100,
-    "opacity": 0.9,
-    "stroke": "#F7F3EB",
-    "strokeWidth": 1
-  },
+
   "encoding": {
     "x": {
       "field": "year",
       "type": "quantitative",
-      "title": null,
+      "title": "Catalogue year",
       "scale": {
         "domain": [1880, 1960],
         "nice": false
       },
       "axis": {
-        "values": [1880, 1900, 1920, 1940, 1960],
+        "values": [
+          1880,
+          1890,
+          1900,
+          1910,
+          1920,
+          1930,
+          1940,
+          1950,
+          1960
+        ],
         "format": "d",
-        "labelFontSize": 13,
+        "labelFontSize": 12,
         "labelColor": "#6F7180",
-        "labelPadding": 12,
+        "labelPadding": 9,
+        "titleFontSize": 12,
+        "titleColor": "#293348",
+        "titlePadding": 14,
         "domainColor": "#C8C3B6",
         "tickColor": "#C8C3B6",
         "grid": false
       }
-    },
-    "y": {
-      "field": "theme",
-      "type": "nominal",
-      "title": null,
-      "sort": [
-        "Piano / dance",
-        "War",
-        "Patriotic / national",
-        "Songs",
-        "Queensland / place",
-        "Other"
-      ],
-      "axis": {
-        "domain": false,
-        "ticks": false,
-        "grid": false,
-        "labelFontSize": 13,
-        "labelColor": "#293348",
-        "labelPadding": 14,
-        "labelLimit": 190
-      }
-    },
-    "color": {
-      "field": "theme",
-      "type": "nominal",
-      "scale": {
-        "domain": [
-          "Piano / dance",
-          "War",
-          "Patriotic / national",
-          "Songs",
-          "Queensland / place",
-          "Other"
-        ],
-        "range": [
-          "#1FA4B6",
-          "#E75480",
-          "#458C6B",
-          "#876EB2",
-          "#FFDB58",
-          "#84465C"
+    }
+  },
+
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {"year": 1880},
+          {"year": 1890},
+          {"year": 1900},
+          {"year": 1910},
+          {"year": 1920},
+          {"year": 1930},
+          {"year": 1940},
+          {"year": 1950},
+          {"year": 1960}
         ]
       },
-      "legend": null
-    },
-    "tooltip": [
-      {
-        "field": "title_display",
-        "type": "nominal",
-        "title": "Music title"
+      "mark": {
+        "type": "rule",
+        "color": "#E4DED3",
+        "strokeWidth": 1
       },
-      {
-        "field": "creator_clean",
-        "type": "nominal",
-        "title": "Creator"
-      },
-      {
-        "field": "year",
-        "type": "quantitative",
-        "title": "Year",
-        "format": "d"
-      },
-      {
-        "field": "theme",
-        "type": "nominal",
-        "title": "Theme"
+      "encoding": {
+        "y": {
+          "value": 30
+        },
+        "y2": {
+          "value": 180
+        }
       }
-    ]
-  },
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "year": 1939,
+            "year_end": 1949
+          }
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "color": "#CFC9BB",
+        "opacity": 0.15
+      },
+      "encoding": {
+        "x2": {
+          "field": "year_end"
+        },
+        "y": {
+          "value": 30
+        },
+        "y2": {
+          "value": 180
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "year": 1914,
+            "year_end": 1918
+          }
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "color": "#5F6FA8",
+        "opacity": 0.22
+      },
+      "encoding": {
+        "x2": {
+          "field": "year_end"
+        },
+        "y": {
+          "value": 30
+        },
+        "y2": {
+          "value": 180
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "year": 1901
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#697181",
+        "strokeWidth": 1.2,
+        "strokeDash": [4, 4],
+        "opacity": 0.85
+      },
+      "encoding": {
+        "y": {
+          "value": 30
+        },
+        "y2": {
+          "value": 180
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "year": 1901,
+            "label": "Federation, 1901"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#4A5263",
+        "align": "center",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "y": {
+          "value": 16
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "year": 1916,
+            "label": "First World War, 1914–1918"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#445487",
+        "align": "center",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "y": {
+          "value": 16
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "year": 1944,
+            "label": "No dated records\n1939–1949"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Arial",
+        "fontSize": 11,
+        "color": "#59645F",
+        "align": "center",
+        "baseline": "middle",
+        "lineBreak": "\n",
+        "lineHeight": 14
+      },
+      "encoding": {
+        "y": {
+          "value": 98
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "url": "data/clean/music_qld_clean.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "year": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "isValid(datum.year) && datum.year >= 1880 && datum.year <= 1960"
+        },
+        {
+          "window": [
+            {
+              "op": "row_number",
+              "as": "stack_index"
+            }
+          ],
+          "groupby": [
+            "year"
+          ],
+          "sort": [
+            {
+              "field": "theme",
+              "order": "ascending"
+            },
+            {
+              "field": "Title",
+              "order": "ascending"
+            }
+          ]
+        },
+        {
+          "calculate": "datum.stack_index - 1",
+          "as": "stack_y"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 160,
+        "filled": true,
+        "stroke": "#F7F3EB",
+        "strokeWidth": 1.4
+      },
+      "encoding": {
+        "y": {
+          "field": "stack_y",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "domain": [0, 3],
+            "range": [152, 90]
+          },
+          "axis": null
+        },
+        "color": {
+          "field": "theme",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Piano / dance",
+              "War",
+              "Patriotic / national",
+              "Songs",
+              "Queensland / place",
+              "Other"
+            ],
+            "range": [
+              "#1FA4B6",
+              "#E75480",
+              "#458C6B",
+              "#876EB2",
+              "#FFDB58",
+              "#84465C"
+            ]
+          },
+          "legend": null
+        },
+        "opacity": {
+          "condition": {
+            "test": "length(selectedThemes) === 0 || indexof(selectedThemes, datum.theme) >= 0",
+            "value": 0.95
+          },
+          "value": 0.15
+        },
+        "tooltip": [
+          {
+            "field": "title_display",
+            "type": "nominal",
+            "title": "Music title"
+          },
+          {
+            "field": "creator_clean",
+            "type": "nominal",
+            "title": "Creator"
+          },
+          {
+            "field": "year",
+            "type": "quantitative",
+            "title": "Catalogue year",
+            "format": "d"
+          },
+          {
+            "field": "Date",
+            "type": "nominal",
+            "title": "Original catalogue date"
+          },
+          {
+            "field": "theme",
+            "type": "nominal",
+            "title": "Theme"
+          }
+        ]
+      }
+    }
+  ],
+
   "config": {
     "view": {
       "stroke": null
@@ -126,10 +373,11 @@
       "titleFont": "Arial"
     }
   },
+
   "padding": {
-    "left": 0,
-    "right": 0,
-    "top": 12,
+    "left": 4,
+    "right": 8,
+    "top": 8,
     "bottom": 8
   }
 }
