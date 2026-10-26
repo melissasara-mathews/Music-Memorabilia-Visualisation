@@ -138,8 +138,9 @@
           "type": "nominal",
           "title": "Gender",
           "scale": {
-            "domain": ["Male", "Female"],
-            "range": ["#3559A8", "#E85D43"]
+            "domain": ["Male", "Female"],       
+            "range": ["#69BBA4", "#A06583"]
+ 
           },
           "legend": {
             "orient": "top",
