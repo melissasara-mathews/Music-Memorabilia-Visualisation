@@ -1,275 +1,153 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport"
-
           content="width=device-width, initial-scale=1.0">
-
     <title>Echoes of Australian Music</title>
-
     <link rel="stylesheet" href="css/style.css">
-
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-
 </head>
-
 <body>
-
     <header class="hero">
-
         <p class="eyebrow">
             A DATA STORY ABOUT MUSIC, MEMORY & PLACE
         </p>
-
         <h1>
             Echoes of
             <span>Australian Music</span>
         </h1>
-
         <p class="subtitle">
             From Queensland's sheet-music archive to Melbourne's stages<br>
             and Australian audiences.
         </p>
-
         <div class="story-path" aria-label="Three movements of the story">
-
             <div class="story-path-item">
                 <span class="story-path-label">PAST</span>
                 <span class="story-path-description">
                     Queensland archive
                 </span>
             </div>
-
             <div class="story-path-item">
                 <span class="story-path-label">PLACES</span>
                 <span class="story-path-description">
                     Melbourne venues
                 </span>
             </div>
-
             <div class="story-path-item">
                 <span class="story-path-label">PEOPLE</span>
                 <span class="story-path-description">
                     Australian audiences
                 </span>
             </div>
-
         </div>
-
         <p class="research-question">
             How does music survive, and who keeps it going today?
         </p>
-
         <p class="hero-data-teaser">
             87 archive records · 227 mapped venues · one national survey
         </p>
-
     </header>
-
-
     <main>
-
-        <!-- SECTION 1: HISTORICAL MUSIC -->
-
         <div class="theme-sections">
-        
-            <!-- SHARED MUSIC-THEME LEGEND -->
-
             <div class="theme-key"
-
                     aria-label="Music theme colours">
-
                     <p class="theme-key-title">
-
                         EXPLORE THE MUSIC THEMES
-
                     </p>
-
                     <div class="theme-key-items"
-
                         role="group"
-
                         aria-label="Music themes">
-
                         <button type="button"
-
                                 data-theme="Piano / dance">
-
                             <span class="theme-dot"
-
                                 style="background:#1FA4B6"></span>
-
                             Piano / dance
-
                         </button>
-
                         <button type="button"
-
                                 data-theme="War">
-
                             <span class="theme-dot"
-
                                 style="background:#E75480"></span>
-
                             War
-
                         </button>
-
                         <button type="button"
-
                                 data-theme="Patriotic / national">
-
                             <span class="theme-dot"
-
                                 style="background:#458C6B"></span>
-
                             Patriotic / national
-
                         </button>
-
                         <button type="button"
-
                                 data-theme="Songs">
-
                             <span class="theme-dot"
-
                                 style="background:#876EB2"></span>
-
                             Songs
-
                         </button>
-
                         <button type="button"
-
                                 data-theme="Queensland / place">
-
                             <span class="theme-dot"
-
                                 style="background:#FFDB58"></span>
-
                             Queensland / place
-
                         </button>
-
                         <button type="button"
-
                                 data-theme="Other">
-
                             <span class="theme-dot"
-
                                 style="background:#84465C"></span>
-
                             Other
-
                         </button>
-
                     </div>
-
                     <p class="theme-key-hint">
-
                         Select a theme to highlight its label.
-
                     </p>
-
                 </div>
-
-
         <section id="section-1" class="story-section">
-            
-
-            
             <div class="section-intro">
-
                 <div class="section-text">
-
                     <div class="section-kicker">
-
                         <span class="section-number">01</span>
-
                         <p class="section-label">THE MUSIC WE KEPT</p>
-
                     </div>
-
                     <h2>
-
-                        What survives from Australia’s musical past?
-
+                        What survives from Australia’s<br>
+                        musical past?
                     </h2>
-
                     <p class="section-description">
-
                         Archives reveal what was collected, catalogued and<br>
-
                         carried forward through Australia’s musical history.
-
                     </p>
-
                     <p class="section-source">
-
                         STATE LIBRARY OF QUEENSLAND · MUSIC QUEENSLAND
-
                     </p>
-
                 </div>
-
             </div>
         </section>
-
-
         </section>
-
             <div class="story-section archive-charts">
-
-            <!-- CHART 01: TIMELINE -->
-
+            <!-- Chart 01 -->
             <div class="chart-card full-width">
-
                 <div class="chart-heading">
-
                     <span class="chart-number">
-
                         01
-
                     </span>
-
                     <h3>
-
                         When did different musical themes appear?
-
                     </h3>
-
                 </div>
-
                 <p class="chart-description">
-
                     Explore Queensland's preserved sheet music across the decades.
-
                 </p>
-
                 <div id="timeline"></div>
-
-                <!-- Chart 01: Data coverage -->
                 <div class="timeline-coverage" aria-label="Timeline date coverage">
                     <div class="timeline-coverage-top">
                         <div class="timeline-coverage-number">
                             25 <span>/ 87</span>
                         </div>
-
                         <div class="timeline-coverage-copy">
                             <strong>Records with usable dates</strong>
                             <p>Only 28.7% of the archive can be placed on this timeline.</p>
                         </div>
                     </div>
-
                     <div
                         class="timeline-coverage-track"
                         role="img"
@@ -277,173 +155,92 @@
                     >
                         <div class="timeline-coverage-fill"></div>
                     </div>
-
                     <p class="timeline-coverage-note">
                         Some years are catalogue estimates. Gaps do not necessarily indicate periods without music.
                     </p>
                 </div>
-
-
             </div>
-
-            <!-- CHARTS 02 AND 03 -->
-
+            <!-- Chart 02 and 03 -->
             <div class="two-column-layout creator-pair">
-
                 <div class="chart-card">
-
                     <div class="chart-heading">
-
                         <span class="chart-number">
-
                             02
-
                         </span>
-
                         <h3>
-
                             Which creators appear most often in the collection?
-
                         </h3>
-
                     </div>
-
                     <div id="creator-lollipop"></div>
-
                     <p class="chart-note creator-context">
-                        
                         Collection frequency reflects archival representation,<br>
                         not necessarily the popularity of each creator.
-
                     </p>
-
                 </div>
-
                 <div class="chart-card">
-
                     <div class="chart-heading">
-
                         <span class="chart-number">
-
                             03
-
                         </span>
-
                         <h3>
-
-                            What themes are associated with<br> 
+                            What themes are associated with<br>&#x20;
                             frequently represented creators?
-
                         </h3>
-
                     </div>
-
                     <div id="creator-theme"></div>
-
-
                     <p class="chart-note">
                         Piano / dance connects all five represented creators.<br>
                         Other themes link to fewer creators.
                     </p>
-
-
                 </div>
-
             </div>
-
         </div>
-
-        <!-- SECTION 2: ARCHIVE THEMES -->
-
         <section id="section-2" class="story-section">
-
             <div class="section-intro">
-
                 <div class="section-text">
-
                     <div class="section-kicker">
-
                         <span class="section-number">02</span>
-
                         <p class="section-label">WHAT DID AUSTRALIA PRESERVE?</p>
-
                     </div>
-
                     <h2>
-
                         The subjects inside the archive
-
                     </h2>
-
                     <p class="section-description">
-
                         The collection’s themes reveal what kinds of music,<br>
-
                         places and cultural ideas were preserved.
-
                     </p>
-
                     <p class="section-source">
-
                         STATE LIBRARY OF QUEENSLAND · MUSIC QUEENSLAND
-
                     </p>
-
                 </div>
-
             </div>
-
-            <!-- CHARTS 04 AND 05 -->
-
+            <!-- Chart 04 and 05 -->
             <div class="two-column-layout heatmap-treemap-pair">
-
                 <div class="chart-card">
-
                     <div class="chart-heading">
-
                         <span class="chart-number">
-
                             04
-
                         </span>
-
                         <h3>
-
                             Which themes appear across historical periods?
-
                         </h3>
-
                     </div>
-
                     <div id="theme-heatmap"></div>
-
                     <p class="chart-note">
                         Piano / dance appears across the widest range of periods.<br>
                         War-themed records are concentrated in the 1910s.<br>
                         These patterns reflect the dated collection.
                     </p>
-
-
                 </div>
-
                 <div class="chart-card">
-
                     <div class="chart-heading">
-
                         <span class="chart-number">
-
                             05
-
                         </span>
-
                         <h3>
-
                             What kinds of subjects dominate the preserved collection?
-
                         </h3>
-
                     </div>
-
                     <div id="subject-composition"></div>
                     <p class="chart-note">
                         Subject mentions can exceed the number of music records<br>
@@ -451,331 +248,170 @@
                         The 87 records contain 166 subject mentions.
                     </p>
                 </div>
-
             </div>
-
-            <!-- CHART 06 -->
-
+            <!-- Chart 06 -->
             <div class="chart-card full-width">
-
                 <div class="chart-heading">
-
                     <span class="chart-number">
-
                         06
-
                     </span>
-
-
                 <h3>Which musical themes appear across the dated periods?</h3>
-
-
                 </div>
-
                 <div id="period-theme"></div>
-
                 <div class="chart-note note-columns">
-
                     <p>
-
                         War music stands out in the 1910s collection.<br>
                         Piano and dance music appears across several periods.
-
                     </p>
-
                     <p>
-
                         Only 25 of 87 records have known dates.<br>
                         Interpret periods with fewer than five records cautiously.
-
                     </p>
-
                 </div>
-
             </div>
-
         </section>
-
-        </div> <!-- End theme-sections: theme key stops here -->
-
-        <!-- TRANSITION: ARCHIVE TO STAGE -->
-
+        </div>
         <section class="transition-section">
-
             <h2>
-
                 Music survives in collections.
-
                 <span>But it also survives on stage.</span>
-
             </h2>
-
         </section>
-
-        <!-- SECTION 3: MELBOURNE VENUES -->
-
         <section id="section-3" class="story-section">
-
             <div class="section-intro">
-
                 <div class="section-text">
-
                     <div class="section-kicker">
-
                         <span class="section-number">03</span>
-
                         <p class="section-label">WHERE MUSIC LIVES TODAY</p>
-
                     </div>
-
                     <h2>
-
                         A city mapped by its stages
-
                     </h2>
-
                     <p class="section-description">
-
                         From bars and theatres to community spaces, live music<br>
-
                         forms part of Melbourne’s urban landscape.
-
                     </p>
-
                     <p class="section-source">
-
                         CITY OF MELBOURNE · LIVE MUSIC VENUES
-
                     </p>
-
                 </div>
-
             </div>
-
-            <!-- CHART 07 -->
-
+            <!-- Chart 07 -->
             <div class="chart-card full-width">
-
                 <div class="chart-heading">
-
                     <span class="chart-number">
-
                         07
-
                     </span>
-
                     <h3>
-
                         Where does live music happen across Melbourne?
-
                     </h3>
-
                 </div>
-
                 <div class="venue-map-controls">
-
                     <div class="venue-map-filter">
-
                         <label for="venue-type-select">
-
                             Filter venue type:
-
                         </label>
-
                         <select id="venue-type-select">
-
                             <option value="Bar">Bar</option>
-
                             <option value="Nightclub">Nightclub</option>
-
                             <option value="Hotel">Hotel</option>
-
                             <option value="Performance Space">Performance Space</option>
-
                             <option value="Venue">Venue</option>
-
                             <option value="Theatre">Theatre</option>
-
                             <option value="Gallery">Gallery</option>
-
                             <option value="Museum">Museum</option>
-
                         </select>
-
                     </div>
-
                     <div class="venue-map-legend">
-
                         <span class="venue-legend-item">
-
                             <span class="venue-legend-dot selected"></span>
-
                             Highlighted venues
-
                         </span>
-
                         <span class="venue-legend-item">
-
                             <span class="venue-legend-dot other"></span>
-
                             Other venues
-
                         </span>
-
                     </div>
-
                 </div>
-
                 <div id="venue-dot-map"></div>
-
                 <div class="chart-divider"></div>
-
                 <div class="chart-note note-columns">
-
                     <p>
-
                         Each dot represents one live-music venue.
-
                     </p>
-
                     <p>
-
                         Venues cluster strongly around central Melbourne.
-
                     </p>
-
                 </div>
-
             </div>
-
-            <!-- CHARTS 08 AND 09 -->
-
+            <!-- Chart 08 and 09 -->
             <div class="two-column-layout">
-
                 <div class="chart-card">
-
                     <div class="chart-heading">
-
                         <span class="chart-number">
-
                             08
-
                         </span>
-
                         <h3>
-
                             What types of places host<br>
                             live music?
-
                         </h3>
-
                     </div>
-
                     <div id="venue-types"></div>
-
-
                     <p class="chart-note">
                         Bars, nightclubs and hotels account for 63.2% of<br>
                         venues with a known type (129 of 204).<br>
                         Another 23 mapped venues have an unknown type.
                     </p>
-
-
                 </div>
-
                 <div class="chart-card">
-
                     <div class="chart-heading">
-
                         <span class="chart-number">
-
                             09
-
                         </span>
-
                         <h3>
                             Where are live-music venues most concentrated?
                         </h3>
-
                     </div>
                     <div id="venue-concentration"></div>
-
                     <p class="chart-note">
                         Venues concentrate around central Melbourne.<br>
                         The busiest grid cell contains 90 of 227 venues.<br>
                         Each grid cell covers approximately 1 km².
                     </p>
-
-
                 </div>
-
             </div>
-
         </section>
-
-        <!-- TRANSITION: STAGE TO AUDIENCE -->
-
         <section class="transition-section">
-
             <h2>
-
                 Venues show where music happens.
-
                 <span>Audiences show who participates.</span>
-
             </h2>
-
         </section>
-
-        <!-- SECTION 4: ATTENDANCE -->
-
         <section id="section-4" class="story-section">
-
             <div class="section-intro">
-
                 <div class="section-text">
-
                     <div class="section-kicker">
-
                         <span class="section-number">04</span>
-
                         <p class="section-label">WHO IS LISTENING?</p>
-
                     </div>
-
                     <h2>
-
                         The geography of an audience
-
                     </h2>
-
                     <p class="section-description">
-
                         Participation changes across place, age and gender.
-
                     </p>
-
                     <p class="section-source">
-
                         ABS · CULTURAL AND CREATIVE ACTIVITIES 2021–22
-
                     </p>
-
                 </div>
-
             </div>
-
-
-            <!-- CHART 10 -->
+            <!-- Chart 10 -->
             <div class="chart-card full-width">
-
             <div class="chart-heading">
                 <span class="chart-number">10</span>
                 <h3>How does live-music attendance vary across Australia?</h3>
             </div>
-
             <div id="attendance-map"></div>
-
             <div class="chart-note note-columns">
                 <p>
                 Attendance rates vary across Australia.
@@ -784,63 +420,44 @@
                 The Northern Territory records the highest rate.
                 </p>
             </div>
-
             </div>
-
-            <!-- CHART 11 -->
+            <!-- Chart 11 -->
             <div class="chart-card full-width">
-
             <div class="chart-heading">
                 <span class="chart-number">11</span>
                 <h3>How does live-music attendance differ by age and gender?</h3>
             </div>
-
             <div id="age-gender"></div>
-
             <p class="chart-note">
                 Female attendance rates are higher than male rates across all<br>
                 reported age groups, although some differences are small.
             </p>
-
             </div>
-
             </section>
-
-            <!-- SECTION 5: ATTENDANCE FREQUENCY -->
             <section id="section-5" class="story-section">
-
             <div class="section-intro">
                 <div class="section-text">
-
                 <div class="section-kicker">
                     <span class="section-number">05</span>
                     <p class="section-label">IS LIVE MUSIC A HABIT?</p>
                 </div>
-
                 <h2>A night out or a regular ritual?</h2>
-
                 <p class="section-description">
                     Attendance frequency reveals whether live music is an occasional<br>
                     outing or a regular habit.
                 </p>
-
                 <p class="section-source">
                     ABS · TABLE 21
                 </p>
-
                 </div>
             </div>
-
-            <!-- CHART 12 -->
+            <!-- Chart 12 -->
             <div class="chart-card full-width">
-
                 <div class="chart-heading">
                 <span class="chart-number">12</span>
                 <h3>How often did Australians attend live music?</h3>
                 </div>
-
                 <div id="frequency-waffle"></div>
-
                 <div class="chart-note note-columns">
                 <p>
                     Most attendees go only once or twice.
@@ -849,163 +466,83 @@
                     Frequent attendance is comparatively uncommon.
                 </p>
                 </div>
-
             </div>
-
             </section>
-
-
-        <!-- CONCLUSION -->
-
         <section class="conclusion">
-
             <p class="section-label">
-
                 THE STORY IN THREE MOVEMENTS
-
             </p>
-
             <h2>
-
                 Australian music lives on through what we preserve,<br>
-
                 where we gather and who keeps returning.
-
             </h2>
-
             <div class="conclusion-path">
-
                 <div>
-
                     <span>PAST</span>
-
                     <strong>Historical artefacts</strong>
-
                 </div>
-
                 <div>
-
                     <span>PLACES</span>
-
                     <strong>Live-music venues</strong>
-
                 </div>
-
                 <div>
-
                     <span>PEOPLE</span>
-
                     <strong>Live audiences</strong>
-
                 </div>
-
             </div>
-
         </section>
-
     </main>
-
-    <!-- FOOTER -->
-
     <footer>
-
         <div class="sources">
-
             <h4>Data Sources</h4>
-
             <p>
-
                 <strong>City of Melbourne</strong><br>
-
                 Live Music Venues —
-
                 <a href="https://data.melbourne.vic.gov.au/explore/dataset/live-music-venues/export/"
-
                    target="_blank"
-
                    rel="noopener noreferrer">
-
                     View dataset
-
                 </a>
-
             </p>
-
             <p>
-
                 <strong>State Library of Queensland</strong><br>
-
                 Music Queensland —
-
                 <a href="https://www.data.qld.gov.au/dataset/music-queensland"
-
                    target="_blank"
-
                    rel="noopener noreferrer">
-
                     View dataset
-
                 </a>
-
             </p>
-
             <p>
-
                 <strong>Australian Bureau of Statistics</strong><br>
-
                 Cultural and Creative Activities, 2021–22 —
-
                 <a href="https://www.abs.gov.au/statistics/people/people-and-communities/cultural-and-creative-activities/2021-22"
-
                    target="_blank"
-
                    rel="noopener noreferrer">
-
                     View dataset
-
                 </a>
-
             </p>
-
-
             <p>
                 <strong>Pan and Pafka (2021)</strong><br>
-
                 Mapping the ‘beat’: The urban morphologies of Melbourne’s evolving live music clusters.
                 <em>Journal of Urban Design, 26</em>(3), 265–278 —
-
                 <a href="https://doi.org/10.1080/13574809.2020.1819782"
                 target="_blank"
                 rel="noopener noreferrer">
                     View research paper
                 </a>
             </p>
-
-
         </div>
-
         <div>
-
             <h4>About</h4>
-
             <p>
-
                 Data story by Melissa Sara Mathews
-
             </p>
-
             <p>
-
                 2026
-
             </p>
-
         </div>
-
     </footer>
-
     <script src="js/vega_lite_vis.js"></script>
-
 </body>
-
 </html>

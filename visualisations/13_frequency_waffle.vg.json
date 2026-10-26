@@ -138,7 +138,7 @@
             "title": "Attendance frequency"
           },
           {
-            "field": "pct",
+            "field": "pct_label",
             "type": "quantitative",
             "title": "Percentage of attendees",
             "format": ".1f"

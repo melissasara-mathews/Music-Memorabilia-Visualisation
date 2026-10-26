@@ -100,7 +100,7 @@
         "color": {
           "condition": {
             "test": "datum.space_type == 'Bar'",
-            "value": "#2455A4"
+            "value": "#514C47"
           },
           "value": "#C9C0B0"
         },

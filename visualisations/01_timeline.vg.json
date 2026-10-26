@@ -355,11 +355,6 @@
             "format": "d"
           },
           {
-            "field": "Date",
-            "type": "nominal",
-            "title": "Original catalogue date"
-          },
-          {
             "field": "theme",
             "type": "nominal",
             "title": "Theme"

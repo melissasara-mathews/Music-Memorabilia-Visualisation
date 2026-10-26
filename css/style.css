@@ -1396,7 +1396,7 @@ footer p {
 
 .hero {
   min-height: 0;
-  padding: 64px 28px 44px;
+  padding: 42px 28px 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1430,13 +1430,14 @@ footer p {
 
 .hero .subtitle {
   max-width: 700px;
-  margin: 30px auto 0;
+  margin: 22px auto 0;
   font-family: "DM Sans", Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
   color: #59645F;
 }
+
 
 .hero .story-path {
   display: flex;
@@ -1459,10 +1460,11 @@ footer p {
   font-family: "DM Sans", Arial, sans-serif;
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   line-height: 1.4;
   color: #20243A;
 }
+
 
 .hero .story-path span::after {
   content: none !important;
@@ -1479,9 +1481,10 @@ footer p {
   white-space: normal;
 }
 
+
 .hero .research-question {
   max-width: 660px;
-  margin: 38px auto 0;
+  margin: 24px auto 0;
   padding: 0;
   border: none;
   font-family: "Playfair Display", Georgia, serif;
@@ -1492,16 +1495,16 @@ footer p {
 }
 
 .hero-data-teaser {
-  margin: 20px auto 0;
+  margin: 12px auto 0;
   font-family: "DM Sans", Arial, sans-serif;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 500;
   line-height: 1.6;
   letter-spacing: 0.2px;
   color: #59645F;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 600px) {
   .hero .story-path {
     gap: 24px;
   }
