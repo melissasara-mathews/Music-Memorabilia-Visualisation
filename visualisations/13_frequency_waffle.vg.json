@@ -1,3 +1,4 @@
+
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "background": "transparent",
@@ -47,11 +48,15 @@
           "groupby": ["group"]
         },
         {
+          "calculate": "format(datum.pct, '.1f') + '%'",
+          "as": "pct_label"
+        },
+        {
           "calculate": "datum.group == 'Once' ? 1 : datum.group == 'Twice' ? 2 : datum.group == '3–5 times' ? 3 : datum.group == '6–10 times' ? 4 : 5",
           "as": "order"
         },
         {
-          "calculate": "datum.order == 1 ? '#C98E80' : datum.order == 2 ? '#B87364' : datum.order == 3 ? '#A35649' : datum.order == 4 ? '#893D33' : '#69291F'",
+          "calculate": "datum.order == 1 ? '#48D1CC' : datum.order == 2 ? '#00637C' : datum.order == 3 ? '#E9C46A' : datum.order == 4 ? '#A47BC1' : '#A65A32'",
           "as": "color"
         },
         {
@@ -139,9 +144,8 @@
           },
           {
             "field": "pct_label",
-            "type": "quantitative",
-            "title": "Percentage of attendees",
-            "format": ".1f"
+            "type": "nominal",
+            "title": "Percentage of attendees"
           }
         ]
       }
@@ -181,7 +185,7 @@
           "as": "order"
         },
         {
-          "calculate": "datum.order == 1 ? '#C98E80' : datum.order == 2 ? '#B87364' : datum.order == 3 ? '#A35649' : datum.order == 4 ? '#893D33' : '#69291F'",
+          "calculate": "datum.order == 1 ? '#48D1CC' : datum.order == 2 ? '#00637C' : datum.order == 3 ? '#E9C46A' : datum.order == 4 ? '#A47BC1' : '#A65A32'",
           "as": "color"
         },
         {
