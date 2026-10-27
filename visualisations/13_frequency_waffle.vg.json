@@ -56,7 +56,7 @@
           "as": "order"
         },
         {
-          "calculate": "datum.order == 1 ? '#48D1CC' : datum.order == 2 ? '#00637C' : datum.order == 3 ? '#E9C46A' : datum.order == 4 ? '#A47BC1' : '#A65A32'",
+          "calculate": "datum.order == 1 ? '#48D1CC' : datum.order == 2 ? '#00637C' : datum.order == 3 ? '#E9C46A' : datum.order == 4 ? '#CBAFEB' : '#A65A32'",
           "as": "color"
         },
         {
@@ -185,7 +185,7 @@
           "as": "order"
         },
         {
-          "calculate": "datum.order == 1 ? '#48D1CC' : datum.order == 2 ? '#00637C' : datum.order == 3 ? '#E9C46A' : datum.order == 4 ? '#A47BC1' : '#A65A32'",
+          "calculate": "datum.order == 1 ? '#48D1CC' : datum.order == 2 ? '#00637C' : datum.order == 3 ? '#E9C46A' : datum.order == 4 ? '#CBAFEB' : '#A65A32'",
           "as": "color"
         },
         {
