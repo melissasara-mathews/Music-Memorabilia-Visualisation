@@ -3,7 +3,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 290,
   "height": {
-    "step": 27
+    "step": 26
   },
   "background": "#F7F3EB",
 
